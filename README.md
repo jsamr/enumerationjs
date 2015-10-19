@@ -14,11 +14,11 @@ Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeesc
           }
         )
 
-> `CloseEventCodes.CLOSE_PROTOCOL_ERROR._key()` evaluates *CLOSE_PROTOCOL_ERROR*
-> `CloseEventCodes.CLOSE_PROTOCOL_ERROR._value()` evaluates *1002*
-> `CloseEventCodes.CLOSE_PROTOCOL_ERROR._type()` evaluates *CloseEventCodes*
-> `CloseEventCodes.from(1006) is CloseEventCodes.CLOSE_ABNORMAL` evaluates `true` 
-> `1006 is CloseEventCodes.CLOSE_ABNORMAL` evaluates `false`
+> `CloseEventCodes.CLOSE_PROTOCOL_ERROR._key()` evaluates *CLOSE_PROTOCOL_ERROR* 
+> `CloseEventCodes.CLOSE_PROTOCOL_ERROR._value()` evaluates *1002*  
+> `CloseEventCodes.CLOSE_PROTOCOL_ERROR._type()` evaluates *CloseEventCodes*  
+> `CloseEventCodes.from(1006) is CloseEventCodes.CLOSE_ABNORMAL` evaluates `true`  
+> `1006 is CloseEventCodes.CLOSE_ABNORMAL` evaluates `false`  
 
 ## Use of prototypes
 
