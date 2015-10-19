@@ -1,6 +1,6 @@
+#Registered enums
+enumNames=[]
 class Enumeration
-  #Registered enums
-  @types:[]
   #Static function that creates an enum object value. Uniqueness guarantied by object reference.
   #This objects's unique own field is the Enumeration name. It's read only.
   #string value shall be uppercase
@@ -14,8 +14,8 @@ class Enumeration
 
   constructor:(enumName,enumValues) ->
     #Check for uniqueness
-    if enumName in Enumeration.types then throw "#{enumName} already exists!"
-    else Enumeration.types.push enumName
+    if enumName in enumNames then throw "#{enumName} already exists!"
+    else enumNames.push enumName
     #Lambda to write enum values
     writeProperty = (property,key) => @[key or property]=Enumeration.value(property,enumName)
     if enumValues instanceof Array then writeProperty val for val in enumValues
@@ -31,3 +31,5 @@ class Enumeration
     }
     #Guaranties properties to be 'final', non writable
     Object.freeze(this)
+
+#If you want to export the class, you'll need window.Enumeration=Enumeration or global.Enumeration=Enumeration
