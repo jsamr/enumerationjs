@@ -1,4 +1,4 @@
-# coffeescript-Enumeration
+# Enumeration.coffee
 ## Usage
 
         SimpleStringEnum=new Enumeration "SimpleStringEnum", 
