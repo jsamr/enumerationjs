@@ -1,4 +1,5 @@
 # Enumeration.coffee
+Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)
 ## Usage
 
         SimpleStringEnum=new Enumeration "SimpleStringEnum", 
