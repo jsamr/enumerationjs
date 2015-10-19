@@ -6,12 +6,12 @@ extend = (object, properties) ->
 enumNames=[]
 
 #C like enum
-class KVEnumeration
+class Enumeration
   #Registered enums
   #Static function that creates an enum object value. Uniqueness guarantied by object reference.
-  #This objects's unique own field is the KVEnumeration name. It's read only.
+  #This objects's unique own field is the Enumeration name. It's read only.
   #string value shall be uppercase
-  @value:(key,value,enumName="KVEnumeration",valueProto)->
+  @value:(key,value,enumName="Enumeration",valueProto)->
     prototype=extend
       _value:-> @[key]
       _key:->key
@@ -28,12 +28,12 @@ class KVEnumeration
     if enumName in enumNames then throw "#{enumName} already exists!"
     else enumNames.push enumName
     #Lambda to write enum values
-    writeProperty = (property,key) => @[key]=KVEnumeration.value(key,property,enumName,valueProto)
+    writeProperty = (property,key) => @[key]=Enumeration.value(key,property,enumName,valueProto)
     writeProperty val,key for key,val of enumValues
     #Define non-enumerable property
-    Object.defineProperty @, 'concise', {
-      #Returns a concise string representing the KVEnumeration
-      value:-> "#{enumName}:[#{" "+val+" " for val in enumValues}]"
+    Object.defineProperty @, 'pretty', {
+      #Returns a concise, pretty string representing the Enumeration
+      value:-> "#{enumName}:{#{"#{key}:#{val} " for key,val of enumValues}}"
     }
     Object.defineProperty @, 'from', {
       #Returns the enum instance that matches value
