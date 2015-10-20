@@ -18,6 +18,7 @@ class Enumeration
       _type:->enumName
     , valueProto
     properties={}
+    #Read only property
     properties[key]=
       value:value
       enumerable:true
