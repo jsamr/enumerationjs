@@ -1,6 +1,15 @@
 
 #Enumeration.coffee : Java-like enum
 
+[intro](#intro)
+[1 Basic usage](#basic-usage)  
+[2 A prototype for enum values](#a-prototype-for-enum-values)  
+[3 Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
+[4 Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
+[5 #CoffeeHack : incorporate as public class fields](#coffeehack-incorporate-as-public-class-fields)  
+[6 The constructor signature](#the-constructor-signature)  
+
+##Intro
 Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)  
 
 Pros : 
@@ -19,14 +28,6 @@ Cons :
 * ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. Those are recoverable via `key()` and `id()` methods. However the `describe()` method returns a string with all those informations. And the `enumInstance.pretty()` returns a string with all the enum values and their associated descriptions.
 
 Critics and suggestions are welcome
-
-*Summary*  
-[Basic usage](#basic-usage)  
-[A prototype for enum values](#a-prototype-for-enum-values)  
-[Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
-[Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
-[#CoffeeHack : incorporate as public class fields](#coffeehack-incorporate-as-public-class-fields)  
-[The constructor signature](#the-constructor-signature)  
 
 ## Basic usage
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
