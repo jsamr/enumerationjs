@@ -73,7 +73,7 @@ closeEventCodes = new Enumeration("closeEventCodes", {
     CLOSE_TOO_LARGE:     {_id:1009,info:"Connection closed due to too large packet"}
   }
 )
-closeEventCodes.CLOSE_NORMAL #evaluates to 'Connection closed normally'
+closeEventCodes.CLOSE_NORMAL.info #evaluates to 'Connection closed normally'
 ```
 
 ## #CoffeeHack : incorporates as private static fields
