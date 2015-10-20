@@ -6,12 +6,17 @@ Pros :
 * enum values are unique
 * enum values are read only
 * enum values can inherit properties from a prototype given at Enumeration instanciation time. 
+* you can define as many properties as you wish for each instantiated value (such as 'message', 'info' ...)
 * The enumerations are guarantied uniques : you cannot instanciate two enumerations with a same name
-* the enumerations are frozen (read-only)
-* You can hack a coffeescript `class` to have all the defined values of your enumeration as static fields of this `class`, see at the bottom of this page
+* The enumerations are frozen (read-only)
+* Each enum value has a unique identifier that you provide at instanciation time, recovorable with id() method. You can easely match the instance associated to an identifier with `EnumerationInstance.from(identifier)` which allows easy lightweight serialization.
+* You can hack a coffeescript `class` to have all the defined values of your Enumeration as static fields of this `class`, see at the bottom of this page
 
 Cons :
 * relies on ECMAScript 5 
+* the key/identifier of an enum does not appear explicitly inside the object instance. Those are recoverable via key() and id() methods. However the describe() method returns a string with all those informations. 
+
+Critics and suggestions are welcome
 
 ## Basic usage
 
