@@ -50,16 +50,18 @@ class Enumeration
   * @param  {object} proto [optional] a prototype each enum value will inherit from
   ###
   constructor:(enumType,enumValues,proto={}) ->
-#Check for uniqueness
+    #Guarantees identifiers uniqueness
     ids=[]
+    #Ensure context to allow inheritance
+    instance=@
     if enumType in enumTypes then throw "#{enumType} already exists!"
     else enumTypes.push enumType
     #Lambda to write enum values
     writeProperty = (descriptor,key) => @[key]=Enumeration.value(key,descriptor,enumType,proto,ids)
     writeProperty val,key for key,val of enumValues
     #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
-    Object.defineProperty @, 'pretty', value:-> "#{enumType}:#{"\n\t"+enume.describe() for key,enume of @}"
+    Object.defineProperty @, 'pretty', value:-> "#{enumType}:#{"\n\t"+enume.describe() for key,enume of instance}"
     #Define non-enumerable method that returns the enum instance which matches identifier (descriptor if string, descriptor._id if object)
-    Object.defineProperty @, 'from', value: (identifier) -> (@[key] for key,enume of @ when enume.id() is identifier)[0] or throw "identifier #{identifier} does not match any"
+    Object.defineProperty @, 'from', value: (identifier) -> (instance[key] for key,enume of instance when enume.id() is identifier)[0] or throw "identifier #{identifier} does not match any"
     #Guaranties properties to be 'final', non writable
     Object.freeze(this)
