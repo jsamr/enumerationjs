@@ -20,13 +20,14 @@ Cons :
 
 Critics and suggestions are welcome
 
-*Summary*
-[Basic usage](#basic-usage)
-[A prototype for enum values](#a-prototype-for-enum-values)
-[Use more complex enum descriptors](#use-more-complex-enum-descriptors)
-[Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)
-[#CoffeeHack : incorporate as public class fields](#coffeehack-incorporate-as-public-class-fields)
-[The constructor signature](#the-constructor-signature)
+*Summary*  
+[Basic usage](#basic-usage)  
+[A prototype for enum values](#a-prototype-for-enum-values)  
+[Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
+[Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
+[#CoffeeHack : incorporate as public class fields](#coffeehack-incorporate-as-public-class-fields)  
+[The constructor signature](#the-constructor-signature)  
+
 ## Basic usage
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate id (value associated to key) is given, an error will show up  
