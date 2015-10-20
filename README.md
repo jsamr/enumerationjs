@@ -35,9 +35,9 @@ closeEventCodes = new Enumeration("closeEventCodes", {
 )
 ```
 ```coffeescript
-closeEventCodes.CLOSE_PROTOCOL_ERROR._key()                  # evaluates to 'CLOSE_PROTOCOL_ERROR'  
-closeEventCodes.CLOSE_PROTOCOL_ERROR._value()                # evaluates to 1002  
-closeEventCodes.CLOSE_PROTOCOL_ERROR._type()                 # evaluates to 'closeEventCodes'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                   # evaluates to 'CLOSE_PROTOCOL_ERROR'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                    # evaluates to 1002  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'closeEventCodes'  
 closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 1006 is closeEventCodes.CLOSE_ABNORMAL                       # evaluates to false
 ```
@@ -53,7 +53,7 @@ closeEventCodes = new Enumeration("closeEventCodes", {
       CLOSE_NO_STATUS:1005
       CLOSE_ABNORMAL:1006
       CLOSE_TOO_LARGE:1009
-    }, printsKeyValueType:->console.log "enum value with key #{@_key()} and value #{@_value()} belonging to instance #{@_type()} of Class Enumeration"
+    }, printsKeyValueType:->console.log "enum value with key #{@key()} and value #{@id()} belonging to instance #{@type()} of Class Enumeration"
 )
 ```
 ```coffeescript
@@ -86,12 +86,14 @@ class MyClass
 Now `MyClass.PRIVATE_STATIC_ENUM1` and `MyClass.PRIVATE_STATIC_ENUM2` are defined.
 If you don't like this hack, you can always define a class' static field holding the enum by replacing `@__proto__` with `@colors` for example. 
 
-## Check the constructor signature
+## Have a look to the constructor signature
 ```coffeescript
   ###*
   * @param  {string}  enumType A string identifying the type of this Enumeration instance
-  * @param  {object}  enumValues an object which keys are the enum names, and values are each enum descriptor.
-  * A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
+  * @param  {object}  enumValues an object which keys are the enum names, and values are 
+  * enum descriptor.
+  * A descriptor can be a single unique identifier (string or number),  or an object whose 
+  * fields will be copied on the enum value instance. In this case
   * a field '_id' must be provided identifying this enum value.
   * @param  {object} proto [optional] a prototype each enum value will inherit from
   ###
