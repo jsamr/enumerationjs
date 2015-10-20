@@ -53,12 +53,12 @@ closeEventCodes = new Enumeration("closeEventCodes", {
       CLOSE_NO_STATUS:1005
       CLOSE_ABNORMAL:1006
       CLOSE_TOO_LARGE:1009
-    }, printsKeyValueType:->console.log "enum value with key #{@key()} and value #{@id()} belonging to instance #{@type()} of Class Enumeration"
+    }, print: -> console.log @describe()
 )
 ```
 ```coffeescript
-closeEventCodes.CLOSE_PROTOCOL_ERROR.printsKeyValueType() 
-# prints 'enum value with key CLOSE_PROTOCOL_ERROR and value 1002 belonging to instance closeEventCodes of Class Enumeration'
+closeEventCodes.CLOSE_NO_STATUS.print() 
+# prints 'CLOSE_NO_STATUS:1005'
 ```
 ## Use more complex enum descriptors
 ```coffeescript
