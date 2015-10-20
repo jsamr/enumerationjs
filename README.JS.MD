@@ -22,7 +22,7 @@ Pros :
 * ✓ The enumerations are guarantied uniques : you cannot instanciate two enumerations with a same name
 * ✓ The enumerations are frozen (read-only)
 * ✓ Each enum value has a unique identifier that you provide at instanciation time, recovorable with `id()` method. You can easely match the instance associated to an identifier with `enumInstance.from(identifier)` which allows easy lightweight serialization.
-* ✓ You can [hack a coffeescript class](#hack-da-class--incorporate-as-public-class-fields) to have all the defined values of your Enumeration as static fields of this `class`.
+* ✓ You can [hack a javascript constructor](#hack-da-class--incorporate-as-public-class-fields) to have all the defined values of your Enumeration as static fields of this `class`.
 
 Cons :
 * ✗ relies on ECMAScript 5 
@@ -137,7 +137,7 @@ myEnum.newFunction = function() { return this.STATE1.describe() }
 ```
 
 ## Hack da class : incorporate as public class fields
-Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance.
+Yeah, that's the funny thing with prototype inheritance : your javascript class can inherit this Enumeration instance.
 
 > ⚠ Be carefull, `MyClass.__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements 
 
