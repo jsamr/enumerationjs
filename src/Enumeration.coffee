@@ -1,3 +1,6 @@
+#NPM EXPORTS
+exports =  module?.exports? or {}
+
 extend = (object, properties) ->
   for key, val of properties
     object[key] = val
@@ -7,7 +10,7 @@ enumTypes=[]
 
 #Java like enum
 class Enumeration
-  ### *
+  ###*
   * Static function that creates an enum object value. Uniqueness guarantied by object reference.
   * This objects's unique own field is the Enumeration name. It's read only.
   * @param {string or number} key the enum name, recommanded uppercase
@@ -65,3 +68,5 @@ class Enumeration
     Object.defineProperty @, 'from', value: (identifier) -> (instance[key] for key,enume of instance when enume.id() is identifier)[0] or throw "identifier #{identifier} does not match any"
     #Guaranties properties to be 'final', non writable
     Object.freeze(this)
+
+exports=Enumeration
