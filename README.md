@@ -9,19 +9,19 @@ Pros :
 * you can define as many properties as you wish for each instantiated value (such as 'message', 'info' ...)
 * The enumerations are guarantied uniques : you cannot instanciate two enumerations with a same name
 * The enumerations are frozen (read-only)
-* Each enum value has a unique identifier that you provide at instanciation time, recovorable with id() method. You can easely match the instance associated to an identifier with `EnumerationInstance.from(identifier)` which allows easy lightweight serialization.
+* Each enum value has a unique identifier that you provide at instanciation time, recovorable with `id()` method. You can easely match the instance associated to an identifier with `enumInstance.from(identifier)` which allows easy lightweight serialization.
 * You can hack a coffeescript `class` to have all the defined values of your Enumeration as static fields of this `class`, see at the bottom of this page
 
 Cons :
 * relies on ECMAScript 5 
-* the key/identifier of an enum does not appear explicitly inside the object instance. Those are recoverable via key() and id() methods. However the describe() method returns a string with all those informations. 
+* the key/identifier of an enum value does not appear explicitly inside the object instance. Those are recoverable via `key()` and `id()` methods. However the `describe()` method returns a string with all those informations. And the `enumInstance.pretty()` returns a string with all the enum values and their associated descriptions.
 
 Critics and suggestions are welcome
 
 ## Basic usage
 
 ```coffeescript
-CloseEventCodes = new Enumeration("CloseEventCodes", {
+closeEventCodes = new Enumeration("closeEventCodes", {
     CLOSE_NORMAL:1000
     CLOSE_GOING_AWAY:1001
     CLOSE_PROTOCOL_ERROR:1002
@@ -33,17 +33,17 @@ CloseEventCodes = new Enumeration("CloseEventCodes", {
 )
 ```
 ```coffeescript
-CloseEventCodes.CLOSE_PROTOCOL_ERROR._key()                  # evaluates to 'CLOSE_PROTOCOL_ERROR'  
-CloseEventCodes.CLOSE_PROTOCOL_ERROR._value()                # evaluates to 1002  
-CloseEventCodes.CLOSE_PROTOCOL_ERROR._type()                 # evaluates to 'CloseEventCodes'  
-CloseEventCodes.from(1006) is CloseEventCodes.CLOSE_ABNORMAL # evaluates to true
-1006 is CloseEventCodes.CLOSE_ABNORMAL                       # evaluates to false
+closeEventCodes.CLOSE_PROTOCOL_ERROR._key()                  # evaluates to 'CLOSE_PROTOCOL_ERROR'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR._value()                # evaluates to 1002  
+closeEventCodes.CLOSE_PROTOCOL_ERROR._type()                 # evaluates to 'closeEventCodes'  
+closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
+1006 is closeEventCodes.CLOSE_ABNORMAL                       # evaluates to false
 ```
 
 ## Use of prototypes
 
 ```coffeescript
-CloseEventCodes = new Enumeration("CloseEventCodes", {
+closeEventCodes = new Enumeration("closeEventCodes", {
       CLOSE_NORMAL:1000
       CLOSE_GOING_AWAY:1001
       CLOSE_PROTOCOL_ERROR:1002
@@ -55,13 +55,13 @@ CloseEventCodes = new Enumeration("CloseEventCodes", {
 )
 ```
 ```coffeescript
-CloseEventCodes.CLOSE_PROTOCOL_ERROR.printsKeyValueType() 
-# prints 'enum value with key CLOSE_PROTOCOL_ERROR and value 1002 belonging to instance CloseEventCodes of Class Enumeration'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.printsKeyValueType() 
+# prints 'enum value with key CLOSE_PROTOCOL_ERROR and value 1002 belonging to instance closeEventCodes of Class Enumeration'
 ```
 ## Use more complex enum descriptors
 ```coffeescript
 #the descriptor MUST contain an _id field as it is an object
-CloseEventCodes = new Enumeration("CloseEventCodes", {
+closeEventCodes = new Enumeration("closeEventCodes", {
     CLOSE_NORMAL:        {_id:1000,info:"Connection closed normally"}
     CLOSE_GOING_AWAY:    {_id:1001,info:"Connection closed going away"}
     CLOSE_PROTOCOL_ERROR:{_id:1002,info:"Connection closed due to protocol error"}
@@ -71,7 +71,7 @@ CloseEventCodes = new Enumeration("CloseEventCodes", {
     CLOSE_TOO_LARGE:     {_id:1009,info:"Connection closed due to too large packet"}
   }
 )
-CloseEventCodes.CLOSE_NORMAL #evaluates to 'Connection closed normally'
+closeEventCodes.CLOSE_NORMAL #evaluates to 'Connection closed normally'
 ```
 
 ## #CoffeeHack : incorporates as private static fields
