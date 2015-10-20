@@ -3,44 +3,63 @@ extend = (object, properties) ->
     object[key] = val
   object
 
-enumNames=[]
+enumTypes=[]
 
-#C like enum
+#Java like enum
 class Enumeration
-  #Registered enums
-  #Static function that creates an enum object value. Uniqueness guarantied by object reference.
-  #This objects's unique own field is the Enumeration name. It's read only.
-  #string value shall be uppercase
-  @value:(key,value,enumName="Enumeration",valueProto)->
-    prototype=extend
-      _value:-> @[key]
-      _key:->key
-      _type:->enumName
-    , valueProto
+  ### *
+  * Static function that creates an enum object value. Uniqueness guarantied by object reference.
+  * This objects's unique own field is the Enumeration name. It's read only.
+  * @param {string or number} key the enum name, recommanded uppercase
+  * @param {string or object} descriptor a string that identifies this value, or an object with fields that will be copied on the returned value. In this case
+  * a field '_id' must be provided
+  * @param {object} valueProto a prototype the returned object will inherit from
+  * @param {string} enumType a string identifying the Enumeration instance this enum value is bound to
+  ###
+  @value:(enumName,descriptor,enumType,valueProto,ids)->
+    identifier=descriptor._id or descriptor
+    valueIsObject=descriptor._id?
+    if identifier in ids then throw "Duplicate identifier : #{identifier}"
+    else ids.push identifier
+    methods=
+#Returns value if not an object, value._id otherwise
+      id:    -> identifier
+      key:   -> enumName
+      type:  -> enumType
+      describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of extend(descriptor,valueProto) when !(prop instanceof Function)}}" else ""}"
+    testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in Object.keys(methods)
+    testReserved valueProto
+    prototype=extend methods, valueProto
     properties={}
-    #Read only property
-    properties[key]=
-      value:value
-      enumerable:true
+    defineReadOnlyProperty= (key0,value0)->
+      properties[key0]=
+        value:value0
+        enumerable:true
+    if descriptor instanceof Object
+      testReserved descriptor
+      if not descriptor._id? then throw "field '_id' must be defined when passing object as enum value"
+      delete descriptor._id
+      defineReadOnlyProperty key1,val1 for key1,val1 of descriptor
     Object.create prototype, properties
 
-  constructor:(enumName,enumValues,valueProto={}) ->
-    #Check for uniqueness
-    if enumName in enumNames then throw "#{enumName} already exists!"
-    else enumNames.push enumName
+  ###*
+  * @param  {string}  enumType A string identifying the type of this Enumeration instance
+  * @param  {object}  enumValues an object which keys are the enum names, and values are each enum descriptor.
+  * A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
+  * a field '_id' must be provided identifying this enum value.
+  * @param  {object} proto [optional] a prototype each enum value will inherit from
+  ###
+  constructor:(enumType,enumValues,proto={}) ->
+#Check for uniqueness
+    ids=[]
+    if enumType in enumTypes then throw "#{enumType} already exists!"
+    else enumTypes.push enumType
     #Lambda to write enum values
-    writeProperty = (property,key) => @[key]=Enumeration.value(key,property,enumName,valueProto)
+    writeProperty = (descriptor,key) => @[key]=Enumeration.value(key,descriptor,enumType,proto,ids)
     writeProperty val,key for key,val of enumValues
-    #Define non-enumerable property
-    Object.defineProperty @, 'pretty', {
-      #Returns a concise, pretty string representing the Enumeration
-      value:-> "#{enumName}:{#{"#{key}:#{val} " for key,val of enumValues}}"
-    }
-    Object.defineProperty @, 'from', {
-      #Returns the enum instance that matches value
-      value: (lookupVal) -> (@[key] for key,val of enumValues when val is lookupVal)[0]
-    }
+    #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
+    Object.defineProperty @, 'pretty', value:-> "#{enumType}:#{"\n\t"+enume.describe() for key,enume of @}"
+    #Define non-enumerable method that returns the enum instance which matches identifier (descriptor if string, descriptor._id if object)
+    Object.defineProperty @, 'from', value: (identifier) -> (@[key] for key,enume of @ when enume.id() is identifier)[0] or throw "identifier #{identifier} does not match any"
     #Guaranties properties to be 'final', non writable
     Object.freeze(this)
-
-
