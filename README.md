@@ -116,7 +116,7 @@ myEnum.newFunction = -> "Hi!"
 ## CoffeeHack : incorporate as public class fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance.
 
-> ⚠ Be carefull, `@__proto` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements 
+> ⚠ Be carefull, `@__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements 
 
 ```coffeescript
 class MyClass
