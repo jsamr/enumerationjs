@@ -57,8 +57,7 @@ closeEventCodes = new Enumeration("closeEventCodes", {
 )
 ```
 ```coffeescript
-closeEventCodes.CLOSE_NO_STATUS.print() 
-# prints 'CLOSE_NO_STATUS:1005'
+closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 ```
 ## Use more complex enum descriptors
 ```coffeescript
