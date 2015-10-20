@@ -27,11 +27,13 @@ CloseEventCodes = new Enumeration("CloseEventCodes", {
   }
 )
 ```
-`CloseEventCodes.CLOSE_PROTOCOL_ERROR._key()` evaluates *CLOSE_PROTOCOL_ERROR* 
-`CloseEventCodes.CLOSE_PROTOCOL_ERROR._value()` evaluates *1002*  
-`CloseEventCodes.CLOSE_PROTOCOL_ERROR._type()` evaluates *CloseEventCodes*  
-`CloseEventCodes.from(1006) is CloseEventCodes.CLOSE_ABNORMAL` evaluates `true`  
-`1006 is CloseEventCodes.CLOSE_ABNORMAL` evaluates `false`  
+```coffeescript
+CloseEventCodes.CLOSE_PROTOCOL_ERROR._key()                  # evaluates to 'CLOSE_PROTOCOL_ERROR'  
+CloseEventCodes.CLOSE_PROTOCOL_ERROR._value()                # evaluates to 1002  
+CloseEventCodes.CLOSE_PROTOCOL_ERROR._type()                 # evaluates to 'CloseEventCodes'  
+CloseEventCodes.from(1006) is CloseEventCodes.CLOSE_ABNORMAL # evaluates to true
+1006 is CloseEventCodes.CLOSE_ABNORMAL                       # evaluates to false
+```
 
 ## Use of prototypes
 
@@ -47,10 +49,12 @@ CloseEventCodes = new Enumeration("CloseEventCodes", {
     }, printsKeyValueType:->console.log "enum value with key #{@_key()} and value #{@_value()} belonging to instance #{@_type()} of Class Enumeration"
 )
 ```
+```coffeescript
+CloseEventCodes.CLOSE_PROTOCOL_ERROR.printsKeyValueType() 
+# prints 'enum value with key CLOSE_PROTOCOL_ERROR and value 1002 belonging to instance CloseEventCodes of Class Enumeration'
+```
 
-`CloseEventCodes.CLOSE_PROTOCOL_ERROR.printsKeyValueType()` prints *enum value with key CLOSE_PROTOCOL_ERROR and value 1002 belonging to instance CloseEventCodes of Class Enumeration*
-
-## #CoffeeHack :incorporates as private static fields
+## #CoffeeHack : incorporates as private static fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this enumeration 
 
 ```coffeescript
