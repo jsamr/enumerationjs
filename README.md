@@ -61,6 +61,9 @@ closeEventCodes = new Enumeration("closeEventCodes", {
 closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 ```
 ## Use more complex enum descriptors
+
+>*Warning* Each descriptor **must** contain an `_id` field of type `string` or `number`
+
 ```coffeescript
 #the descriptor MUST contain an _id field as it is an object
 closeEventCodes = new Enumeration("closeEventCodes", {
