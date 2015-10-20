@@ -22,7 +22,7 @@ class Enumeration
     if identifier in ids then throw "Duplicate identifier : #{identifier}"
     else ids.push identifier
     methods=
-#Returns value if not an object, value._id otherwise
+      #Returns descriptor if not an object, descriptor._id otherwise
       id:    -> identifier
       key:   -> enumName
       type:  -> enumType
