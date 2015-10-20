@@ -7,7 +7,7 @@
 [2 A prototype for enum values](#a-prototype-for-enum-values)  
 [3 Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
 [4 Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
-[5 CoffeeHack : incorporate as public class fields](#coffeehack-incorporate-as-public-class-fields)  
+[5 CoffeeHack : incorporate as public class fields](#coffeehack--incorporate-as-public-class-fields)  
 [6 The constructor signature](#the-constructor-signature)  
 
 ##Intro
