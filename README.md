@@ -73,9 +73,14 @@ closeEventCodes = new Enumeration("closeEventCodes", {
     CLOSE_TOO_LARGE:     {_id:1009,info:"Connection closed due to too large packet"}
   }
 )
-closeEventCodes.CLOSE_NORMAL.info #evaluates to 'Connection closed normally'
 ```
-
+```coffeescript
+closeEventCodes.CLOSE_PROTOCOL_ERROR.info #evaluates to 'Connection closed due to protocol error'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                   # evaluates to 'CLOSE_PROTOCOL_ERROR'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                    # evaluates to 1002  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'closeEventCodes'  
+closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
+```
 ## #CoffeeHack : incorporates as private static fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance!
 
