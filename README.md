@@ -1,5 +1,6 @@
 
 #Enumeration.coffee : Java-like enum
+
 Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)  
 
 Pros : 
@@ -40,7 +41,7 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 1006 is closeEventCodes.CLOSE_ABNORMAL                       # evaluates to false
 ```
 
-## Use of prototypes
+## Use of a prototype
 
 ```coffeescript
 closeEventCodes = new Enumeration("closeEventCodes", {
@@ -82,3 +83,4 @@ class MyClass
   @__proto__:new Enumeration('MyClass', {PRIVATE_STATIC_ENUM1:"VAL1",PRIVATE_STATIC_ENUM2:"VAL2"})
 ```
 Now `MyClass.PRIVATE_STATIC_ENUM1` and `MyClass.PRIVATE_STATIC_ENUM2` are defined.
+If you don't like this hack, you can always define a class' static field holding the enum by replacing `@__proto__` with `@colors` for example. 
