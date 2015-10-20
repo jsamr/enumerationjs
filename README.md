@@ -85,13 +85,14 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ```
 ## Extend your Enumeration with prototype inheritance
 
+>*Warning* The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or hacking the `class` (see next section). 
+
 ```coffeescript
 #Inherit all Enumeration instance fields by moving it to myEnum's prototype
 #The prototype will still be frozen, but myEnum instance won't. 
 myEnum=Object.create new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3})
 myEnum.newFunction = -> "Hi!"
 ```
->*Warning* The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* extend. 
 
 ## #CoffeeHack : incorporates as public class fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance. But be carefull, `@__proto` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements 
