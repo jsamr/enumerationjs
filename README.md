@@ -20,6 +20,13 @@ Cons :
 
 Critics and suggestions are welcome
 
+*Summary*
+[Basic usage](#basic-usage)
+[A prototype for enum values](#a-prototype-for-enum-values)
+[Use more complex enum descriptors](#use-more-complex-enum-descriptors)
+[Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)
+[#CoffeeHack : incorporate as public class fields](#coffeehack-incorporate-as-public-class-fields)
+[The constructor signature](#the-constructor-signature)
 ## Basic usage
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate id (value associated to key) is given, an error will show up  
@@ -45,7 +52,7 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 1006 is closeEventCodes.CLOSE_ABNORMAL                       # evaluates to false
 ```
 
-## Use of a prototype
+## A prototype for enum values
 > ✓ If you mistakenly use a reserved property in the given prototype (id,key,describe or type), an error will show up
 
 ```coffeescript
@@ -103,7 +110,7 @@ myEnum=Object.create new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3})
 myEnum.newFunction = -> "Hi!"
 ```
 
-## #CoffeeHack : incorporates as public class fields
+## #CoffeeHack : incorporate as public class fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance.
 
 > ⚠ Be carefull, `@__proto` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements 
@@ -122,7 +129,7 @@ Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
 
 > ✓ If you don't like this hack, you can either define a class' static field holding the enum by replacing `@__proto__` with `@colors` or `@states` ... or use prototype inheritance instead. 
 
-## Have a look to the constructor signature
+## The constructor signature
 ```coffeescript
   ###*
   * @param  {string}  enumType A string identifying the type of this Enumeration instance
