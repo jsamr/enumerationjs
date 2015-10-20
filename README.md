@@ -1,5 +1,5 @@
 
-#Enumeration.coffee : Java-like enum
+#enumeration : Java-like enum for javascript/coffeescript
 
 >
 [intro](#intro)  
