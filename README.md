@@ -1,12 +1,14 @@
 
 #Enumeration.coffee : Java-like enum
-Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)
+Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)  
+
 Pros : 
 * enum values are unique
 * enum values are read only
 * enum values can inherit properties from a prototype given at Enumeration instanciation time. 
 * The enumerations are guarantied uniques : you cannot instanciate two enumerations with a same name
 * the enumerations are frozen (read-only)
+* You can hack a coffeescript `class` to have all the defined values of your enumeration as static fields of this `class`, see at the bottom of this page
 
 Cons :
 * relies on ECMAScript 5 
@@ -25,11 +27,11 @@ CloseEventCodes = new Enumeration("CloseEventCodes", {
   }
 )
 ```
-> `CloseEventCodes.CLOSE_PROTOCOL_ERROR._key()` evaluates *CLOSE_PROTOCOL_ERROR* 
-> `CloseEventCodes.CLOSE_PROTOCOL_ERROR._value()` evaluates *1002*  
-> `CloseEventCodes.CLOSE_PROTOCOL_ERROR._type()` evaluates *CloseEventCodes*  
-> `CloseEventCodes.from(1006) is CloseEventCodes.CLOSE_ABNORMAL` evaluates `true`  
-> `1006 is CloseEventCodes.CLOSE_ABNORMAL` evaluates `false`  
+`CloseEventCodes.CLOSE_PROTOCOL_ERROR._key()` evaluates *CLOSE_PROTOCOL_ERROR* 
+`CloseEventCodes.CLOSE_PROTOCOL_ERROR._value()` evaluates *1002*  
+`CloseEventCodes.CLOSE_PROTOCOL_ERROR._type()` evaluates *CloseEventCodes*  
+`CloseEventCodes.from(1006) is CloseEventCodes.CLOSE_ABNORMAL` evaluates `true`  
+`1006 is CloseEventCodes.CLOSE_ABNORMAL` evaluates `false`  
 
 ## Use of prototypes
 
@@ -46,9 +48,9 @@ CloseEventCodes = new Enumeration("CloseEventCodes", {
 )
 ```
 
-> `CloseEventCodes.CLOSE_PROTOCOL_ERROR.printsKeyValueType()` prints *enum value with key CLOSE_PROTOCOL_ERROR and value 1002 belonging to instance CloseEventCodes of Class Enumeration*
+`CloseEventCodes.CLOSE_PROTOCOL_ERROR.printsKeyValueType()` prints *enum value with key CLOSE_PROTOCOL_ERROR and value 1002 belonging to instance CloseEventCodes of Class Enumeration*
 
-## incorporates in a Class private static fields
+## #CoffeeHack :incorporates as private static fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this enumeration 
 
 ```coffeescript
