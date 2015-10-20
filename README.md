@@ -7,7 +7,7 @@
 [2 A prototype for enum values](#a-prototype-for-enum-values)  
 [3 Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
 [4 Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
-[5 CoffeeHack : incorporate as public class fields](#coffeehack--incorporate-as-public-class-fields)  
+[5 Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)  
 [6 The constructor signature](#the-constructor-signature)  
 
 ##Intro
@@ -22,7 +22,7 @@ Pros :
 * ✓ The enumerations are guarantied uniques : you cannot instanciate two enumerations with a same name
 * ✓ The enumerations are frozen (read-only)
 * ✓ Each enum value has a unique identifier that you provide at instanciation time, recovorable with `id()` method. You can easely match the instance associated to an identifier with `enumInstance.from(identifier)` which allows easy lightweight serialization.
-* ✓ You can hack a coffeescript `class` to have all the defined values of your Enumeration as static fields of this `class`, see at the bottom of this page
+* ✓ You can [hack a coffeescript class](#hack-da-class--incorporate-as-public-class-fields) to have all the defined values of your Enumeration as static fields of this `class`.
 
 Cons :
 * ✗ relies on ECMAScript 5 
@@ -104,7 +104,7 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ```
 ## Extend your Enumeration with prototype inheritance
 
-> ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or hacking the `class` (see next section). 
+> ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields). 
 
 ```coffeescript
 #Inherit all Enumeration instance fields by moving it to myEnum's prototype
@@ -113,7 +113,7 @@ myEnum=Object.create new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3})
 myEnum.newFunction = -> "Hi!"
 ```
 
-## CoffeeHack : incorporate as public class fields
+## Hack da class : incorporate as public class fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance.
 
 > ⚠ Be carefull, `@__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements 
