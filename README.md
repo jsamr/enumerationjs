@@ -4,6 +4,7 @@
 Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)  
 
 Pros : 
+* flexible solution to the missing `enum` keyword implementation
 * enum values are unique
 * enum values are read only
 * enum values can inherit properties from a prototype given at Enumeration instanciation time. 
@@ -90,7 +91,7 @@ If you don't like this hack, you can always define a class' static field holding
   ###*
   * @param  {string}  enumType A string identifying the type of this Enumeration instance
   * @param  {object}  enumValues an object which keys are the enum names, and values are each enum descriptor.
-  A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
+  * A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
   * a field '_id' must be provided identifying this enum value.
   * @param  {object} proto [optional] a prototype each enum value will inherit from
   ###
