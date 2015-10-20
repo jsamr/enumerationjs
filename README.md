@@ -76,7 +76,7 @@ closeEventCodes.CLOSE_NORMAL #evaluates to 'Connection closed normally'
 ```
 
 ## #CoffeeHack : incorporates as private static fields
-Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this enumeration 
+Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance!
 
 ```coffeescript
 class MyClass
@@ -84,3 +84,15 @@ class MyClass
 ```
 Now `MyClass.PRIVATE_STATIC_ENUM1` and `MyClass.PRIVATE_STATIC_ENUM2` are defined.
 If you don't like this hack, you can always define a class' static field holding the enum by replacing `@__proto__` with `@colors` for example. 
+
+## Check the constructor signature
+```coffeescript
+  ###*
+  * @param  {string}  enumType A string identifying the type of this Enumeration instance
+  * @param  {object}  enumValues an object which keys are the enum names, and values are each enum descriptor.
+  A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
+  * a field '_id' must be provided identifying this enum value.
+  * @param  {object} proto [optional] a prototype each enum value will inherit from
+  ###
+  constructor:(enumType,enumValues,proto={}) -> ...
+```
