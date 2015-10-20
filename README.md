@@ -82,7 +82,7 @@ closeEventCodes.CLOSE_PROTOCOL_ERROR._id                     # evaluates to unde
 closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'closeEventCodes'  
 closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ```
-## #CoffeeHack : incorporates as private static fields
+## #CoffeeHack : incorporates as public class fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance. But be carefull, `@__proto` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements 
 
 ```coffeescript
@@ -93,10 +93,10 @@ class MyClass
   # IMPORTANT : writing @__proto__ before any other function or field will erase those, that's the hacky 
   # counterpart
   ###
-  @__proto__:new Enumeration('MyClass', {PRIVATE_STATIC_ENUM1:"VAL1",PRIVATE_STATIC_ENUM2:"VAL2"})
+  @__proto__:new Enumeration('MyClass', {PUBLIC_STATIC_ENUM1:"VAL1",PUBLIC_STATIC_ENUM2:"VAL2"})
 ```
-Now `MyClass.PRIVATE_STATIC_ENUM1` and `MyClass.PRIVATE_STATIC_ENUM2` are defined.
-If you don't like this hack, you can always define a class' static field holding the enum by replacing `@__proto__` with `@colors` for example. 
+Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
+If you don't like this hack, you can always define a class' static field holding the enum by replacing `@__proto__` with `@colors` or `@states` for example. 
 
 ## Have a look to the constructor signature
 ```coffeescript
