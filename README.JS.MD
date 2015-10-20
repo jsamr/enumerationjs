@@ -34,43 +34,46 @@ Critics and suggestions are welcome
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate id (value associated to key) is given, an error will show up  
 
-```coffeescript
-closeEventCodes = new Enumeration("closeEventCodes", {
-    CLOSE_NORMAL:1000
-    CLOSE_GOING_AWAY:1001
-    CLOSE_PROTOCOL_ERROR:1002
-    CLOSE_UNSUPPORTED:1003
-    CLOSE_NO_STATUS:1005
-    CLOSE_ABNORMAL:1006
-    CLOSE_TOO_LARGE:1009
-  }
-)
+```javascript
+var closeEventCodes = new Enumeration("closeEventCodes", {
+  CLOSE_NORMAL: 1000,
+  CLOSE_GOING_AWAY: 1001,
+  CLOSE_PROTOCOL_ERROR: 1002,
+  CLOSE_UNSUPPORTED: 1003,
+  CLOSE_NO_STATUS: 1005,
+  CLOSE_ABNORMAL: 1006,
+  CLOSE_TOO_LARGE: 1009
+});
 ```
-```coffeescript
+```javascript
 closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                   # evaluates to 'CLOSE_PROTOCOL_ERROR'  
 closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                    # evaluates to 1002  
 closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'closeEventCodes'  
 closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              # evaluates to 'CLOSE_PROTOCOL_ERROR:1002' 
 closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
-1006 is closeEventCodes.CLOSE_ABNORMAL                       # evaluates to false
+1006 === closeEventCodes.CLOSE_ABNORMAL                      # evaluates to false
 ```
 
 ## A prototype for enum values
 > ✓ If you mistakenly use a reserved property in the given prototype (id,key,describe or type), an error will show up
 
-```coffeescript
-closeEventCodes = new Enumeration("closeEventCodes", {
-      CLOSE_NORMAL:1000
-      CLOSE_GOING_AWAY:1001
-      CLOSE_PROTOCOL_ERROR:1002
-      CLOSE_UNSUPPORTED:1003
-      CLOSE_NO_STATUS:1005
-      CLOSE_ABNORMAL:1006
-      CLOSE_TOO_LARGE:1009
-    }, print: -> console.log @describe()
-)
+```javascript
+var closeEventCodes = new Enumeration("closeEventCodes", {
+  CLOSE_NORMAL: 1000,
+  CLOSE_GOING_AWAY: 1001,
+  CLOSE_PROTOCOL_ERROR: 1002,
+  CLOSE_UNSUPPORTED: 1003,
+  CLOSE_NO_STATUS: 1005,
+  CLOSE_ABNORMAL: 1006,
+  CLOSE_TOO_LARGE: 1009
+}, {
+  print: function() {
+    console.log(this.describe());
+  }
+});
 ```
-```coffeescript
+
+```javascript
 closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 ```
 ## Use more complex enum descriptors
@@ -80,53 +83,86 @@ closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 > ✓ If a duplicate _id is given, an error will show up  
 > ✓ If you mistakenly use a reserved property in the given descriptor (id,key,describe or type), an error will show up
 
-```coffeescript
+```javascript
 #the descriptor MUST contain an _id field as it is an object
-closeEventCodes = new Enumeration("closeEventCodes", {
-    CLOSE_NORMAL:        {_id:1000,info:"Connection closed normally"}
-    CLOSE_GOING_AWAY:    {_id:1001,info:"Connection closed going away"}
-    CLOSE_PROTOCOL_ERROR:{_id:1002,info:"Connection closed due to protocol error"}
-    CLOSE_UNSUPPORTED:   {_id:1003,info:"Connection closed due to unsupported operation"}
-    CLOSE_NO_STATUS:     {_id:1005,info:"Connection closed with no status"}
-    CLOSE_ABNORMAL:      {_id:1006,info:"Connection closed abnormally"}
-    CLOSE_TOO_LARGE:     {_id:1009,info:"Connection closed due to too large packet"}
+var = closeEventCodes = new Enumeration("closeEventCodes", {
+  CLOSE_NORMAL: {
+    _id: 1000,
+    info: "Connection closed normally"
+  },
+  CLOSE_GOING_AWAY: {
+    _id: 1001,
+    info: "Connection closed going away"
+  },
+  CLOSE_PROTOCOL_ERROR: {
+    _id: 1002,
+    info: "Connection closed due to protocol error"
+  },
+  CLOSE_UNSUPPORTED: {
+    _id: 1003,
+    info: "Connection closed due to unsupported operation"
+  },
+  CLOSE_NO_STATUS: {
+    _id: 1005,
+    info: "Connection closed with no status"
+  },
+  CLOSE_ABNORMAL: {
+    _id: 1006,
+    info: "Connection closed abnormally"
+  },
+  CLOSE_TOO_LARGE: {
+    _id: 1009,
+    info: "Connection closed due to too large packet"
   }
-)
+});
 ```
-```coffeescript
-closeEventCodes.CLOSE_PROTOCOL_ERROR.info #evaluates to 'Connection closed due to protocol error'
-closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                   # evaluates to 'CLOSE_PROTOCOL_ERROR'  
-closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                    # evaluates to 1002  
-closeEventCodes.CLOSE_PROTOCOL_ERROR._id                     # evaluates to undefined 
-closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'closeEventCodes'  
-closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              # evaluates to 'CLOSE_PROTOCOL_ERROR:1002 {info:Connection closed due to protocol error}' 
-closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
+```javascript
+closeEventCodes.CLOSE_PROTOCOL_ERROR.info                     #evaluates to 'Connection closed due to protocol error'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                    # evaluates to 'CLOSE_PROTOCOL_ERROR'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                     # evaluates to 1002  
+closeEventCodes.CLOSE_PROTOCOL_ERROR._id                      # evaluates to undefined 
+closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                   # evaluates to 'closeEventCodes'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()               # evaluates to 'CLOSE_PROTOCOL_ERROR:1002 {info:Connection closed due to protocol error}' 
+closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ```
 ## Extend your Enumeration with prototype inheritance
 
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields). 
 
-```coffeescript
+```javascript
 #Inherit all Enumeration instance fields by moving it to myEnum's prototype
 #The prototype will still be frozen, but myEnum instance won't. 
-myEnum=Object.create new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3})
-myEnum.newFunction = -> "Hi!"
+var myEnum=Object.create(new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3}))
+myEnum.newFunction = function() { return this.STATE1.describe() }
 ```
 
 ## Hack da class : incorporate as public class fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance.
 
-> ⚠ Be carefull, `@__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements 
+> ⚠ Be carefull, `MyClass.__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements 
 
-```coffeescript
-class MyClass
-  constructor : -> @someProperty="someValue"
-  someFunction: -> 'doing stuff'
-  ###
-  # IMPORTANT : writing @__proto__ before any other function or field will erase those, that's the hacky 
-  # counterpart
-  ###
-  @__proto__:new Enumeration('MyClass', {PUBLIC_STATIC_ENUM1:"VAL1",PUBLIC_STATIC_ENUM2:"VAL2"})
+```javascript
+var MyClass = (function() {
+  function MyClass() {
+    this.someProperty = "someValue";
+  }
+
+  MyClass.prototype.someFunction = function() {
+    return 'doing stuff';
+  };
+
+  MyClass.__proto__ = new Enumeration('MyClass', {
+    PUBLIC_STATIC_ENUM1: "VAL1",
+    PUBLIC_STATIC_ENUM2: "VAL2"
+  });
+
+  return MyClass;
+
+})();
+
+Run
+Link
+
 ```
 Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
 

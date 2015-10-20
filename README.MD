@@ -112,7 +112,7 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 #Inherit all Enumeration instance fields by moving it to myEnum's prototype
 #The prototype will still be frozen, but myEnum instance won't. 
 myEnum=Object.create new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3})
-myEnum.newFunction = -> "Hi!"
+myEnum.newFunction = -> @STATE1.describe()
 ```
 
 ## Hack da class : incorporate as public class fields
@@ -124,10 +124,7 @@ Yeah, that's the funny thing with prototype inheritance : your coffeescript clas
 class MyClass
   constructor : -> @someProperty="someValue"
   someFunction: -> 'doing stuff'
-  ###
-  # IMPORTANT : writing @__proto__ before any other function or field will erase those, that's the hacky 
-  # counterpart
-  ###
+
   @__proto__:new Enumeration('MyClass', {PUBLIC_STATIC_ENUM1:"VAL1",PUBLIC_STATIC_ENUM2:"VAL2"})
 ```
 Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
