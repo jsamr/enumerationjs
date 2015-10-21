@@ -1,9 +1,7 @@
-!INCLUDE "common/title.mdpp"
+> This is the **javascript-users** guide.  
+> **If you want to read the coffeescript-users guide** [get here : COFFEE.GUIDE.MD](COFFEE.GUIDE.MD)   
 
-> This is the **javascript-users** documentation file.  
-> **If you want to read the doc for coffeescript users** get here : [(COFFEE) README.MD](README.MD)   
-
-!INCLUDE "common/intro.mdpp"
+!INCLUDE "common/summary.mdpp"
 
 !INCLUDE "common/basic_usage.mdpp"
 !INCLUDE "js/basic_usage.mdpp"
