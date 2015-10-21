@@ -1,0 +1,28 @@
+## Hack da class : incorporate as public class fields
+Yeah, that's the funny thing with prototype inheritance : your javascript class can inherit this Enumeration instance.
+
+> ⚠ Be carefull, `MyClass.__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements
+
+```javascript
+var MyClass = (function() {
+  function MyClass() {
+    this.someProperty = "someValue";
+  }
+
+  MyClass.prototype.someFunction = function() {
+    return 'doing stuff';
+  };
+
+  MyClass.__proto__ = new Enumeration('MyClass', {
+    PUBLIC_STATIC_ENUM1: "VAL1",
+    PUBLIC_STATIC_ENUM2: "VAL2"
+  });
+
+  return MyClass;
+
+})();
+
+```
+Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
+
+> ✓ If you don't like this hack, you can either define a class' static field holding the enum by replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inheritance instead](#extend-your-enumeration-with-prototype-inheritance).

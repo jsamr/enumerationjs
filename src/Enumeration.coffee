@@ -4,7 +4,7 @@ extend = (object, properties) ->
   object
 
 enumTypes=[]
-
+_=require("underscore")
 #Java like enum
 class Enumeration
   ###*
@@ -26,7 +26,7 @@ class Enumeration
       id:    -> identifier
       key:   -> enumName
       type:  -> enumType
-      describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of extend(descriptor,valueProto) when !(prop instanceof Function)}}" else ""}"
+      describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of extend(descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
     testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in Object.keys(methods)
     testReserved valueProto
     prototype=extend methods, valueProto
@@ -35,10 +35,10 @@ class Enumeration
       properties[key0]=
         value:value0
         enumerable:true
-    if descriptor instanceof Object
+    if _.isObject(descriptor)
       testReserved descriptor
       if not descriptor._id? then throw "field '_id' must be defined when passing object as enum value"
-      if descriptor._id instanceof Object then throw "_id descriptor field must be of type string or number"
+      if _.isObject(descriptor._id) then throw "_id descriptor field must be of type string or number"
       defineReadOnlyProperty key1,val1 for key1,val1 of descriptor when key1 isnt '_id'
     Object.create prototype, properties
 
@@ -54,6 +54,8 @@ class Enumeration
     ids=[]
     #Ensure context to allow inheritance
     instance=@
+    if not _.isString(enumType) then throw "missing or bad enumType value : must be a string"
+    if not _.isObject(enumValues) then throw "missing or bad enumValues : must be an object"
     if enumType in enumTypes then throw "#{enumType} already exists!"
     else
       if (key for key in Object.keys(enumValues) when key in ["pretty","from"]).length>0
@@ -68,6 +70,8 @@ class Enumeration
     Object.defineProperty @, 'pretty', value:-> "#{enumType}:#{"\n\t"+enume.describe() for key,enume of instance}"
     #Define non-enumerable method that returns the enum instance which matches identifier (descriptor if string, descriptor._id if object)
     Object.defineProperty @, 'from', value: (identifier) -> (instance[key] for key,enume of instance when enume.id() is identifier)[0] or throw "identifier #{identifier} does not match any"
+    #inherit function prototype so that a class or constructor can inherit from the Enumeration instance
+    this.__proto__=Function.prototype
     #Guaranties properties to be 'final', non writable
     Object.freeze(this)
 

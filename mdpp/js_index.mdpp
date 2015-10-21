@@ -1,0 +1,20 @@
+#enumeration : Java-like enum for javascript/coffeescript
+
+!INCLUDE "common/intro.mdpp"
+
+!INCLUDE "common/basic_usage.mdpp"
+!INCLUDE "js/basic_usage.mdpp"
+
+!INCLUDE "commmon/proto_for_enum_val.mdpp"
+!INCLUDE "js/proto_for_enum_val.mdpp"
+
+!INCLUDE "common/more_complicated_descriptors.mdpp"
+!INCLUDE "js/more_complicated_descriptors.mdpp"
+
+!INCLUDE "common/extend_with_proto_inheritance.mdpp"
+!INCLUDE "js/extend_with_proto_inheritance.mdpp"
+
+!INCLUDE "js/hack_da_class.mdpp"
+
+!INCLUDE "common/constructor_signature.mdpp"
+!INCLUDE "js/constructor_signature.mdpp"

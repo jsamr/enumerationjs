@@ -1,0 +1,20 @@
+
+```javascript
+var closeEventCodes = new Enumeration("closeEventCodes", {
+  CLOSE_NORMAL: 1000,
+  CLOSE_GOING_AWAY: 1001,
+  CLOSE_PROTOCOL_ERROR: 1002,
+  CLOSE_UNSUPPORTED: 1003,
+  CLOSE_NO_STATUS: 1005,
+  CLOSE_ABNORMAL: 1006,
+  CLOSE_TOO_LARGE: 1009
+});
+```
+```javascript
+closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                   # evaluates to 'CLOSE_PROTOCOL_ERROR'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                    # evaluates to 1002
+closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'closeEventCodes'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              # evaluates to 'CLOSE_PROTOCOL_ERROR:1002'
+closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
+1006 === closeEventCodes.CLOSE_ABNORMAL                      # evaluates to false
+```

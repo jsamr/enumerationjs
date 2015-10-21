@@ -1,0 +1,24 @@
+#enumeration : Java-like enum for javascript/coffeescript
+
+> This package and documentation are written in coffeescript, but you *can* use it in javascript.
+> *If you want to read the doc in javascript* get here : [README.JS.MD](README.JS.MD)
+
+!INCLUDE "common/intro.mdpp"
+
+!INCLUDE "common/basic_usage.mdpp"
+!INCLUDE "coffee/basic_usage.mdpp"
+
+!INCLUDE "common/proto_for_enum_val.mdpp"
+!INCLUDE "coffee/proto_for_enum_val.mdpp"
+
+!INCLUDE "common/more_complicated_descriptors.mdpp"
+!INCLUDE "coffee/more_complicated_descriptors.mdpp"
+
+!INCLUDE "common/extend_with_proto_inheritance.mdpp"
+!INCLUDE "coffee/extend_with_proto_inheritance.mdpp"
+
+!INCLUDE "coffee/hack_da_class.mdpp"
+
+!INCLUDE "common/constructor_signature.mdpp"
+!INCLUDE "coffee/constructor_signature.mdpp"
+

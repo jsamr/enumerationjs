@@ -1,0 +1,6 @@
+## Use more complex enum descriptors
+
+> ⚠ Each descriptor **must** contain an `_id` field of type `string` or `number`, an exception will be thrown otherwise.
+> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up
+> ✓ If a duplicate _id is given, an error will show up
+> ✓ If you mistakenly use a reserved property in the given descriptor (id,key,describe or type), an error will show up

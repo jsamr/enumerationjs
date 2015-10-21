@@ -1,0 +1,42 @@
+```javascript
+#the descriptor MUST contain an _id field as it is an object
+var = closeEventCodes = new Enumeration("closeEventCodes", {
+  CLOSE_NORMAL: {
+    _id: 1000,
+    info: "Connection closed normally"
+  },
+  CLOSE_GOING_AWAY: {
+    _id: 1001,
+    info: "Connection closed going away"
+  },
+  CLOSE_PROTOCOL_ERROR: {
+    _id: 1002,
+    info: "Connection closed due to protocol error"
+  },
+  CLOSE_UNSUPPORTED: {
+    _id: 1003,
+    info: "Connection closed due to unsupported operation"
+  },
+  CLOSE_NO_STATUS: {
+    _id: 1005,
+    info: "Connection closed with no status"
+  },
+  CLOSE_ABNORMAL: {
+    _id: 1006,
+    info: "Connection closed abnormally"
+  },
+  CLOSE_TOO_LARGE: {
+    _id: 1009,
+    info: "Connection closed due to too large packet"
+  }
+});
+```
+```javascript
+closeEventCodes.CLOSE_PROTOCOL_ERROR.info                     #evaluates to 'Connection closed due to protocol error'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                    # evaluates to 'CLOSE_PROTOCOL_ERROR'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                     # evaluates to 1002  
+closeEventCodes.CLOSE_PROTOCOL_ERROR._id                      # evaluates to undefined 
+closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                   # evaluates to 'closeEventCodes'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()               # evaluates to 'CLOSE_PROTOCOL_ERROR:1002 {info:Connection closed due to protocol error}' 
+closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL # evaluates to true
+```

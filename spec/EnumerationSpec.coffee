@@ -116,3 +116,5 @@ describe 'Enumeration instance', ->
   it 'from(id) method shall return the matching enum value instance which id is equal ', ->
     expect(enumeration2.from(2)).toBe(enumeration2.KEY2)
     expect(enumeration2.from(1)).toBe(enumeration2.KEY1)
+#  it '\'s prototype should be Function.prototype ', ->
+#    expect(new Enumeration("EnumerationInstance3",{}).__proto__).toBe(Function.prototype)
