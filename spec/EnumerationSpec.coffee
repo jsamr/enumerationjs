@@ -96,7 +96,19 @@ describe 'Enumeration instantiation with structured descriptor', () ->
     expect(-> new Enumeration("SomeStructuredDescribedEnumeration9",{FIELD_ONE:{},FIELD_TWO:{}})).toThrow()
   it 'should throw an error when two descriptor share the same "_id" property', ->
     expect(-> new Enumeration("SomeStructuredDescribedEnumeration10",{FIELD_ONE:{_id:1},FIELD_TWO:{_id:1}})).toThrow()
-  it 'should throw an error when a descriptor "_id" property is a plain object', ->
+  it 'should throw an error when a descriptor "_id" property is a plain old js object', ->
     expect(-> new Enumeration("SomeStructuredDescribedEnumeration11",{FIELD_ONE:{_id:{}}})).toThrow()
   it 'should throw an error when a descriptor "_id" property is an array', ->
     expect(-> new Enumeration("SomeStructuredDescribedEnumeration12",{FIELD_ONE:{_id:[]}})).toThrow()
+  it 'should throw an error when a descriptor "_id" property is a function', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration13",{FIELD_ONE:{_id:->}})).toThrow()
+
+  it 'shall throw an error when a reserved property conflicts with an enum value key', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration14",{from:1})).toThrow()
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration14",{pretty:1})).toThrow()
+
+
+describe 'Enumeration instance', ->
+  it 'shall throw an error when an other Enumeration instance exists with a given name', ->
+    expect(-> new Enumeration("EnumerationInstance1",{})).not.toThrow()
+    expect(-> new Enumeration("EnumerationInstance1",{})).toThrow()
