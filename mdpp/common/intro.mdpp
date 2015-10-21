@@ -1,5 +1,6 @@
 <br/>
->
+**Pros & Cons**
+
 ✓ flexible solution to the missing `enum` keyword implementation  
 ✓ enum values are unique  
 ✓ enum values are read only  
