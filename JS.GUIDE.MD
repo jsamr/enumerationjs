@@ -46,6 +46,8 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ## A prototype for enum values
 > ✓ If you mistakenly use a reserved property in the given prototype (id,key,describe or type), an error will show up  
 <br/>
+
+
 ```javascript
 var closeEventCodes = new Enumeration("closeEventCodes", {
   CLOSE_NORMAL: 1000,
@@ -71,6 +73,7 @@ closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate _id is given, an error will show up   
 > ✓ If you mistakenly use a reserved property in the given descriptor (id,key,describe or type), an error will show up  
+
 
 ```javascript
 #the descriptor MUST contain an _id field as it is an object
@@ -117,6 +120,7 @@ closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL # evaluates to tru
 ## Extend your Enumeration with prototype inheritance
 
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).  
+
 
 ```javascript
 #Inherit all Enumeration instance fields by moving it to myEnum's prototype

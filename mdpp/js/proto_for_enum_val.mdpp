@@ -1,3 +1,4 @@
+
 ```javascript
 var closeEventCodes = new Enumeration("closeEventCodes", {
   CLOSE_NORMAL: 1000,

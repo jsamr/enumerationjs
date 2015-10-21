@@ -1,3 +1,4 @@
+
 ```coffeescript
 #the descriptor MUST contain an _id field as it is an object
 closeEventCodes = new Enumeration("closeEventCodes", {

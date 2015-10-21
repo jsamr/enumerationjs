@@ -1,3 +1,4 @@
+
 ```javascript
 #Inherit all Enumeration instance fields by moving it to myEnum's prototype
 #The prototype will still be frozen, but myEnum instance won't.

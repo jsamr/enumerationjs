@@ -22,6 +22,7 @@
 
 
 
+
 ```coffeescript
 closeEventCodes = new Enumeration("closeEventCodes", {
     CLOSE_NORMAL:1000
@@ -45,6 +46,8 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ## A prototype for enum values
 > ✓ If you mistakenly use a reserved property in the given prototype (id,key,describe or type), an error will show up  
 <br/>
+
+
 ```coffeescript
 closeEventCodes = new Enumeration("closeEventCodes", {
       CLOSE_NORMAL:1000
@@ -66,6 +69,7 @@ closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate _id is given, an error will show up   
 > ✓ If you mistakenly use a reserved property in the given descriptor (id,key,describe or type), an error will show up  
+
 
 ```coffeescript
 #the descriptor MUST contain an _id field as it is an object
