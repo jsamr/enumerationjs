@@ -1,6 +1,6 @@
 #enumeration : Java-like enum for javascript/coffeescript  
 
-> ✓ Last Jasmine test run was the 10/21/15 at 19:15 UTC  with 
+> ✓ Last Jasmine test run was the 10/21/15 at 19:24 UTC  with 
 **41 specs, 0 failures**
 
 **Since java 5, you can define enum static fields and enum value fields and methods. 
@@ -16,7 +16,7 @@ How about doing the same in javascript/coffeescript?**
 - ✓ The enumerations are guarantied uniques : you cannot instanciate two enumerations with a same name    
 - ✓ The enumerations are frozen (read-only)  
 - ✓ Each enum value has a unique identifier that you provide at instanciation time, recovorable with `id()` method. You can easely match the instance associated to an identifier with `enumInstance.from(identifier)` which allows easy lightweight serialization.  
-- ✓ You can hack a class ([JS](JS.GUIDE.MD#hack-da-class--incorporate-as-public-class-fields)|[COFFEE](COFFEE.GUIDE.MD#hack-da-class--incorporate-as-public-class-fields)) to have all the defined values of your Enumeration instance as static fields of this `class`.  
+- ✓ You can hack a class ([JS](JS.GUIDE.MD#hackdaclass:incorporateaspublicclassfields)|[COFFEE](COFFEE.GUIDE.MD#hackdaclass:incorporateaspublicclassfields)) to have all the defined values of your Enumeration instance as static fields of this `class`.  
 - ✓ You can move all the logic inside those enum values ([JS](JS.GUIDE.MD##refactoring)|[COFFEE](COFFEE.GUIDE.MD##refactoring)) and refactor, avoiding the `if else` mess.  
 - ✗ relies on **ECMAScript 5**  
 - ✗ adds a dependency to **underscore.js**  

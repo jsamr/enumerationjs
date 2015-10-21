@@ -3,7 +3,7 @@
 > This is the **coffeescript-users** guide file.  
 > **If you want to read the javascript-users guide** then go here : [JS.GUIDE.MD](JS.GUIDE.MD)  
 
-!INCLUDE "common/summary.mdpp"
+!TOC
 
 !INCLUDE "common/basic_usage.mdpp"
 !INCLUDE "coffee/basic_usage.mdpp"

@@ -1,4 +1,4 @@
 ## Extend your Enumeration with prototype inheritance
 
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, 
-you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporate-as-public-class-fields).  
+you *must* inherit through the prototype chain or [hack da class](#hackdaclass:incorporateaspublicclassfields).  

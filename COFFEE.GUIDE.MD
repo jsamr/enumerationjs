@@ -3,20 +3,16 @@
 > This is the **coffeescript-users** guide file.  
 > **If you want to read the javascript-users guide** then go here : [JS.GUIDE.MD](JS.GUIDE.MD)  
 
+1\.  [Basic usage](#basicusage)  
+2\.  [A prototype for enum values](#aprototypeforenumvalues)  
+3\.  [Use more complex enum descriptors](#usemorecomplexenumdescriptors)  
+4\.  [Extend your Enumeration with prototype inheritance](#extendyourenumerationwithprototypeinheritance)  
+5\.  [Hack da class : incorporate as public class fields](#hackdaclass:incorporateaspublicclassfields)  
+6\.  [The constructor signature](#theconstructorsignature)  
 
-**Summary**
->
-[1. Basic usage](#basic-usage)  
-[2. A prototype for enum values](#a-prototype-for-enum-values)  
-[3. Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
-[4. Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
-[5. Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)  
-[6. The constructor signature](#the-constructor-signature)  
-[7. Refactoring](#refactoring)  
+<a name="basicusage"></a>
 
-
-
-## Basic usage
+## 1\. Basic usage
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate id (value associated to key) is given, an error will show up  
 > ✓ If a key conflicts with one amongst Enumeration instance reserved methods, an error will show up : you should always use uppercase strings as keys to avoid any conflict - plus it's a standard for enums.  
@@ -44,7 +40,9 @@ closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              # evaluates to 'CLO
 closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 1006 is closeEventCodes.CLOSE_ABNORMAL                       # evaluates to false
 ```
-## A prototype for enum values
+<a name="aprototypeforenumvalues"></a>
+
+## 2\. A prototype for enum values
 > ✓ If you mistakenly use a reserved property in the given prototype (id,key,describe or type), an error will show up  
 <br/>
 
@@ -64,7 +62,9 @@ closeEventCodes = new Enumeration("closeEventCodes", {
 ```coffeescript
 closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 ```
-## Use more complex enum descriptors
+<a name="usemorecomplexenumdescriptors"></a>
+
+## 3\. Use more complex enum descriptors
 
 > ⚠ Each descriptor **must** contain an `_id` field of type `string` or `number`, an exception will be thrown otherwise.  
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
@@ -94,10 +94,12 @@ closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'clo
 closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              # evaluates to 'CLOSE_PROTOCOL_ERROR:1002 {info:Connection closed due to protocol error}' 
 closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ```
-## Extend your Enumeration with prototype inheritance
+<a name="extendyourenumerationwithprototypeinheritance"></a>
+
+## 4\. Extend your Enumeration with prototype inheritance
 
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, 
-you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporate-as-public-class-fields).  
+you *must* inherit through the prototype chain or [hack da class](#hackdaclass:incorporateaspublicclassfields).  
 
 ```coffeescript
 #Inherit all Enumeration instance fields by moving it to myEnum prototype
@@ -106,7 +108,9 @@ myEnum=Object.create new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3})
 myEnum.newFunction = -> @STATE1.describe()
 ```
 
-## Hack da class : incorporate as public class fields
+<a name="hackdaclass:incorporateaspublicclassfields"></a>
+
+## 5\. Hack da class : incorporate as public class fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance.
 
 > ⚠ Be carefull, `@__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements
@@ -123,9 +127,12 @@ class MyClass
 ```
 Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
 
-> ✓ If you don't like this hack, you can either define a class' static field holding the enum by replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inheritance instead](#extend-your-enumeration-with-prototype-inheritance).
+> ✓ If you don't like this hack, you can either define a class' static field holding the enum by
+replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inheritance instead](#extendyourenumerationwithprototypeinheritance).
 
-## The constructor signature
+<a name="theconstructorsignature"></a>
+
+## 6\. The constructor signature
 
 
 ```coffeescript
