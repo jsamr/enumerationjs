@@ -1,8 +1,10 @@
-##### → Back to [README.MD](README.MD)  
+##### ← Back to [README.MD](README.MD)  
+<br><br>
 
 > This is the **javascript-users** guide.  
 > **If you want to read the coffeescript-users guide** then go here : [COFFEE.GUIDE.MD](COFFEE.GUIDE.MD)   
 
+<a name="toc"></a>
 1\.  [Basic usage](#basicusage)  
 2\.  [A prototype for enum values](#aprototypeforenumvalues)  
 3\.  [Use more complex enum descriptors](#usemorecomplexenumdescriptors)  
@@ -178,3 +180,4 @@ or use [prototype inheritance instead](#extendyourenumerationwithprototypeinheri
   */
   function Enumeration(enumType, enumValues, proto) { ...
 ```
+> **↑ Back to [TABLE OF CONTENTS](#tocy)**  

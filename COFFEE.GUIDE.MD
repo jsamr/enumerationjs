@@ -1,8 +1,9 @@
-##### → Back to [README.MD](README.MD)  
-
+##### ← Back to [README.MD](README.MD)  
+<br/><br/>
 > This is the **coffeescript-users** guide file.  
 > **If you want to read the javascript-users guide** then go here : [JS.GUIDE.MD](JS.GUIDE.MD)  
 
+<a name="toc"></a>
 1\.  [Basic usage](#basicusage)  
 2\.  [A prototype for enum values](#aprototypeforenumvalues)  
 3\.  [Use more complex enum descriptors](#usemorecomplexenumdescriptors)  
@@ -147,4 +148,8 @@ replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inherit
   ###
   constructor:(enumType,enumValues,proto={}) -> ...
 ```
+
+> **↑ Back to [TABLE OF CONTENTS](#tocy)**  
+
+
 
