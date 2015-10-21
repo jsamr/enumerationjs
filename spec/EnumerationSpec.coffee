@@ -108,6 +108,21 @@ describe 'Enumeration instantiation with structured descriptor', () ->
     expect(-> new Enumeration("SomeStructuredDescribedEnumeration14",{pretty:1})).toThrow()
 
 
+describe 'Enumeration instanciation', ->
+  it 'shall throw an error if no enumValues are provided', ->
+  expect(-> new Enumeration("EnumerationInstantiation1")).toThrow()
+  it 'shall throw an error if no arguments are provided', ->
+    expect(-> new Enumeration()).toThrow()
+  it 'shall throw an error if first argument is not a string', ->
+    expect(-> new Enumeration({})).toThrow()
+  it 'shall throw an error if first argument is not a string', ->
+    expect(-> new Enumeration({})).toThrow()
+  it 'shall throw an error if enumValues is not an object', ->
+    expect(-> new Enumeration("EnumerationInstantiation1","")).toThrow()
+    expect(-> new Enumeration("EnumerationInstantiation1",1)).toThrow()
+    expect(-> new Enumeration("EnumerationInstantiation1",[])).toThrow()
+
+
 describe 'Enumeration instance', ->
   enumeration2=new Enumeration("EnumerationInstance2",{KEY1:1,KEY2:2})
   it 'shall throw an error when an other Enumeration instance exists with a given name', ->
@@ -116,5 +131,13 @@ describe 'Enumeration instance', ->
   it 'from(id) method shall return the matching enum value instance which id is equal ', ->
     expect(enumeration2.from(2)).toBe(enumeration2.KEY2)
     expect(enumeration2.from(1)).toBe(enumeration2.KEY1)
-#  it '\'s prototype should be Function.prototype ', ->
-#    expect(new Enumeration("EnumerationInstance3",{}).__proto__).toBe(Function.prototype)
+  it 'from(id,throwOnFailure=true) shall throw an error when no matching id are found', ->
+    expect(-> new Enumeration("EnumerationInstance3",{KEY1:1,KEY2:2}).from(3,throwOnFailure=true)).toThrow()
+  it 'from(id,throwOnFailure=true) shall not throw an error when a matching id is found', ->
+    expect(-> new Enumeration("EnumerationInstance3_1",{KEY1:1,KEY2:2}).from(2,throwOnFailure=true)).not.toThrow()
+  it 'from(id,throwOnFailure=false) shall not throw an error when no matching id are found', ->
+    expect(-> new Enumeration("EnumerationInstance4",{KEY1:1,KEY2:2}).from(3,throwOnFailure=false)).not.toThrow()
+  it 'from(id) shall not throw an error when no matching id are found', ->
+    expect(-> new Enumeration("EnumerationInstance5",{KEY1:1,KEY2:2}).from(3)).not.toThrow()
+  it '\'s prototype should be Function.prototype ', ->
+    expect(new Enumeration("EnumerationInstance6",{}).__proto__).toBe(Function.prototype)

@@ -53,10 +53,8 @@ class Enumeration
     if not _.isObject(enumValues) then throw "missing or bad enumValues : must be an object"
     if enumType in enumTypes then throw "#{enumType} already exists!"
     else
-      if (key for key in Object.keys(enumValues) when key in ["pretty","from"]).length>0
+      if (key for key in Object.keys(enumValues) when key in ["pretty","from","value"]).length>0
         throw "Cannot have enum value as one amongst reserved enumeration property [pretty,from]"
-      else
-        enumTypes.push enumType
 
     #Lambda to write enum values
     writeProperty = (descriptor,key) => @[key]=Enumeration.value(key,descriptor,enumType,proto,ids)
@@ -71,6 +69,7 @@ class Enumeration
     this.__proto__=Function.prototype
     #Guaranties properties to be 'final', non writable
     Object.freeze(this)
-
+    #Push the enum type upon success
+    enumTypes.push enumType
 #Export to npm
 if module? then module.exports=Enumeration
