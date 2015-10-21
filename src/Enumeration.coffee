@@ -1,8 +1,3 @@
-extend = (object, properties) ->
-  for key, val of properties
-    object[key] = val
-  object
-
 enumTypes=[]
 _=require("underscore")
 #Java like enum
@@ -29,7 +24,7 @@ class Enumeration
       describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of extend(descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
     testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in Object.keys(methods)
     testReserved valueProto
-    prototype=extend methods, valueProto
+    prototype=_.extend methods, valueProto
     properties={}
     defineReadOnlyProperty= (key0,value0)->
       properties[key0]=
@@ -69,7 +64,9 @@ class Enumeration
     #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
     Object.defineProperty @, 'pretty', value:-> "#{enumType}:#{"\n\t"+enume.describe() for key,enume of instance}"
     #Define non-enumerable method that returns the enum instance which matches identifier (descriptor if string, descriptor._id if object)
-    Object.defineProperty @, 'from', value: (identifier) -> (instance[key] for key,enume of instance when enume.id() is identifier)[0] or throw "identifier #{identifier} does not match any"
+    Object.defineProperty @, 'from', value:
+      (identifier,throwOnFailure=false) ->
+        (instance[key] for key,enumVal of instance when enumVal.id() is identifier)[0] or (throw "identifier #{identifier} does not match any" if throwOnFailure )
     #inherit function prototype so that a class or constructor can inherit from the Enumeration instance
     this.__proto__=Function.prototype
     #Guaranties properties to be 'final', non writable
