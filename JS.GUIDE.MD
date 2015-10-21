@@ -19,6 +19,7 @@
 ## Basic usage
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate id (value associated to key) is given, an error will show up  
+> ✓ If a key conflicts with one amongst Enumeration instance reserved methods, an error will show up : you should always use uppercase strings as keys to avoid any conflict - plus it's a standard for enums.  
 
 
 
@@ -119,12 +120,12 @@ closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL # evaluates to tru
 ```
 ## Extend your Enumeration with prototype inheritance
 
-> ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).  
-
+> ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, 
+you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporate-as-public-class-fields).  
 
 ```javascript
 #Inherit all Enumeration instance fields by moving it to myEnum prototype
-#The prototype will still be frozen, but myEnum instance won't.
+#The prototype will still be frozen, but myEnum instance will not.
 var myEnum=Object.create(new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3}))
 myEnum.newFunction = function() { return this.STATE1.describe() }
 ```
