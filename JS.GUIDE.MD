@@ -123,7 +123,7 @@ closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL # evaluates to tru
 
 
 ```javascript
-#Inherit all Enumeration instance fields by moving it to myEnum's prototype
+#Inherit all Enumeration instance fields by moving it to myEnum prototype
 #The prototype will still be frozen, but myEnum instance won't.
 var myEnum=Object.create(new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3}))
 myEnum.newFunction = function() { return this.STATE1.describe() }
