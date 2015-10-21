@@ -1,6 +1,6 @@
 #enumeration : Java-like enum for javascript/coffeescript  
 
-!INCLUDE "../lastbuild.mdpp"
+!INCLUDE "lastbuild.mdpp"
 
 **Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript?**  

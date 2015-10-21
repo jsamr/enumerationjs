@@ -1,5 +1,7 @@
 #enumeration : Java-like enum for javascript/coffeescript  
 
+> ✓ Last Jasmine test run was the 10/21/15 at 17:26 UTC  with 
+**31 specs, 0 failures**
 
 **Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript?**  
