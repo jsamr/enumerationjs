@@ -5,7 +5,6 @@
 **Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript?**  
 
-<br/>
 ####Pros & Cons
 
 - ✓ flexible solution to the missing `enum` keyword implementation  
