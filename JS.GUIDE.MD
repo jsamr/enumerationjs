@@ -5,6 +5,8 @@
 > **If you want to read the coffeescript-users guide** then go here : [COFFEE.GUIDE.MD](COFFEE.GUIDE.MD)   
 
 <a name="toc"></a>
+**TABLE OF CONTENTS**
+<br/>
 1\.  [Basic usage](#basicusage)  
 2\.  [A prototype for enum values](#aprototypeforenumvalues)  
 3\.  [Use more complex enum descriptors](#usemorecomplexenumdescriptors)  
