@@ -110,7 +110,7 @@ describe 'Enumeration instantiation with structured descriptor', () ->
 
 describe 'Enumeration instanciation', ->
   it 'shall throw an error if no enumValues are provided', ->
-  expect(-> new Enumeration("EnumerationInstantiation1")).toThrow()
+    expect(-> new Enumeration("EnumerationInstantiation1")).toThrow()
   it 'shall throw an error if no arguments are provided', ->
     expect(-> new Enumeration()).toThrow()
   it 'shall throw an error if first argument is not a string', ->

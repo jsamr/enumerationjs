@@ -50,7 +50,7 @@ class Enumeration
     #Ensure context to allow inheritance
     instance=@
     if not _.isString(enumType) then throw "missing or bad enumType value : must be a string"
-    if not _.isObject(enumValues) then throw "missing or bad enumValues : must be an object"
+    if not _.isObject(enumValues) or _.isArray(enumValues) then throw "missing or bad enumValues : must be an object"
     if enumType in enumTypes then throw "#{enumType} already exists!"
     else
       if (key for key in Object.keys(enumValues) when key in ["pretty","from","value"]).length>0
