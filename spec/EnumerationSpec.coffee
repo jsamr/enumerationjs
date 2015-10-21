@@ -1,5 +1,3 @@
-console.log "loading spec"
-
 Enumeration=require('../src/Enumeration.coffee')
 describe 'Enumeration values when descriptors are raw types :',  ->
   closeEventCodes=null
@@ -60,12 +58,45 @@ describe 'Enumeration values when descriptors are structured objects :',  ->
     expect(enumType).toEqual(closeEventCodes[key].type()) for key of descriptors
   it 'should share prototype\'s properties', ->
     expect(prototype.someStupidFun).toEqual(closeEventCodes[key].someStupidFun) for key of descriptors
+  it 'should not have an _id property', ->
+    expect(closeEventCodes[key]._id).not.toBeDefined() for key of descriptors
 
-describe 'Enumeration instanciation with raw descriptor', () ->
-  
-  it 'should throw an error when id method is used as prototype\'s field', ->
-    expect(new Enumeration("SomeRawDescribedEnumeration",{FIELD_ONE:1,FIELD_TWO:2},{id:->"Hi!"})).toThrow()
-  
-describe 'Enumeration instanciation with structured descriptor', () ->
+describe 'Enumeration instantiation with raw descriptor', () ->
+  it 'should throw an error when reserved property "id" is a prototype property', ->
+    expect(-> new Enumeration("SomeRawDescribedEnumeration1",{FIELD_ONE:1,FIELD_TWO:2},{id:->"Hi!"})).toThrow()
+  it 'should throw an error when reserved property "key" is a prototype property', ->
+    expect(-> new Enumeration("SomeRawDescribedEnumeration2",{FIELD_ONE:1,FIELD_TWO:2},{key:->"Hi!"})).toThrow()
+  it 'should throw an error when reserved property "describe" is a prototype property', ->
+    expect(-> new Enumeration("SomeRawDescribedEnumeration3",{FIELD_ONE:1,FIELD_TWO:2},{describe:->"Hi!"})).toThrow()
+  it 'should throw an error when reserved property "type" is a prototype property', ->
+    expect(-> new Enumeration("SomeRawDescribedEnumeration4",{FIELD_ONE:1,FIELD_TWO:2},{type:->"Hi!"})).toThrow()
+  it 'should throw an error when two descriptors are equal (duplicate id)', ->
+    expect(-> new Enumeration("SomeRawDescribedEnumeration5",{FIELD_ONE:1,FIELD_TWO:1})).toThrow()
 
-  it 'should throw an error when reserved method are used as prototype\'s field'
+describe 'Enumeration instantiation with structured descriptor', () ->
+  it 'should throw an error when reserved property "id" is a prototype property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration1",{FIELD_ONE:{_id:1},FIELD_TWO:{_id:2}},{id:->"Hi!"})).toThrow()
+  it 'should throw an error when reserved property "key" is a prototype property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration2",{FIELD_ONE:{_id:1},FIELD_TWO:{_id:2}},{key:->"Hi!"})).toThrow()
+  it 'should throw an error when reserved property "describe" is a prototype property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration3",{FIELD_ONE:{_id:1},FIELD_TWO:{_id:2}},{describe:->"Hi!"})).toThrow()
+  it 'should throw an error when reserved property "type" is a prototype property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration4",{FIELD_ONE:{_id:1},FIELD_TWO:{_id:2}},{type:->"Hi!"})).toThrow()
+
+  it 'should throw an error when reserved property "id" is a descriptor property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration5",{FIELD_ONE:{_id:1,id:1},FIELD_TWO:{_id:2,id:2}})).toThrow()
+  it 'should throw an error when reserved property "key" is a descriptor property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration6",{FIELD_ONE:{_id:1,key:""},FIELD_TWO:{_id:2,key:""}})).toThrow()
+  it 'should throw an error when reserved property "describe" is a descriptor property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration7",{FIELD_ONE:{_id:1,describe:->},FIELD_TWO:{_id:2,describe:->}})).toThrow()
+  it 'should throw an error when reserved property "type" is a descriptor property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration8",{FIELD_ONE:{_id:1,type:""},FIELD_TWO:{_id:2,type:""}})).toThrow()
+
+  it 'should throw an error when descriptor is missing "_id" property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration9",{FIELD_ONE:{},FIELD_TWO:{}})).toThrow()
+  it 'should throw an error when two descriptor share the same "_id" property', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration10",{FIELD_ONE:{_id:1},FIELD_TWO:{_id:1}})).toThrow()
+  it 'should throw an error when a descriptor "_id" property is a plain object', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration11",{FIELD_ONE:{_id:{}}})).toThrow()
+  it 'should throw an error when a descriptor "_id" property is an array', ->
+    expect(-> new Enumeration("SomeStructuredDescribedEnumeration12",{FIELD_ONE:{_id:[]}})).toThrow()

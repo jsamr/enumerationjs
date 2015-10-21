@@ -38,6 +38,7 @@ class Enumeration
     if descriptor instanceof Object
       testReserved descriptor
       if not descriptor._id? then throw "field '_id' must be defined when passing object as enum value"
+      if descriptor._id instanceof Object then throw "_id descriptor field must be of type string or number"
       defineReadOnlyProperty key1,val1 for key1,val1 of descriptor when key1 isnt '_id'
     Object.create prototype, properties
 
