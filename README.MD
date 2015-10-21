@@ -1,6 +1,6 @@
 <a name="top"></a>
 #enumeration : Java-like enum for javascript/coffeescript  
- > ![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)  Last Jasmine test run was the 10/21/15 at 23:11 UTC  with 
+ ![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)  *last Jasmine test run was the 10/21/15 at 23:42 UTC  with 
 **41 specs, 0 failures**
 
 **Since java 5, you can define enum static fields and enum value fields and methods. 
@@ -46,4 +46,4 @@ Those can all be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim
 **Any attempt to write a read-only property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**  
 The only issue might be with `Object.defineProperty`[on IE8](https://github.com/es-shims/es5-shim/issues/5) with a es5-shim < v2.0.10  
 
-Node version 0.5.1 and upper, published on July 14,  2011 support ECMAScript 5th edition.
+Node version 0.5.1 and upper, published on July 14,  2011 support ECMAScript 5th edition.  
