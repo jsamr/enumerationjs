@@ -1,7 +1,8 @@
+<a name="top">
 **← Back to [README.MD](README.MD)**  
 <br/>
 > This is the **coffeescript-users** guide file.  
-> **If you want to read the javascript-users guide** then go here : [JS.GUIDE.MD](JS.GUIDE.MD)  
+> **If you want to read the javascript-users guide** then go here : [JS.GUIDE.MD](JS.GUIDE.MD#top)  
 
 <a name="toc"></a>
 **TABLE OF CONTENTS**
