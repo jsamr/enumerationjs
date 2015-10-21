@@ -1,5 +1,7 @@
+##### → Back to [README.MD](README.MD)  
+
 > This is the **coffeescript-users** guide file.  
-> **If you want to read the javascript-users guide** [get here : JS.GUIDE.MD](JS.GUIDE.MD)  
+> **If you want to read the javascript-users guide** then go here : [JS.GUIDE.MD](JS.GUIDE.MD)  
 
 
 **Summary**

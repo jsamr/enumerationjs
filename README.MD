@@ -25,5 +25,5 @@ Critics and suggestions are welcome
 
 #### Guides
 
-##### Here is the [coffeescript-users guide](COFFEE.GUIDE.MD)  
-##### Here is the [javascript-users guide](JS.GUIDE.MD)  
+##### → Here is the [coffeescript-users guide](COFFEE.GUIDE.MD)  
+##### → Here is the [javascript-users guide](JS.GUIDE.MD)  
