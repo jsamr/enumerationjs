@@ -1,6 +1,6 @@
 #enumeration : Java-like enum for javascript/coffeescript  
 >
-✓ Last Jasmine test run was the 10/21/15 at 16:28 UTC  with 
+✓ Last Jasmine test run was the 10/21/15 at 16:33 UTC  with 
 **31 specs, 0 failures**
 
 **Since java 5, you can define enum static fields and enum value fields and methods. 
@@ -9,19 +9,6 @@ How about doing the same in javascript/coffeescript?**
 > **If you want to read the doc for coffeescript users** get here : [(COFFEE) README.MD](README.MD)   
 
 <br/>
->
-[intro](#intro)  
-[1. Basic usage](#basic-usage)  
-[2. A prototype for enum values](#a-prototype-for-enum-values)  
-[3. Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
-[4. Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
-[5. Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)  
-[6. The constructor signature](#the-constructor-signature)  
-[7. Refactoring](#refactoring)  
- 
-##Intro
-Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)
-
 **Pros :**
 * ✓ flexible solution to the missing `enum` keyword implementation
 * ✓ enum values are unique
@@ -40,6 +27,18 @@ Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeesc
 * ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. Those are recoverable via `key()` and `id()` methods. However the `describe()` method returns a string with all those informations. And the `enumInstance.pretty()` returns a string with all the enum values and their associated descriptions.
 
 Critics and suggestions are welcome
+**Summary
+>
+[1. Basic usage](#basic-usage)  
+[2. A prototype for enum values](#a-prototype-for-enum-values)  
+[3. Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
+[4. Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
+[5. Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)  
+[6. The constructor signature](#the-constructor-signature)  
+[7. Refactoring](#refactoring)  
+
+
+
 ## Basic usage
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate id (value associated to key) is given, an error will show up  
