@@ -1,4 +1,4 @@
-#enumeration : Java-like enum for javascript/coffeescript
+!INCLUDE "common/title.mdpp"
 
 > This is the **javascript-users** documentation file.  
 > **If you want to read the doc for coffeescript users** get here : [(COFFEE) README.MD](README.MD)   

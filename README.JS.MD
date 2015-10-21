@@ -66,7 +66,7 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 
 ## A prototype for enum values
 > ✓ If you mistakenly use a reserved property in the given prototype (id,key,describe or type), an error will show up  
-
+<br/>
 ```javascript
 var closeEventCodes = new Enumeration("closeEventCodes", {
   CLOSE_NORMAL: 1000,
