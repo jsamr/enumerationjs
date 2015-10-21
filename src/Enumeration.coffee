@@ -1,3 +1,4 @@
+'strict mode'
 enumTypes=[]
 _=require("underscore")
 #Java like enum
@@ -22,7 +23,7 @@ class Enumeration
       key:   -> enumName
       type:  -> enumType
       describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of extend(descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
-    testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in Object.keys(methods)
+    testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in _.keys(methods)
     testReserved valueProto
     prototype=_.extend methods, valueProto
     properties={}
@@ -53,7 +54,7 @@ class Enumeration
     if not _.isObject(enumValues) or _.isArray(enumValues) then throw "missing or bad enumValues : must be an object"
     if enumType in enumTypes then throw "#{enumType} already exists!"
     else
-      if (key for key in Object.keys(enumValues) when key in ["pretty","from","value"]).length>0
+      if (key for key in _.keys(enumValues) when key in ["pretty","from","value"]).length>0
         throw "Cannot have enum value as one amongst reserved enumeration property [pretty,from]"
 
     #Lambda to write enum values
