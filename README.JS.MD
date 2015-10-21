@@ -1,5 +1,8 @@
 #enumeration : Java-like enum for javascript/coffeescript
 
+> This is the **javascript-users** documentation file. 
+> **If you want to read the doc for coffeescript users** get here : [(coffee) README.MD](README.MD)  
+
 <br/>
 >
 [intro](#intro)  
@@ -33,8 +36,10 @@ Cons :
 
 Critics and suggestions are welcome
 ## Basic usage
-> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up
-> ✓ If a duplicate id (value associated to key) is given, an error will show up
+> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
+> ✓ If a duplicate id (value associated to key) is given, an error will show up  
+
+
 
 
 ```javascript

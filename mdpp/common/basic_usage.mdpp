@@ -1,4 +1,6 @@
 ## Basic usage
-> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up
-> ✓ If a duplicate id (value associated to key) is given, an error will show up
+> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
+> ✓ If a duplicate id (value associated to key) is given, an error will show up  
+
+
 

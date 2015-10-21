@@ -1,7 +1,7 @@
 #enumeration : Java-like enum for javascript/coffeescript
 
-> This package and documentation are written in coffeescript, but you *can* use it in javascript.
-> *If you want to read the doc in javascript* get here : [README.JS.MD](README.JS.MD)
+> This package and documentation are written in coffeescript, but you **can** use it in javascript.   
+> **If you want to read the doc for javascript users** get here : [(js) README.MD](README.JS.MD)  
 
 !INCLUDE "common/intro.mdpp"
 

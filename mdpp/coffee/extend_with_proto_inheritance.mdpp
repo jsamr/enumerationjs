@@ -1,4 +1,3 @@
-> ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).
 
 ```coffeescript
 #Inherit all Enumeration instance fields by moving it to myEnum's prototype

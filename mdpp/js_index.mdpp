@@ -1,5 +1,8 @@
 #enumeration : Java-like enum for javascript/coffeescript
 
+> This is the **javascript-users** documentation file. 
+> **If you want to read the doc for coffeescript users** get here : [(coffee) README.MD](README.MD)  
+
 !INCLUDE "common/intro.mdpp"
 
 !INCLUDE "common/basic_usage.mdpp"

@@ -1,7 +1,7 @@
 #enumeration : Java-like enum for javascript/coffeescript
 
-> This package and documentation are written in coffeescript, but you *can* use it in javascript.
-> *If you want to read the doc in javascript* get here : [README.JS.MD](README.JS.MD)
+> This package and documentation are written in coffeescript, but you **can** use it in javascript.   
+> **If you want to read the doc for javascript users** get here : [(js) README.MD](README.JS.MD)  
 
 <br/>
 >
@@ -36,8 +36,10 @@ Cons :
 
 Critics and suggestions are welcome
 ## Basic usage
-> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up
-> ✓ If a duplicate id (value associated to key) is given, an error will show up
+> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
+> ✓ If a duplicate id (value associated to key) is given, an error will show up  
+
+
 
 ```coffeescript
 closeEventCodes = new Enumeration("closeEventCodes", {
@@ -109,7 +111,6 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).  
 
-> ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).
 
 ```coffeescript
 #Inherit all Enumeration instance fields by moving it to myEnum's prototype
