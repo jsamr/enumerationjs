@@ -1,6 +1,6 @@
 <a name="top"></a>
 #enumeration : Java-like enum for javascript/coffeescript  
- ![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)  *last Jasmine test run was the 10/21/15 at 23:42 UTC  with 
+ ![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)  *last Jasmine test run was the 10/21/15 at 23:43 UTC  with
 **41 specs, 0 failures**
 
 **Since java 5, you can define enum static fields and enum value fields and methods. 
