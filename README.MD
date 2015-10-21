@@ -28,7 +28,6 @@ Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeesc
 * ✓ Each enum value has a unique identifier that you provide at instanciation time, recovorable with `id()` method. You can easely match the instance associated to an identifier with `enumInstance.from(identifier)` which allows easy lightweight serialization.
 * ✓ You can [hack a coffeescript class](#hack-da-class--incorporate-as-public-class-fields) to have all the defined values of your Enumeration as static fields of this `class`.
 * ✓ You can [move all the logic inside those enum values](#refactoring) and refactor, avoiding the `if else` mess.
-* ✓ Last Jasmine test run : 
 * ✓ Last Jasmine test run :
 31 specs, 0 failures
 
