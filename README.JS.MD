@@ -160,24 +160,19 @@ var MyClass = (function() {
 
 })();
 
-Run
-Link
-
 ```
 Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
 
 > ✓ If you don't like this hack, you can either define a class' static field holding the enum by replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inheritance instead](#extend-your-enumeration-with-prototype-inheritance). 
 
 ## The constructor signature
-```coffeescript
-  ###*
+```javascript
+  /**
   * @param  {string}  enumType A string identifying the type of this Enumeration instance
-  * @param  {object}  enumValues an object which keys are the enum names, and values are 
-  * enum descriptor.
-  * A descriptor can be a single unique identifier (string or number),  or an object whose 
-  * fields will be copied on the enum value instance. In this case
+  * @param  {object}  enumValues an object which keys are the enum names, and values are each enum descriptor.
+  * A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
   * a field '_id' must be provided identifying this enum value.
   * @param  {object} proto [optional] a prototype each enum value will inherit from
-  ###
-  constructor:(enumType,enumValues,proto={}) -> ...
+   */
+  function Enumeration(enumType, enumValues, proto) 
 ```
