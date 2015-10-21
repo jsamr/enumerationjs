@@ -3,7 +3,7 @@
 > This package and documentation are written in coffeescript, but you *can* use it in javascript.
 > *If you want to read the doc in javascript* get here : [README.JS.MD](README.JS.MD)
 
-
+<br/>
 >
 [intro](#intro)
 [1 Basic usage](#basic-usage)
@@ -30,8 +30,8 @@ Pros :
 * ✓ You can [move all the logic inside those enum values](#refactoring) and refactor, avoiding the `if else` mess.
 
 Cons :
-* ✗ relies on *ECMAScript 5*
-* ✗ adds a dependency to *underscore.js*
+* ✗ relies on **ECMAScript 5**
+* ✗ adds a dependency to **underscore.js**
 * ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. Those are recoverable via `key()` and `id()` methods. However the `describe()` method returns a string with all those informations. And the `enumInstance.pretty()` returns a string with all the enum values and their associated descriptions.
 
 Critics and suggestions are welcome
