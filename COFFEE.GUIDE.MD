@@ -153,6 +153,7 @@ replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inherit
 
 <br/>
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
+**← Back to [README.MD](README.MD)**  
 
 
 

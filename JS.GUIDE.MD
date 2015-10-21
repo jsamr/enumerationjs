@@ -184,3 +184,4 @@ or use [prototype inheritance instead](#extendyourenumerationwithprototypeinheri
 ```
 <br>
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
+**← Back to [README.MD](README.MD)**  
