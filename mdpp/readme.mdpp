@@ -30,7 +30,7 @@ Critics and suggestions are welcome
 - → Here is the [coffeescript-users guide](COFFEE.GUIDE.MD#top)  
 - → Here is the [javascript-users guide](JS.GUIDE.MD#top)  
 
-<a name="ecmascript></a>
+<a name="ecmascript"></a>
 #### Ecmascript compatibility
 
 > ECMA-262 5th edition was published on December 3, 2009 
@@ -48,9 +48,9 @@ The only issue might be with `Object.defineProperty`[on IE8](https://github.com/
 
 Node version 0.5.1 and upper, published on July 14,  2011 support ECMAScript 5th edition.
  
-Internet Explorer : IE9 or higher
-Firefox : 4 or higher
-Safari  : SF 5.1.4 or higher
+Internet Explorer : IE9 or higher  
+Firefox : 4 or higher  
+Safari  : SF 5.1.4 or higher  
 Chrome : 6 or higher
 Opera : 12 or higher
 iOS   : 7 or higher

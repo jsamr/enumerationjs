@@ -1,7 +1,7 @@
 <a name="top"></a>
 #enumeration : Java-like enum for javascript/coffeescript  
 
-> ✓ Last Jasmine test run was the 10/21/15 at 22:16 UTC  with 
+> ✓ Last Jasmine test run was the 10/21/15 at 22:17 UTC  with 
 **41 specs, 0 failures**
 
 **Since java 5, you can define enum static fields and enum value fields and methods. 
@@ -31,7 +31,7 @@ Critics and suggestions are welcome
 - → Here is the [coffeescript-users guide](COFFEE.GUIDE.MD#top)  
 - → Here is the [javascript-users guide](JS.GUIDE.MD#top)  
 
-<a name="ecmascript></a>
+<a name="ecmascript"></a>
 #### Ecmascript compatibility
 
 > ECMA-262 5th edition was published on December 3, 2009 
