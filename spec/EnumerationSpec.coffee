@@ -20,13 +20,13 @@ describe 'Enumeration values when descriptors are raw types :',  ->
     closeEventCodes=new Enumeration(enumType, descriptors, prototype)
 
   it 'should have their descriptor\'s id matching the result of id() ', ->
-    expect(id).toEqual(closeEventCodes[key].id()) for key,id of descriptors
+    expect(id).toBe(closeEventCodes[key].id()) for key,id of descriptors
   it 'should have their descriptor\'s key matching the result of key() ', ->
-    expect(key).toEqual(closeEventCodes[key].key()) for key of descriptors
+    expect(key).toBe(closeEventCodes[key].key()) for key of descriptors
   it 'should have the result of type() matching the type given at instanciation time', ->
-    expect(enumType).toEqual(closeEventCodes[key].type()) for key of descriptors
+    expect(enumType).toBe(closeEventCodes[key].type()) for key of descriptors
   it 'should share prototype\'s properties', ->
-    expect(prototype.someStupidFun).toEqual(closeEventCodes[key].someStupidFun) for key of descriptors
+    expect(prototype.someStupidFun).toBe(closeEventCodes[key].someStupidFun) for key of descriptors
 
 describe 'Enumeration values when descriptors are structured objects :',  ->
   closeEventCodes=null
@@ -49,15 +49,15 @@ describe 'Enumeration values when descriptors are structured objects :',  ->
     closeEventCodes=new Enumeration(enumType, descriptors, prototype)
 
   it 'should have their descriptor\'s id matching the result of id() ', ->
-    expect(descr._id).toEqual(closeEventCodes[key].id()) for key,descr of descriptors
+    expect(descr._id).toBe(closeEventCodes[key].id()) for key,descr of descriptors
   it 'should have their descriptor\'s key matching the result of key() ', ->
-    expect(key).toEqual(closeEventCodes[key].key()) for key of descriptors
+    expect(key).toBe(closeEventCodes[key].key()) for key of descriptors
   it 'should have an info field matching descriptor\'s info field ', ->
-    expect(descr.info).toEqual(closeEventCodes[key].info) for key,descr of descriptors
+    expect(descr.info).toBe(closeEventCodes[key].info) for key,descr of descriptors
   it 'should have the result of type() matching the type given at instanciation time', ->
-    expect(enumType).toEqual(closeEventCodes[key].type()) for key of descriptors
+    expect(enumType).toBe(closeEventCodes[key].type()) for key of descriptors
   it 'should share prototype\'s properties', ->
-    expect(prototype.someStupidFun).toEqual(closeEventCodes[key].someStupidFun) for key of descriptors
+    expect(prototype.someStupidFun).toBe(closeEventCodes[key].someStupidFun) for key of descriptors
   it 'should not have an _id property', ->
     expect(closeEventCodes[key]._id).not.toBeDefined() for key of descriptors
 
@@ -109,6 +109,10 @@ describe 'Enumeration instantiation with structured descriptor', () ->
 
 
 describe 'Enumeration instance', ->
+  enumeration2=new Enumeration("EnumerationInstance2",{KEY1:1,KEY2:2})
   it 'shall throw an error when an other Enumeration instance exists with a given name', ->
     expect(-> new Enumeration("EnumerationInstance1",{})).not.toThrow()
     expect(-> new Enumeration("EnumerationInstance1",{})).toThrow()
+  it 'from(id) method shall return the matching enum value instance which id is equal ', ->
+    expect(enumeration2.from(2)).toBe(enumeration2.KEY2)
+    expect(enumeration2.from(1)).toBe(enumeration2.KEY1)

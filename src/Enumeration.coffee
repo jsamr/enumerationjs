@@ -57,7 +57,7 @@ class Enumeration
     if enumType in enumTypes then throw "#{enumType} already exists!"
     else
       if (key for key in Object.keys(enumValues) when key in ["pretty","from"]).length>0
-        throw "Cannot have enum value as reserved enumeration property (pretty,from)"
+        throw "Cannot have enum value as one amongst reserved enumeration property [pretty,from]"
       else
         enumTypes.push enumType
 
