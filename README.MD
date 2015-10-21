@@ -5,15 +5,15 @@
 
 <br/>
 >
-[intro](#intro)
-[1 Basic usage](#basic-usage)
-[2 A prototype for enum values](#a-prototype-for-enum-values)
-[3 Use more complex enum descriptors](#use-more-complex-enum-descriptors)
-[4 Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)
-[5 Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)
-[6 The constructor signature](#the-constructor-signature)
-[7 Refactoring](#refactoring)
-
+[intro](#intro)  
+[1 Basic usage](#basic-usage)  
+[2 A prototype for enum values](#a-prototype-for-enum-values)  
+[3 Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
+[4 Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
+[5 Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)  
+[6 The constructor signature](#the-constructor-signature)  
+[7 Refactoring](#refactoring)  
+ 
 ##Intro
 Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)
 
@@ -78,10 +78,10 @@ closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 ```
 ## Use more complex enum descriptors
 
-> ⚠ Each descriptor **must** contain an `_id` field of type `string` or `number`, an exception will be thrown otherwise.
-> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up
-> ✓ If a duplicate _id is given, an error will show up
-> ✓ If you mistakenly use a reserved property in the given descriptor (id,key,describe or type), an error will show up
+> ⚠ Each descriptor **must** contain an `_id` field of type `string` or `number`, an exception will be thrown otherwise.  
+> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
+> ✓ If a duplicate _id is given, an error will show up   
+> ✓ If you mistakenly use a reserved property in the given descriptor (id,key,describe or type), an error will show up  
 
 ```coffeescript
 #the descriptor MUST contain an _id field as it is an object
@@ -107,7 +107,7 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ```
 ## Extend your Enumeration with prototype inheritance
 
-> ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).
+> ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).  
 
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).
 
