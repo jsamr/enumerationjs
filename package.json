@@ -1,0 +1,30 @@
+{
+  "name":"enumeration",
+  "version":"1.0.0",
+  "author":"Jules Randolph <jules.randolph@usherbrooke.ca>",
+  "main":"lib/Enumeration.js",
+  "scripts": {
+    "test": "jasmine",
+    "prepublish":"coffee --bare --compile --output lib/ src/Enumeration.coffee"
+  },
+  "repository": {
+    "type":"git",
+    "url":"https://github.com/sveinburne/enumeration"
+  },
+  "bugs": {
+    "url":"https://github.com/sveinburne/enumeration/issues"
+  },
+  "devDependencies": {
+    "coffee-script":"1.x",
+    "jasmine":"2.x"
+
+  },
+  "dependencies":{
+    "underscore":"1.8"
+  },
+  "keywords":[
+    "enum","enumeration"
+  ],
+  "analyse":true,
+  "license":"MIT"
+}
