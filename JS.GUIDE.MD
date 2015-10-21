@@ -1,8 +1,8 @@
 <a name="top">
-**← Back to [README.MD](README.MD)**  
+**← Back to [README.MD](README.MD#top)**  
 <br>
 
-> This is the **javascript-users** guide.  
+> This is the **javascript-users** guide for the **enumeration** package.  
 > **If you want to read the coffeescript-users guide** then go here : [COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top)   
 
 <a name="toc"></a>
@@ -185,4 +185,4 @@ or use [prototype inheritance instead](#extendyourenumerationwithprototypeinheri
 ```
 <br>
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
-**← Back to [README.MD](README.MD)**  
+**← Back to [README.MD](README.MD#top)**  

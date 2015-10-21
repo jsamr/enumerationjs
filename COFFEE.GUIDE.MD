@@ -1,7 +1,7 @@
 <a name="top">
-**← Back to [README.MD](README.MD)**  
+**← Back to [README.MD](README.MD#top)**  
 <br/>
-> This is the **coffeescript-users** guide file.  
+> This is the **coffeescript-users** guide for the **enumeration** package.   
 > **If you want to read the javascript-users guide** then go here : [JS.GUIDE.MD](JS.GUIDE.MD#top)  
 
 <a name="toc"></a>
@@ -154,7 +154,7 @@ replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inherit
 
 <br/>
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
-**← Back to [README.MD](README.MD)**  
+**← Back to [README.MD](README.MD#top)**  
 
 
 
