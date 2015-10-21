@@ -6,7 +6,7 @@ travisTest='![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?bra
 if [[ ! -f js-guide.mdpp ]] || [[ ! -f coffee-guide.mdpp ]] || [[ ! -f readme.mdpp ]]; then
     echo "Missing mdpp files !"
 fi
-$(cd ../ && echo " $travisTest *last Jasmine test run was the $(date -u "+%D at %R") UTC  with" > mdpp/lastbuild.mdpp && echo **$(jasmine | sed -e '$!{h;d;}' -e x)** >> mdpp/lastbuild.mdpp)
+$(cd ../ && echo " $travisTest *last Jasmine test run was the $(date -u "+%D at %R") UTC  with*" > mdpp/lastbuild.mdpp && echo **$(jasmine | sed -e '$!{h;d;}' -e x)** >> mdpp/lastbuild.mdpp)
 markdown-pp js-guide.mdpp -o ../JS.GUIDE.MD
 markdown-pp coffee-guide.mdpp -o ../COFFEE.GUIDE.MD
 markdown-pp readme.mdpp -o ../README.MD
