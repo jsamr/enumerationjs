@@ -1,5 +1,5 @@
-##### ← Back to [README.MD](README.MD)  
-<br><br>
+**← Back to [README.MD](README.MD)**  
+<br>
 
 > This is the **javascript-users** guide.  
 > **If you want to read the coffeescript-users guide** then go here : [COFFEE.GUIDE.MD](COFFEE.GUIDE.MD)   
@@ -180,4 +180,5 @@ or use [prototype inheritance instead](#extendyourenumerationwithprototypeinheri
   */
   function Enumeration(enumType, enumValues, proto) { ...
 ```
-> **↑ Back to [TABLE OF CONTENTS](#tocy)**  
+<br>
+**↑ Back to [TABLE OF CONTENTS](#toc)**  

@@ -1,5 +1,5 @@
-##### ← Back to [README.MD](README.MD)  
-<br/><br/>
+**← Back to [README.MD](README.MD)**  
+<br/>
 > This is the **coffeescript-users** guide file.  
 > **If you want to read the javascript-users guide** then go here : [JS.GUIDE.MD](JS.GUIDE.MD)  
 
@@ -149,7 +149,8 @@ replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inherit
   constructor:(enumType,enumValues,proto={}) -> ...
 ```
 
-> **↑ Back to [TABLE OF CONTENTS](#tocy)**  
+<br/>
+**↑ Back to [TABLE OF CONTENTS](#toc)**  
 
 
 

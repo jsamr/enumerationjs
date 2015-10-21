@@ -1,5 +1,5 @@
 !INCLUDE "common/back-to-enum.mdpp"
-<br><br>
+<br>
 
 > This is the **javascript-users** guide.  
 > **If you want to read the coffeescript-users guide** then go here : [COFFEE.GUIDE.MD](COFFEE.GUIDE.MD)   
@@ -24,4 +24,5 @@
 !INCLUDE "common/constructor_signature.mdpp"
 !INCLUDE "js/constructor_signature.mdpp"
 
+<br>
 !INCLUDE "common/go-toc.mdpp"
