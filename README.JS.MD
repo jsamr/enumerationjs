@@ -1,6 +1,6 @@
 #enumeration : Java-like enum for javascript/coffeescript  
 >
-✓ Last Jasmine test run was the 10/21/15 at 16:34 UTC  with 
+✓ Last Jasmine test run was the 10/21/15 at 16:37 UTC  with 
 **31 specs, 0 failures**
 
 **Since java 5, you can define enum static fields and enum value fields and methods. 
@@ -9,7 +9,8 @@ How about doing the same in javascript/coffeescript?**
 > **If you want to read the doc for coffeescript users** get here : [(COFFEE) README.MD](README.MD)   
 
 <br/>
->
+**Pros & Cons**
+
 ✓ flexible solution to the missing `enum` keyword implementation  
 ✓ enum values are unique  
 ✓ enum values are read only  
