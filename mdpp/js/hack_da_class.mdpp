@@ -1,4 +1,4 @@
-## Hack da class : incorporate as public class fields
+## Hack da class, incorporate as public class fields
 Yeah, that's the funny thing with prototype inheritance : your javascript class can inherit this Enumeration instance.
 
 > ⚠ Be carefull, `MyClass.__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements

@@ -7,7 +7,7 @@
 2\.  [A prototype for enum values](#aprototypeforenumvalues)  
 3\.  [Use more complex enum descriptors](#usemorecomplexenumdescriptors)  
 4\.  [Extend your Enumeration with prototype inheritance](#extendyourenumerationwithprototypeinheritance)  
-5\.  [Hack da class : incorporate as public class fields](#hackdaclass:incorporateaspublicclassfields)  
+5\.  [Hack da class, incorporate as public class fields](#hackdaclassincorporateaspublicclassfields)  
 6\.  [The constructor signature](#theconstructorsignature)  
 
 <a name="basicusage"></a>
@@ -99,7 +99,7 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ## 4\. Extend your Enumeration with prototype inheritance
 
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, 
-you *must* inherit through the prototype chain or [hack da class](#hackdaclass:incorporateaspublicclassfields).  
+you *must* inherit through the prototype chain or [hack da class](#hackdaclassincorporateaspublicclassfields).  
 
 ```coffeescript
 #Inherit all Enumeration instance fields by moving it to myEnum prototype
@@ -108,9 +108,9 @@ myEnum=Object.create new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3})
 myEnum.newFunction = -> @STATE1.describe()
 ```
 
-<a name="hackdaclass:incorporateaspublicclassfields"></a>
+<a name="hackdaclassincorporateaspublicclassfields"></a>
 
-## 5\. Hack da class : incorporate as public class fields
+## 5\. Hack da class, incorporate as public class fields
 Yeah, that's the funny thing with prototype inheritance : your coffeescript class can inherit this Enumeration instance.
 
 > ⚠ Be carefull, `@__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements
