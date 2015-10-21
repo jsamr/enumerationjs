@@ -1,6 +1,3 @@
-#NPM EXPORTS
-exports =  module?.exports? or {}
-
 extend = (object, properties) ->
   for key, val of properties
     object[key] = val
@@ -41,8 +38,7 @@ class Enumeration
     if descriptor instanceof Object
       testReserved descriptor
       if not descriptor._id? then throw "field '_id' must be defined when passing object as enum value"
-      delete descriptor._id
-      defineReadOnlyProperty key1,val1 for key1,val1 of descriptor
+      defineReadOnlyProperty key1,val1 for key1,val1 of descriptor when key1 isnt '_id'
     Object.create prototype, properties
 
   ###*
@@ -69,4 +65,5 @@ class Enumeration
     #Guaranties properties to be 'final', non writable
     Object.freeze(this)
 
-exports=Enumeration
+#Export to npm
+if module? then module.exports=Enumeration
