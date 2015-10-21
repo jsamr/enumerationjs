@@ -1,14 +1,15 @@
 #enumeration : Java-like enum for javascript/coffeescript
 
+
 >
-[intro](#intro)  
-[1 Basic usage](#basic-usage)  
-[2 A prototype for enum values](#a-prototype-for-enum-values)  
-[3 Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
-[4 Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
-[5 Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)  
-[6 The constructor signature](#the-constructor-signature)  
-[7 Refactoring](#refactoring)  
+[intro](#intro)
+[1 Basic usage](#basic-usage)
+[2 A prototype for enum values](#a-prototype-for-enum-values)
+[3 Use more complex enum descriptors](#use-more-complex-enum-descriptors)
+[4 Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)
+[5 Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)
+[6 The constructor signature](#the-constructor-signature)
+[7 Refactoring](#refactoring)
 
 ##Intro
 Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)
@@ -26,8 +27,8 @@ Pros :
 * ✓ You can [move all the logic inside those enum values](#refactoring) and refactor, avoiding the `if else` mess.
 
 Cons :
-* ✗ relies on ECMAScript 5
-* ✗ adds a dependency to underscore.js
+* ✗ relies on *ECMAScript 5*
+* ✗ adds a dependency to *underscore.js*
 * ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. Those are recoverable via `key()` and `id()` methods. However the `describe()` method returns a string with all those informations. And the `enumInstance.pretty()` returns a string with all the enum values and their associated descriptions.
 
 Critics and suggestions are welcome
@@ -81,6 +82,7 @@ closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up
 > ✓ If a duplicate _id is given, an error will show up
 > ✓ If you mistakenly use a reserved property in the given descriptor (id,key,describe or type), an error will show up
+
 ```javascript
 #the descriptor MUST contain an _id field as it is an object
 var = closeEventCodes = new Enumeration("closeEventCodes", {
@@ -126,6 +128,7 @@ closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL # evaluates to tru
 ## Extend your Enumeration with prototype inheritance
 
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).
+
 ```javascript
 #Inherit all Enumeration instance fields by moving it to myEnum's prototype
 #The prototype will still be frozen, but myEnum instance won't.
@@ -161,13 +164,16 @@ Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
 
 > ✓ If you don't like this hack, you can either define a class' static field holding the enum by replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inheritance instead](#extend-your-enumeration-with-prototype-inheritance).
 
-## The constructor signature```javascript
+## The constructor signature
+
+
+```javascript
   /**
   * @param  {string}  enumType A string identifying the type of this Enumeration instance
   * @param  {object}  enumValues an object which keys are the enum names, and values are each enum descriptor.
   * A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
   * a field '_id' must be provided identifying this enum value.
   * @param  {object} proto [optional] a prototype each enum value will inherit from
-   */
-  function Enumeration(enumType, enumValues, proto) 
+  */
+  function Enumeration(enumType, enumValues, proto) { ...
 ```

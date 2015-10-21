@@ -3,6 +3,7 @@
 > This package and documentation are written in coffeescript, but you *can* use it in javascript.
 > *If you want to read the doc in javascript* get here : [README.JS.MD](README.JS.MD)
 
+
 >
 [intro](#intro)
 [1 Basic usage](#basic-usage)
@@ -29,8 +30,8 @@ Pros :
 * ✓ You can [move all the logic inside those enum values](#refactoring) and refactor, avoiding the `if else` mess.
 
 Cons :
-* ✗ relies on ECMAScript 5
-* ✗ adds a dependency to underscore.js
+* ✗ relies on *ECMAScript 5*
+* ✗ adds a dependency to *underscore.js*
 * ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. Those are recoverable via `key()` and `id()` methods. However the `describe()` method returns a string with all those informations. And the `enumInstance.pretty()` returns a string with all the enum values and their associated descriptions.
 
 Critics and suggestions are welcome
@@ -81,6 +82,7 @@ closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up
 > ✓ If a duplicate _id is given, an error will show up
 > ✓ If you mistakenly use a reserved property in the given descriptor (id,key,describe or type), an error will show up
+
 ```coffeescript
 #the descriptor MUST contain an _id field as it is an object
 closeEventCodes = new Enumeration("closeEventCodes", {
@@ -106,6 +108,7 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 ## Extend your Enumeration with prototype inheritance
 
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).
+
 > ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, you *must* inherit through the prototype chain or [hack da class](#hack-da-class--incorporates-as-public-class-fields).
 
 ```coffeescript
@@ -125,13 +128,19 @@ class MyClass
   constructor : -> @someProperty="someValue"
   someFunction: -> 'doing stuff'
 
-  @__proto__:new Enumeration('MyClass', {PUBLIC_STATIC_ENUM1:"VAL1",PUBLIC_STATIC_ENUM2:"VAL2"})
+  @__proto__:new Enumeration('MyClass',
+    PUBLIC_STATIC_ENUM1:"VAL1"
+    PUBLIC_STATIC_ENUM2:"VAL2"
+  )
 ```
 Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
 
 > ✓ If you don't like this hack, you can either define a class' static field holding the enum by replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inheritance instead](#extend-your-enumeration-with-prototype-inheritance).
 
-## The constructor signature```coffeescript
+## The constructor signature
+
+
+```coffeescript
   ###*
   * @param  {string}  enumType A string identifying the type of this Enumeration instance
   * @param  {object}  enumValues an object which keys are the enum names, and values are 
