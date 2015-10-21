@@ -1,3 +1,4 @@
+
 ```javascript
   /**
   * @param  {string}  enumType A string identifying the type of this Enumeration instance
@@ -5,6 +6,6 @@
   * A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
   * a field '_id' must be provided identifying this enum value.
   * @param  {object} proto [optional] a prototype each enum value will inherit from
-   */
-  function Enumeration(enumType, enumValues, proto) 
+  */
+  function Enumeration(enumType, enumValues, proto) { ...
 ```

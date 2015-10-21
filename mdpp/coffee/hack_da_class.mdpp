@@ -8,7 +8,10 @@ class MyClass
   constructor : -> @someProperty="someValue"
   someFunction: -> 'doing stuff'
 
-  @__proto__:new Enumeration('MyClass', {PUBLIC_STATIC_ENUM1:"VAL1",PUBLIC_STATIC_ENUM2:"VAL2"})
+  @__proto__:new Enumeration('MyClass',
+    PUBLIC_STATIC_ENUM1:"VAL1"
+    PUBLIC_STATIC_ENUM2:"VAL2"
+  )
 ```
 Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
 

@@ -1,3 +1,4 @@
+
 ```coffeescript
   ###*
   * @param  {string}  enumType A string identifying the type of this Enumeration instance
