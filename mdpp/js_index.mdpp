@@ -1,14 +1,14 @@
 #enumeration : Java-like enum for javascript/coffeescript
 
-> This is the **javascript-users** documentation file. 
-> **If you want to read the doc for coffeescript users** get here : [(coffee) README.MD](README.MD)  
+> This is the **javascript-users** documentation file.  
+> **If you want to read the doc for coffeescript users** get here : [(COFFEE) README.MD](README.MD)   
 
 !INCLUDE "common/intro.mdpp"
 
 !INCLUDE "common/basic_usage.mdpp"
 !INCLUDE "js/basic_usage.mdpp"
 
-!INCLUDE "commmon/proto_for_enum_val.mdpp"
+!INCLUDE "common/proto_for_enum_val.mdpp"
 !INCLUDE "js/proto_for_enum_val.mdpp"
 
 !INCLUDE "common/more_complicated_descriptors.mdpp"

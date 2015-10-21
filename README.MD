@@ -1,7 +1,7 @@
 #enumeration : Java-like enum for javascript/coffeescript
 
-> This package and documentation are written in coffeescript, but you **can** use it in javascript.   
-> **If you want to read the doc for javascript users** get here : [(js) README.MD](README.JS.MD)  
+> This is the **coffeescript-users** documentation file.  
+> **If you want to read the doc for javascript users** get here : [(JS) README.MD](README.JS.MD)  
 
 <br/>
 >
@@ -17,7 +17,7 @@
 ##Intro
 Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)
 
-Pros :
+**Pros :**
 * ✓ flexible solution to the missing `enum` keyword implementation
 * ✓ enum values are unique
 * ✓ enum values are read only
@@ -28,8 +28,11 @@ Pros :
 * ✓ Each enum value has a unique identifier that you provide at instanciation time, recovorable with `id()` method. You can easely match the instance associated to an identifier with `enumInstance.from(identifier)` which allows easy lightweight serialization.
 * ✓ You can [hack a coffeescript class](#hack-da-class--incorporate-as-public-class-fields) to have all the defined values of your Enumeration as static fields of this `class`.
 * ✓ You can [move all the logic inside those enum values](#refactoring) and refactor, avoiding the `if else` mess.
+* ✓ Last Jasmine test run : 
+* ✓ Last Jasmine test run :
+31 specs, 0 failures
 
-Cons :
+**Cons :**
 * ✗ relies on **ECMAScript 5**
 * ✗ adds a dependency to **underscore.js**
 * ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. Those are recoverable via `key()` and `id()` methods. However the `describe()` method returns a string with all those informations. And the `enumInstance.pretty()` returns a string with all the enum values and their associated descriptions.
