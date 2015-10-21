@@ -1,14 +1,14 @@
 #enumeration : Java-like enum for javascript/coffeescript
 
 >
-[intro](#intro)
-[1 Basic usage](#basic-usage)
-[2 A prototype for enum values](#a-prototype-for-enum-values)
-[3 Use more complex enum descriptors](#use-more-complex-enum-descriptors)
-[4 Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)
-[5 Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)
-[6 The constructor signature](#the-constructor-signature)
-[7 Refactoring](#refactoring)
+[intro](#intro)  
+[1 Basic usage](#basic-usage)  
+[2 A prototype for enum values](#a-prototype-for-enum-values)  
+[3 Use more complex enum descriptors](#use-more-complex-enum-descriptors)  
+[4 Extend your Enumeration with prototype inheritance](#extend-your-enumeration-with-prototype-inheritance)  
+[5 Hack da class : incorporate as public class fields](#hack-da-class--incorporate-as-public-class-fields)  
+[6 The constructor signature](#the-constructor-signature)  
+[7 Refactoring](#refactoring)  
 
 ##Intro
 Answer to [this SO question](http://stackoverflow.com/questions/9369780/coffeescript-and-enum-values)
@@ -34,6 +34,8 @@ Critics and suggestions are welcome
 ## Basic usage
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up
 > ✓ If a duplicate id (value associated to key) is given, an error will show up
+
+
 ```javascript
 var closeEventCodes = new Enumeration("closeEventCodes", {
   CLOSE_NORMAL: 1000,

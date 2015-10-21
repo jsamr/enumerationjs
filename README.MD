@@ -36,7 +36,9 @@ Cons :
 Critics and suggestions are welcome
 ## Basic usage
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up
-> ✓ If a duplicate id (value associated to key) is given, an error will show up```coffeescript
+> ✓ If a duplicate id (value associated to key) is given, an error will show up
+
+```coffeescript
 closeEventCodes = new Enumeration("closeEventCodes", {
     CLOSE_NORMAL:1000
     CLOSE_GOING_AWAY:1001
