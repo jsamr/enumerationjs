@@ -7,13 +7,14 @@ enumeration : Java-like enum for javascript/coffeescript
 How about doing the same in javascript/coffeescript?*  
 
 **Pros & Cons**
-- ✓ Straightforward though very flexible solution addressing the missing `enum` keyword  
+- ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.  
 - ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.  
-- ✓ You can move a lot of the logic to those instances (example in [JS](JS.GUIDE.MD##refactoring) | [COFFEE](COFFEE.GUIDE.MD##refactoring)) and refactor, avoiding the `if else` mess. 
+- ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  (example in [JS](JS.GUIDE.MD##refactoring) | [COFFEE](COFFEE.GUIDE.MD##refactoring)) 
 - ✓ The enumerations are guarantied unique and frozen : you cannot instantiate two enumerations with a same name    
 - ✓ Lightweight deserialization with `enumInstance.from(identifier)` and serialization with `enumInstance.ENUM_VALUE.id()`  
 - ✓ You can hack a class to inherit the Enumeration instance enum values and methods (example in [JS](JS.GUIDE.MD#hackdaclassincorporateaspublicclassfields) | [COFFEE](COFFEE.GUIDE.MD#hackdaclassincorporateaspublicclassfields)).  
-- ✓ Rock solid jasmine specification tests. 
+- ✓ Rock solid jasmine specified tests. 
+
 - ✗ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, or at least provide the appropriate workaround, see [this section](#ecmascript)
 - ✗ adds a dependency to **underscore.js**  
 - ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. Those are recoverable via `key()` and `id()` methods. However the `describe()` method returns a string with all those informations. And the `enumInstance.pretty()` returns a string with all the enum values and their associated descriptions.  
@@ -62,10 +63,11 @@ Object.defineProperty(object,property,propertyDescriptor)
 Object.freeze(object)
 Object.create(prototype,propertiesDescriptors)
 ```
-These methods prevent user from mistakenly modify any property from the Enumeration instance and its bound enum values.   
-Those can all be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim).  
-**Any attempt to write a read-only property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**  
-The only issue might be with `Object.defineProperty`[on IE8](https://github.com/es-shims/es5-shim/issues/5) with a es5-shim < v2.0.10  
+These methods prevent user from mistakenly modify any property from the Enumeration instance and its bound enum values : 
+**any attempt to write a read-only property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, in non-strict mode affectation will have no effect.   
+**any attempt to reconfigure a non-configurable property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, in non-strict mode reconfiguraiton will have no effect.   
+For older browser, those methods can be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim), however the write permissions will be ignored.   
+The only issue might be with `Object.defineProperty`[on IE8](https://github.com/es-shims/es5-shim/issues/5) for versions lower then v2.0.10  
 
 Node version 0.5.1 and upper, published on July 14,  2011 support ECMAScript 5th edition.  
 
