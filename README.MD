@@ -21,6 +21,7 @@ How about doing the same in javascript/coffeescript?*
  
 Critics and suggestions are welcome
 
+<a name="toc"></a>
 **TABLE OF CONTENTS**  
 1\.  [Quick api overview](#quickapioverview)  
 1.1\.  [Enumeration constructor](#enumerationconstructor)  
@@ -91,3 +92,5 @@ Those can all be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim
 The only issue might be with `Object.defineProperty`[on IE8](https://github.com/es-shims/es5-shim/issues/5) with a es5-shim < v2.0.10  
 
 Node version 0.5.1 and upper, published on July 14,  2011 support ECMAScript 5th edition.  
+
+**↑ Back to [TABLE OF CONTENTS](#toc)**  
