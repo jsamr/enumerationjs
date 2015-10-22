@@ -2,7 +2,7 @@
 enumeration : Java-like enum for javascript/coffeescript  
 =========================================================
 ![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master) 
-**41 specs, 0 failures**
+**42 specs, 0 failures**
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript?*  
@@ -10,10 +10,9 @@ How about doing the same in javascript/coffeescript?*
 **Pros & Cons**
 - ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.  
 - ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.  
-- ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  (example in [JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring)) 
+- ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring)) 
 - ✓ The enumerations are guarantied unique and frozen : you cannot instantiate two enumerations with a same name    
 - ✓ Lightweight deserialization with `enumInstance.from(identifier)` and serialization with `enumInstance.ENUM_VALUE.id()`  
-- ✓ You can hack a class to inherit the Enumeration instance enum values and methods (example in [JS](JS.GUIDE.MD#hackdaclassincorporateaspublicclassfields) | [COFFEE](COFFEE.GUIDE.MD#hackdaclassincorporateaspublicclassfields)).  
 - ✓ Rock solid jasmine specified tests. 
 
 - ✗ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, or at least provide the appropriate workaround, see [this section](#ecmascript)
@@ -44,9 +43,9 @@ Critics and suggestions are welcome
 You can instantiate an enumeration with the provided `Enumeration` constructor. It will take three arguments :
 - `enumType` : the name of this enumeration, must be unique amongst other Enumeration instances.
 - `enumValues` : an object containing the set of enum values. Keys are enum value names and values, aka descriptors can either be ...
-    * a **raw descriptor** i.e. a unique identifier of type string or number  (example in [JS](JS.GUIDE.MD#basicusagewithrawdescriptors) | [COFFEE](COFFEE.GUIDE.MD#basicusagewithrawdescriptors))      
-    * a **structured descriptor** i.e. a plain object (example in [JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))   
-- `prototype` : [optional] a prototype all the enum values will inherit (example in [JS](JS.GUIDE.MD#aprototypeforenumvalues) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumvalues))
+    * a **raw descriptor** i.e. a unique identifier of type string or number  ([JS](JS.GUIDE.MD#basicusagewithrawdescriptors) | [COFFEE](COFFEE.GUIDE.MD#basicusagewithrawdescriptors))      
+    * a **structured descriptor** i.e. a plain object ([JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))   
+- `prototype` : [optional] a prototype all the enum values will inherit ([JS](JS.GUIDE.MD#aprototypeforenumvalues) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumvalues))
 
 <a name="enumeration.valueinstances"></a>
 
@@ -68,7 +67,7 @@ Each **enum value** will have the following methods :
 <a name="enumerationobject"></a>
 
 #### 1.4\. Enumeration object
-
+- `Enumeration.list()` : returns an array containing the `enumType` for each Enumeration instance. 
 
 <a name="guides"></a>
 
@@ -76,11 +75,11 @@ Each **enum value** will have the following methods :
 <a name="forcoffeescriptusers"></a>
 
 #### 2.1\. For Coffeescript users
-> → [coffeescript-users guide](COFFEE.GUIDE.MD#top)  
+> → [COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top)  
 <a name="forjavascriptusers"></a>
 
 #### 2.2\. For Javascript users
-> → [javascript-users guide](JS.GUIDE.MD#top)  
+> → [JS.GUIDE.MD](JS.GUIDE.MD#top)  
 
 <a name="ecmascript"></a>
 <a name="ecmascriptcompatibility"></a>
