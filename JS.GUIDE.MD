@@ -259,7 +259,7 @@ Move the logic, and pass the stateHandler instance to the enum value handle func
 ```javascript
 //New school enum
 States = new Enumeration('States', {
-  OK:      { _id: 0, fun: 'onSuccess'}, 
+  OK:      {  _id: 0, fun: 'onSuccess'}, 
   ERROR_1: {  _id: 1, fun: 'someFun1'},
   ERROR_2: {  _id: 2, fun: 'someFun2' },
   ERROR_3: {  _id: 3, fun: 'someFun3' }
