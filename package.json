@@ -6,6 +6,7 @@
   "main": "lib/Enumeration.js",
   "scripts": {
     "test": "istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "testLocal":"istanbul cover --include-all-sources jasmine && rm -rf ./coverage",
     "prepublish": "coffee --bare --compile --output lib/ src/Enumeration.coffee"
   },
   "repository": {
