@@ -1,7 +1,7 @@
 <a name="top"></a>
 enumeration : Java-like enum for javascript/coffeescript  
 =========================================================
- ![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)   10/22/15 at 00:44 UTC  with*
+![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master) 
 **41 specs, 0 failures**
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
