@@ -1,0 +1,44 @@
+ 
+```javascript
+//Old school enum
+States = Object.freeze({
+  OK: 0,
+  ERROR_1: 1,
+  ERROR_2: 2,
+  ERROR_3: 3
+});
+
+stateHandler = {
+  someFun1: function() {
+    //do some stuff relative to this instance ...
+    return console.log("Error 1");
+  },
+  someFun2: function() {
+    //do some stuff relative to this instance ...
+    return console.log("Error 2");
+  },
+  someFun3: function() {
+    //do some stuff relative to this instance ...
+    return console.log("Error 3");
+  },
+  onError: function(state) {
+    if (state === States.ERROR_1) {
+      return this.someFun1();
+    } else if (state === States.ERROR_2) {
+      return this.someFun2();
+    } else if (state === States.ERROR_3) {
+      return this.someFun3();
+    }
+  },
+  onSuccess: function() {
+    return console.log("Success!");
+  },
+  handle: function(state) {
+    if (state === States.OK) {
+      return this.onSuccess();
+    } else {
+      return this.onError(state);
+    }
+  }
+};
+```

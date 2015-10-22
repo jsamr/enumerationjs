@@ -1,0 +1,20 @@
+
+```javascript
+//Old school enum
+var States = Object.freeze({
+  OK: 0,
+  ERROR_1: 1,
+  ERROR_2: 2,
+  ERROR_3: 3
+});
+
+if (state === States.OK) {
+  console.log("Message transmitted");
+} else if (state === States.ERROR_1) {
+  console.log("An error of type 1 occurred");
+} else if (state === States.ERROR_2) {
+  console.log("An error of type 2 occurred");
+} else if (state === States.ERROR_3) {
+  console.log("An error of type 3 occurred");
+}
+```

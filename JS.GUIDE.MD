@@ -14,6 +14,9 @@
 4\.  [Extend your Enumeration with prototype inheritance](#extendyourenumerationwithprototypeinheritance)  
 5\.  [Hack da class, incorporate as public class fields](#hackdaclassincorporateaspublicclassfields)  
 6\.  [The constructor signature](#theconstructorsignature)  
+7\.  [Refactoring](#refactoring)  
+7.1\.  [get rid of a if / else or switch mess](#getridofaif/elseorswitchmess)  
+7.2\.  [What about the visitor pattern?](#whataboutthevisitorpattern?)  
 
 <a name="basicusagewithrawdescriptors"></a>
 
@@ -183,6 +186,129 @@ or use [prototype inheritance instead](#extendyourenumerationwithprototypeinheri
   */
   function Enumeration(enumType, enumValues, proto) { ...
 ```
+<a name="refactoring"></a>
+
+## 7\. Refactoring
+
+<a name="getridofaif/elseorswitchmess"></a>
+
+### 7.1\. get rid of a if / else or switch mess
+
+```javascript
+//Old school enum
+var States = Object.freeze({
+  OK: 0,
+  ERROR_1: 1,
+  ERROR_2: 2,
+  ERROR_3: 3
+});
+
+if (state === States.OK) {
+  console.log("Message transmitted");
+} else if (state === States.ERROR_1) {
+  console.log("An error of type 1 occurred");
+} else if (state === States.ERROR_2) {
+  console.log("An error of type 2 occurred");
+} else if (state === States.ERROR_3) {
+  console.log("An error of type 3 occurred");
+}
+```
+Move the logic inside the Enumeration instance...
+```javascript
+//New school enum
+var States = new Enumeration('States', {
+  OK:      { _id: 0, msg: "Message transmitted" }, 
+  ERROR_1: { _id: 1, msg: "An error of type 1 occurred" }, 
+  ERROR_2: { _id: 2, msg: "An error of type 2 occurred" }, 
+  ERROR_3: { _id: 3, msg: "An error of type 3 occurred" }
+}, { 
+  report: function() {
+    return console.log(this.msg);
+  }
+});
+
+state.report();
+```
+
+<a name="whataboutthevisitorpattern?"></a>
+
+### 7.2\. What about the visitor pattern? 
+```javascript
+//Old school enum
+States = Object.freeze({
+  OK: 0,
+  ERROR_1: 1,
+  ERROR_2: 2,
+  ERROR_3: 3
+});
+
+stateHandler = {
+  someFun1: function() {
+    //do some stuff relative to this instance ...
+    return console.log("Error 1");
+  },
+  someFun2: function() {
+    //do some stuff relative to this instance ...
+    return console.log("Error 2");
+  },
+  someFun3: function() {
+    //do some stuff relative to this instance ...
+    return console.log("Error 3");
+  },
+  onError: function(state) {
+    if (state === States.ERROR_1) {
+      return this.someFun1();
+    } else if (state === States.ERROR_2) {
+      return this.someFun2();
+    } else if (state === States.ERROR_3) {
+      return this.someFun3();
+    }
+  },
+  onSuccess: function() {
+    return console.log("Success!");
+  },
+  handle: function(state) {
+    if (state === States.OK) {
+      return this.onSuccess();
+    } else {
+      return this.onError(state);
+    }
+  }
+};
+```
+Move the logic, and pass the stateHandler instance to the enum value handle function!
+```javascript
+//New school enum
+States = new Enumeration('States', {
+  OK:      { _id: 0, fun: 'onSuccess'}, 
+  ERROR_1: {  _id: 1, fun: 'someFun1'},
+  ERROR_2: {  _id: 2, fun: 'someFun2' },
+  ERROR_3: {  _id: 3, fun: 'someFun3' }
+}, { handle: function(handler) {
+    return handler[this.fun]();
+  }
+});
+
+stateHandler = {
+  someFun1: function() {
+    return console.log("Error 1");
+  },
+  someFun2: function() {
+    return console.log("Error 2");
+  },
+  someFun3: function() {
+    return console.log("Error 3");
+  },
+  onSuccess: function() {
+    return console.log("Success!");
+  },
+  handle: function(state) {
+    return state.handle(this);
+  }
+};
+```
+
+Cleaner, isn't it?
 <br>
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
 **← Back to [README.MD](README.MD#top)**  

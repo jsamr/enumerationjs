@@ -27,6 +27,15 @@
 !INCLUDE "common/constructor_signature.mdpp"
 !INCLUDE "js/constructor_signature.mdpp"
 
+!INCLUDE "common/refactoring-if-old.mdpp"
+!INCLUDE "js/refactoring-if-old.mdpp"
+!INCLUDE "common/refactoring-if-new.mdpp"
+!INCLUDE "js/refactoring-if-new.mdpp"
+!INCLUDE "common/refactoring-visitor-old.mdpp"
+!INCLUDE "js/refactoring-visitor-old.mdpp"
+!INCLUDE "common/refactoring-visitor-new.mdpp"
+!INCLUDE "js/refactoring-visitor-new.mdpp"
+
 <br>
 !INCLUDE "common/go-toc.mdpp"
 !INCLUDE "common/back-to-enum.mdpp"

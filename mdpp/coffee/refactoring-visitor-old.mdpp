@@ -1,0 +1,31 @@
+ 
+```coffeescript
+#Old school enum
+States=Object.freeze
+    OK:0
+    ERROR_1:1
+    ERROR_2:2
+    ERROR_3:3
+
+stateHandler={
+  someFun1:-> 
+    #do some stuff relative to this instance ...
+    console.log "Error 1"
+  someFun2:->
+    #do some stuff relative to this instance ...
+    console.log "Error 2"
+  someFun3:-> 
+    #do some stuff relative to this instance ...
+    console.log "Error 3"
+  onError:  (state) ->
+    if state is States.ERROR_1 then this.someFun1()
+    else if state is States.ERROR_2 then this.someFun2()
+    else if state is States.ERROR_3 then this.someFun3()
+  onSuccess: -> 
+    #do some stuff relative to this instance ...    
+    console.log "Success!"
+  handle: (state) ->
+    if state is States.OK then this.onSuccess()
+    else this.onError(state)
+}
+```

@@ -1,0 +1,16 @@
+
+```javascript
+//New school enum
+var States = new Enumeration('States', {
+  OK:      { _id: 0, msg: "Message transmitted" }, 
+  ERROR_1: { _id: 1, msg: "An error of type 1 occurred" }, 
+  ERROR_2: { _id: 2, msg: "An error of type 2 occurred" }, 
+  ERROR_3: { _id: 3, msg: "An error of type 3 occurred" }
+}, { 
+  report: function() {
+    return console.log(this.msg);
+  }
+});
+
+state.report();
+```

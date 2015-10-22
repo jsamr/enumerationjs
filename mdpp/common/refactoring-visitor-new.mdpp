@@ -1,0 +1,2 @@
+
+Move the logic, and pass the stateHandler instance to the enum value handle function!

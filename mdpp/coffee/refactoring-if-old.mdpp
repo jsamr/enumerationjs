@@ -1,0 +1,15 @@
+
+```coffeescript
+#Old school enum
+States=Object.freeze
+    OK:0
+    ERROR_1:1
+    ERROR_2:2
+    ERROR_3:3
+
+#somewhere later
+if state is States.OK then console.log "Message transmitted"
+else if state is States.ERROR_1 then console.log "An error of type 1 occurred"
+else if state is States.ERROR_2 then console.log "An error of type 2 occurred"
+else if state is States.ERROR_3 then console.log "An error of type 3 occurred"
+```

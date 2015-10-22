@@ -13,6 +13,9 @@
 4\.  [Extend your Enumeration with prototype inheritance](#extendyourenumerationwithprototypeinheritance)  
 5\.  [Hack da class, incorporate as public class fields](#hackdaclassincorporateaspublicclassfields)  
 6\.  [The constructor signature](#theconstructorsignature)  
+7\.  [Refactoring](#refactoring)  
+7.1\.  [get rid of a if / else or switch mess](#getridofaif/elseorswitchmess)  
+7.2\.  [What about the visitor pattern?](#whataboutthevisitorpattern?)  
 
 <a name="basicusagewithrawdescriptors"></a>
 
@@ -152,6 +155,105 @@ replacing `@__proto__` with `@colors` or `@states` ... or use [prototype inherit
   constructor:(enumType,enumValues,proto={}) -> ...
 ```
 
+<a name="refactoring"></a>
+
+## 7\. Refactoring
+
+<a name="getridofaif/elseorswitchmess"></a>
+
+### 7.1\. get rid of a if / else or switch mess
+
+```coffeescript
+#Old school enum
+States=Object.freeze
+    OK:0
+    ERROR_1:1
+    ERROR_2:2
+    ERROR_3:3
+
+#somewhere later
+if state is States.OK then console.log "Message transmitted"
+else if state is States.ERROR_1 then console.log "An error of type 1 occurred"
+else if state is States.ERROR_2 then console.log "An error of type 2 occurred"
+else if state is States.ERROR_3 then console.log "An error of type 3 occurred"
+```
+Move the logic inside the Enumeration instance...
+```coffeescript
+#New school enum
+States=new Enumeration('States',
+    OK:      _id:0, msg:"Message transmitted"
+    ERROR_1: _id:1, msg:"An error of type 1 occurred"
+    ERROR_2: _id:2, msg:"An error of type 2 occurred"
+    ERROR_3: _id:3, msg:"An error of type 3 occurred"
+  , report:-> console.log @msg
+)
+
+#somewhere later
+state.report()
+```
+
+<a name="whataboutthevisitorpattern?"></a>
+
+### 7.2\. What about the visitor pattern? 
+```coffeescript
+#Old school enum
+States=Object.freeze
+    OK:0
+    ERROR_1:1
+    ERROR_2:2
+    ERROR_3:3
+
+stateHandler={
+  someFun1:-> 
+    #do some stuff relative to this instance ...
+    console.log "Error 1"
+  someFun2:->
+    #do some stuff relative to this instance ...
+    console.log "Error 2"
+  someFun3:-> 
+    #do some stuff relative to this instance ...
+    console.log "Error 3"
+  onError:  (state) ->
+    if state is States.ERROR_1 then this.someFun1()
+    else if state is States.ERROR_2 then this.someFun2()
+    else if state is States.ERROR_3 then this.someFun3()
+  onSuccess: -> 
+    #do some stuff relative to this instance ...    
+    console.log "Success!"
+  handle: (state) ->
+    if state is States.OK then this.onSuccess()
+    else this.onError(state)
+}
+```
+Move the logic, and pass the stateHandler instance to the enum value handle function!
+```coffeescript
+#New school enum
+States=new Enumeration('States',
+        OK:      _id:0, fun:'onSuccess'
+        ERROR_1: _id:1, fun:'someFun1'
+        ERROR_2: _id:2, fun:'someFun2'
+        ERROR_3: _id:3, fun:'someFun3'
+, handle:(handler)-> handler[@fun]()
+)
+
+stateHandler=
+  someFun1:-> 
+    #do some stuff relative to this instance ...
+    console.log "Error 1"
+  someFun2:->
+    #do some stuff relative to this instance ...
+    console.log "Error 2"
+  someFun3:-> 
+    #do some stuff relative to this instance ...
+    console.log "Error 3"
+  onSuccess: -> 
+    #do some stuff relative to this instance ...    
+    console.log "Success!"
+  handle: (state) -> state.handle @
+  
+```
+
+Cleaner, isn't it?
 <br/>
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
 **← Back to [README.MD](README.MD#top)**  

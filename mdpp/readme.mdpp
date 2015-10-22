@@ -31,8 +31,8 @@ Critics and suggestions are welcome
 You can instantiate an enumeration with the provided `Enumeration` constructor. It will take three arguments :
 - `enumType` : the name of this enumeration, must be unique amongst other Enumeration instances.
 - `enumValues` : an object containing the set of enum values. Keys are enum value names and values, aka descriptors can either be ...
-    * a unique identifier of type string or number : a raw descriptor (example in [JS](JS.GUIDE.MD#basicusagewithrawdescriptors) | [COFFEE](COFFEE.GUIDE.MD#basicusagewithrawdescriptors))      
-    * a plain object : structured descriptor (example in [JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))   
+    * a **raw descriptor** i.e. a unique identifier of type string or number  (example in [JS](JS.GUIDE.MD#basicusagewithrawdescriptors) | [COFFEE](COFFEE.GUIDE.MD#basicusagewithrawdescriptors))      
+    * a **structured descriptor** i.e. a plain object (example in [JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))   
 - `prototype` : [optional] a prototype all the enum values will inherit (example in [JS](JS.GUIDE.MD#aprototypeforenumvalues) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumvalues))
 
 #### Enumeration.value instances

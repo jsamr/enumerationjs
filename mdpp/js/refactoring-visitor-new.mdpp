@@ -1,0 +1,33 @@
+
+```javascript
+//New school enum
+States = new Enumeration('States', {
+  OK:      { _id: 0, fun: 'onSuccess'}, 
+  ERROR_1: {  _id: 1, fun: 'someFun1'},
+  ERROR_2: {  _id: 2, fun: 'someFun2' },
+  ERROR_3: {  _id: 3, fun: 'someFun3' }
+}, { handle: function(handler) {
+    return handler[this.fun]();
+  }
+});
+
+stateHandler = {
+  someFun1: function() {
+    return console.log("Error 1");
+  },
+  someFun2: function() {
+    return console.log("Error 2");
+  },
+  someFun3: function() {
+    return console.log("Error 3");
+  },
+  onSuccess: function() {
+    return console.log("Success!");
+  },
+  handle: function(state) {
+    return state.handle(this);
+  }
+};
+```
+
+Cleaner, isn't it?
