@@ -21,6 +21,7 @@ How about doing the same in javascript/coffeescript?*
  
 Critics and suggestions are welcome
 
+**TABLE OF CONTENTS**
 1\.  [Quick api overview](#quickapioverview)  
 1.1\.  [Enumeration constructor](#enumerationconstructor)  
 1.2\.  [Enumeration.value instances](#enumeration.valueinstances)  
