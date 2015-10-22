@@ -1,31 +1,36 @@
 {
-  "name":"enumeration.js",
-  "description":"Java-like super flexible enums ! Move the logic. ",
-  "version":"1.1.0",
-  "author":"Jules Randolph <jules.randolph@usherbrooke.ca>",
-  "main":"lib/Enumeration.js",
+  "name": "enumeration.js",
+  "description": "Java-like super flexible enums ! Move the logic. ",
+  "version": "1.1.0",
+  "author": "Jules Randolph <jules.randolph@usherbrooke.ca>",
+  "main": "lib/Enumeration.js",
   "scripts": {
-    "test": "jasmine",
-    "prepublish":"coffee --bare --compile --output lib/ src/Enumeration.coffee"
+    "test": "istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "prepublish": "coffee --bare --compile --output lib/ src/Enumeration.coffee"
   },
   "repository": {
-    "type":"git",
-    "url":"https://github.com/sveinburne/enumeration.js"
+    "type": "git",
+    "url": "https://github.com/sveinburne/enumeration.js"
   },
   "bugs": {
-    "url":"https://github.com/sveinburne/enumeration.js/issues"
+    "url": "https://github.com/sveinburne/enumeration.js/issues"
   },
   "devDependencies": {
-    "coffee-script":"1.x",
-    "jasmine":"2.x"
+    "istanbul": "^0.4.0",
+    "coffee-script": "1.x",
+    "jasmine": "2.x",
+    "coveralls": "^2.11.4"
   },
-  "dependencies":{
-    "underscore":">=1.1 < 2.0"
+  "dependencies": {
+    "underscore": ">=1.1 < 2.0"
   },
-  "engines" : { "node" : ">=0.10"},
-  "keywords":[
-    "enum","enumeration"
+  "engines": {
+    "node": ">=0.10"
+  },
+  "keywords": [
+    "enum",
+    "enumeration"
   ],
-  "analyse":true,
-  "license":"MIT"
+  "analyse": true,
+  "license": "MIT"
 }
