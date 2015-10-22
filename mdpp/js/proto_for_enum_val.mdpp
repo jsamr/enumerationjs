@@ -16,5 +16,5 @@ var closeEventCodes = new Enumeration("closeEventCodes", {
 ```
 
 ```javascript
-closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
+closeEventCodes.CLOSE_NO_STATUS.print() // prints 'CLOSE_NO_STATUS:1005'
 ```

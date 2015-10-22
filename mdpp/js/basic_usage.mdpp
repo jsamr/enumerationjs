@@ -11,10 +11,10 @@ var closeEventCodes = new Enumeration("closeEventCodes", {
 });
 ```
 ```javascript
-closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                   # evaluates to 'CLOSE_PROTOCOL_ERROR'
-closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                    # evaluates to 1002
-closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'closeEventCodes'
-closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              # evaluates to 'CLOSE_PROTOCOL_ERROR:1002'
-closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
-1006 === closeEventCodes.CLOSE_ABNORMAL                      # evaluates to false
+closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                   // evaluates to 'CLOSE_PROTOCOL_ERROR'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                    // evaluates to 1002
+closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  // evaluates to 'closeEventCodes'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              // evaluates to 'CLOSE_PROTOCOL_ERROR:1002'
+closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL // evaluates to true
+1006 === closeEventCodes.CLOSE_ABNORMAL                      // evaluates to false
 ```

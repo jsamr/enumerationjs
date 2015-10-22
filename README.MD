@@ -95,8 +95,8 @@ Object.defineProperty(object,property,propertyDescriptor)
 Object.freeze(object)
 Object.create(prototype,propertiesDescriptors)
 ```
-These methods prevent user from mistakenly modify any property from the Enumeration instance and its bound enum values : 
-**any attempt to write a read-only property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.     
+These methods prevent user from mistakenly modify any property from the Enumeration instance and its bound enum values :  
+**any attempt to write a read-only property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.  
 **any attempt to reconfigure a non-configurable property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.     
 For older browser, those methods can be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim), however the write permissions will be ignored.   
 The only issue might be with `Object.defineProperty`[on IE8](https://github.com/es-shims/es5-shim/issues/5) for versions lower then v2.0.10.   

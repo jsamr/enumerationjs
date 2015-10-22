@@ -40,12 +40,12 @@ var closeEventCodes = new Enumeration("closeEventCodes", {
 });
 ```
 ```javascript
-closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                   # evaluates to 'CLOSE_PROTOCOL_ERROR'
-closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                    # evaluates to 1002
-closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'closeEventCodes'
-closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              # evaluates to 'CLOSE_PROTOCOL_ERROR:1002'
-closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
-1006 === closeEventCodes.CLOSE_ABNORMAL                      # evaluates to false
+closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                   // evaluates to 'CLOSE_PROTOCOL_ERROR'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                    // evaluates to 1002
+closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  // evaluates to 'closeEventCodes'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              // evaluates to 'CLOSE_PROTOCOL_ERROR:1002'
+closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL // evaluates to true
+1006 === closeEventCodes.CLOSE_ABNORMAL                      // evaluates to false
 ```
 
 <a name="aprototypeforenumvalues"></a>
@@ -72,7 +72,7 @@ var closeEventCodes = new Enumeration("closeEventCodes", {
 ```
 
 ```javascript
-closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
+closeEventCodes.CLOSE_NO_STATUS.print() // prints 'CLOSE_NO_STATUS:1005'
 ```
 <a name="useofstructureddescriptors"></a>
 
@@ -85,46 +85,25 @@ closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 
 
 ```javascript
-#the descriptor MUST contain an _id field as it is an object
+//the descriptor MUST contain an _id field as it is an object
 var = closeEventCodes = new Enumeration("closeEventCodes", {
-  CLOSE_NORMAL: {
-    _id: 1000,
-    info: "Connection closed normally"
-  },
-  CLOSE_GOING_AWAY: {
-    _id: 1001,
-    info: "Connection closed going away"
-  },
-  CLOSE_PROTOCOL_ERROR: {
-    _id: 1002,
-    info: "Connection closed due to protocol error"
-  },
-  CLOSE_UNSUPPORTED: {
-    _id: 1003,
-    info: "Connection closed due to unsupported operation"
-  },
-  CLOSE_NO_STATUS: {
-    _id: 1005,
-    info: "Connection closed with no status"
-  },
-  CLOSE_ABNORMAL: {
-    _id: 1006,
-    info: "Connection closed abnormally"
-  },
-  CLOSE_TOO_LARGE: {
-    _id: 1009,
-    info: "Connection closed due to too large packet"
-  }
+  CLOSE_NORMAL: { _id: 1000, info: "Connection closed normally" },
+  CLOSE_GOING_AWAY: {  _id: 1001, info: "Connection closed going away" },
+  CLOSE_PROTOCOL_ERROR: {  _id: 1002, info: "Connection closed due to protocol error"  },
+  CLOSE_UNSUPPORTED: { _id: 1003, info: "Connection closed due to unsupported operation" },
+  CLOSE_NO_STATUS: {_id: 1005, info: "Connection closed with no status" },
+  CLOSE_ABNORMAL: { _id: 1006, info: "Connection closed abnormally" },
+  CLOSE_TOO_LARGE: { _id: 1009, info: "Connection closed due to too large packet" }
 });
 ```
 ```javascript
-closeEventCodes.CLOSE_PROTOCOL_ERROR.info                     #evaluates to 'Connection closed due to protocol error'
-closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                    # evaluates to 'CLOSE_PROTOCOL_ERROR'  
-closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                     # evaluates to 1002  
-closeEventCodes.CLOSE_PROTOCOL_ERROR._id                      # evaluates to undefined 
-closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                   # evaluates to 'closeEventCodes'  
-closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()               # evaluates to 'CLOSE_PROTOCOL_ERROR:1002 {info:Connection closed due to protocol error}' 
-closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL # evaluates to true
+closeEventCodes.CLOSE_PROTOCOL_ERROR.info                     // evaluates to 'Connection closed due to protocol error'
+closeEventCodes.CLOSE_PROTOCOL_ERROR.key()                    // evaluates to 'CLOSE_PROTOCOL_ERROR'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.id()                     // evaluates to 1002  
+closeEventCodes.CLOSE_PROTOCOL_ERROR._id                      // evaluates to undefined 
+closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                   // evaluates to 'closeEventCodes'  
+closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()               // evaluates to 'CLOSE_PROTOCOL_ERROR:1002 {info:Connection closed due to protocol error}' 
+closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL // evaluates to true
 ```
 <a name="extendyourenumerationwithprototypeinheritance"></a>
 
@@ -134,8 +113,8 @@ closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL # evaluates to tru
 you *must* inherit through the prototype chain or [hack da class](#hackdaclassincorporateaspublicclassfields).  
 
 ```javascript
-#Inherit all Enumeration instance fields by moving it to myEnum prototype
-#The prototype will still be frozen, but myEnum instance will not.
+//Inherit all Enumeration instance fields by moving it to myEnum prototype
+//The prototype will still be frozen, but myEnum instance will not.
 var myEnum=Object.create(new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3}))
 myEnum.newFunction = function() { return this.STATE1.describe() }
 ```
@@ -144,7 +123,7 @@ myEnum.newFunction = function() { return this.STATE1.describe() }
 ## 5\. Hack da class, incorporate as public class fields
 Yeah, that's the funny thing with prototype inheritance : your javascript class can inherit this Enumeration instance.
 
-> ⚠ Be carefull, `MyClass.__proto__` can be overriden if and only if it is the last class statement. Otherwise you will override the forthcoming statements
+> ⚠ Be carefull, `MyClass.__proto__` can be overridden if and only if it is the last class statement. Otherwise you will override the forthcoming statements
 
 ```javascript
 var MyClass = (function() {
