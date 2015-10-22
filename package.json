@@ -1,5 +1,6 @@
 {
   "name":"enumeration",
+  "description":"Java-like super flexible enums ! Move the logic. ",
   "version":"1.0.0",
   "author":"Jules Randolph <jules.randolph@usherbrooke.ca>",
   "main":"lib/Enumeration.js",
@@ -22,6 +23,7 @@
   "dependencies":{
     "underscore":"1.8"
   },
+  "engines" : { "node" : ">=0.5.1"},
   "keywords":[
     "enum","enumeration"
   ],
