@@ -48,13 +48,13 @@ Each **enum value** will have the following methods :
 - `pretty()`  : give a pretty description of this Enumeration instance and all its enum values, useful for logging/debugging  
  
 #### Enumeration object
-- `Enumeration.list()` : returns an array containing the names of each Enumeration instance. 
+- `Enumeration.list()` : returns an array containing the `enumType` for each Enumeration instance. 
 
 ### Guides
 #### For Coffeescript users
-> → [coffeescript-users guide](COFFEE.GUIDE.MD#top)  
+> → [COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top)  
 #### For Javascript users
-> → [javascript-users guide](JS.GUIDE.MD#top)  
+> → [JS.GUIDE.MD](JS.GUIDE.MD#top)  
 
 <a name="ecmascript"></a>
 ### Ecmascript compatibility
