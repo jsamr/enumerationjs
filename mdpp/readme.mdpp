@@ -9,7 +9,7 @@ How about doing the same in javascript/coffeescript?*
 **Pros & Cons**
 - ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.  
 - ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.  
-- ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  (example in [JS](JS.GUIDE.MD##refactoring) | [COFFEE](COFFEE.GUIDE.MD##refactoring)) 
+- ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  (example in [JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring)) 
 - ✓ The enumerations are guarantied unique and frozen : you cannot instantiate two enumerations with a same name    
 - ✓ Lightweight deserialization with `enumInstance.from(identifier)` and serialization with `enumInstance.ENUM_VALUE.id()`  
 - ✓ You can hack a class to inherit the Enumeration instance enum values and methods (example in [JS](JS.GUIDE.MD#hackdaclassincorporateaspublicclassfields) | [COFFEE](COFFEE.GUIDE.MD#hackdaclassincorporateaspublicclassfields)).  
