@@ -1,4 +1,4 @@
-## Basic usage
+## Basic usage with raw descriptors
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate id (value associated to key) is given, an error will show up  
 > ✓ If a key conflicts with one amongst Enumeration instance reserved methods, an error will show up : you should always use uppercase strings as keys to avoid any conflict - plus it's a standard for enums.  

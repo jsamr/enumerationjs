@@ -1,4 +1,4 @@
-## Use more complex enum descriptors
+## Use of structured descriptors
 
 > ⚠ Each descriptor **must** contain an `_id` field of type `string` or `number`, an exception will be thrown otherwise.  
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  

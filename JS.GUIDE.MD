@@ -8,16 +8,16 @@
 <a name="toc"></a>
 **TABLE OF CONTENTS**
 <br/>
-1\.  [Basic usage](#basicusage)  
+1\.  [Basic usage with raw descriptors](#basicusagewithrawdescriptors)  
 2\.  [A prototype for enum values](#aprototypeforenumvalues)  
-3\.  [Use more complex enum descriptors](#usemorecomplexenumdescriptors)  
+3\.  [Use of structured descriptors](#useofstructureddescriptors)  
 4\.  [Extend your Enumeration with prototype inheritance](#extendyourenumerationwithprototypeinheritance)  
 5\.  [Hack da class, incorporate as public class fields](#hackdaclassincorporateaspublicclassfields)  
 6\.  [The constructor signature](#theconstructorsignature)  
 
-<a name="basicusage"></a>
+<a name="basicusagewithrawdescriptors"></a>
 
-## 1\. Basic usage
+## 1\. Basic usage with raw descriptors
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate id (value associated to key) is given, an error will show up  
 > ✓ If a key conflicts with one amongst Enumeration instance reserved methods, an error will show up : you should always use uppercase strings as keys to avoid any conflict - plus it's a standard for enums.  
@@ -71,9 +71,9 @@ var closeEventCodes = new Enumeration("closeEventCodes", {
 ```javascript
 closeEventCodes.CLOSE_NO_STATUS.print() # prints 'CLOSE_NO_STATUS:1005'
 ```
-<a name="usemorecomplexenumdescriptors"></a>
+<a name="useofstructureddescriptors"></a>
 
-## 3\. Use more complex enum descriptors
+## 3\. Use of structured descriptors
 
 > ⚠ Each descriptor **must** contain an `_id` field of type `string` or `number`, an exception will be thrown otherwise.  
 > ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
