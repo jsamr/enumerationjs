@@ -101,6 +101,4 @@ These methods prevent user from mistakenly modify any property from the Enumerat
 For older browser, those methods can be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim), however the write permissions will be ignored.   
 The only issue might be with `Object.defineProperty`[on IE8](https://github.com/es-shims/es5-shim/issues/5) for versions lower then v2.0.10.   
 
-Node version 0.5.1 and upper, published on July 14,  2011 support ECMAScript 5th edition.  
-
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
