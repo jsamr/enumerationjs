@@ -4,9 +4,9 @@ enumeration : Java-like enum for javascript/coffeescript
 !INCLUDE "lastbuild.mdpp"
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
-How about doing the same in javascript/coffeescript?*  
+How about doing the same in javascript/coffeescript with even more flexibility?*  
 
-**Pros & Cons**
+**Pros**
 - ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.  
 - ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.  
 - ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring)) 
@@ -14,9 +14,10 @@ How about doing the same in javascript/coffeescript?*
 - ✓ Lightweight deserialization with `enumInstance.from(identifier)` and serialization with `enumInstance.ENUM_VALUE.id()`  
 - ✓ Rock solid jasmine specified tests. 
 
+**Cons**
 - ✗ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, or at least provide the appropriate workaround, see [this section](#ecmascript)
 - ✗ adds a dependency to **underscore.js**  
-- ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. Those are recoverable via `key()` and `id()` methods. However the `describe()` method returns a string with all those informations. And the `enumInstance.pretty()` returns a string with all the enum values and their associated descriptions.  
+- ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. See the [enum values API](#enumeration.valueinstances) for more info.
  
 Critics and suggestions are welcome
 
