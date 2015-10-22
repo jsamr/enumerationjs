@@ -152,7 +152,6 @@ describe 'Enumeration object', ->
     new Enumeration(nextEnumerationType(),{})
     list=Enumeration.list()
     length=list.length
-    console.log length
     expect(list).toEqual(jasmine.any(Array))
     list.pop
     expect(Enumeration.list().length).toBe(length)
