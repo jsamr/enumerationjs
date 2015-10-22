@@ -1,7 +1,7 @@
 {
-  "name":"enumeration",
+  "name":"enumeration.js",
   "description":"Java-like super flexible enums ! Move the logic. ",
-  "version":"1.0.0",
+  "version":"1.0.2",
   "author":"Jules Randolph <jules.randolph@usherbrooke.ca>",
   "main":"lib/Enumeration.js",
   "scripts": {
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type":"git",
-    "url":"https://github.com/sveinburne/enumeration"
+    "url":"https://github.com/sveinburne/enumeration.js"
   },
   "bugs": {
-    "url":"https://github.com/sveinburne/enumeration/issues"
+    "url":"https://github.com/sveinburne/enumeration.js/issues"
   },
   "devDependencies": {
     "coffee-script":"1.x",

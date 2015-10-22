@@ -1,6 +1,6 @@
 <a name="top"></a>
-enumeration : Java-like enum for javascript/coffeescript  
-=========================================================
+#enumeration : Java-like enum for javascript/coffeescript  
+
 ![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master) 
 **42 specs, 0 failures**
 
@@ -33,6 +33,7 @@ Critics and suggestions are welcome
 2.1\.  [For Coffeescript users](#forcoffeescriptusers)  
 2.2\.  [For Javascript users](#forjavascriptusers)  
 3\.  [Ecmascript compatibility](#ecmascriptcompatibility)  
+4\.  [Dependencies](#dependencies)  
 
 <a name="quickapioverview"></a>
 
@@ -100,5 +101,11 @@ These methods prevent user from mistakenly modify any property from the Enumerat
 **any attempt to reconfigure a non-configurable property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.     
 For older browser, those methods can be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim), however the write permissions will be ignored.   
 The only issue might be with `Object.defineProperty`[on IE8](https://github.com/es-shims/es5-shim/issues/5) for versions lower then v2.0.10.   
+
+<a name="dependencies"></a>
+
+### 4\. Dependencies
+Relies on coffeescript 1.x and underscore >=1.1. 
+Therefore, runs one node >=0.10
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
