@@ -11,33 +11,33 @@ States = Object.freeze({
 stateHandler = {
   someFun1: function() {
     //do some stuff relative to this instance ...
-    return console.log("Error 1");
+    console.log("Error 1");
   },
   someFun2: function() {
     //do some stuff relative to this instance ...
-    return console.log("Error 2");
+     console.log("Error 2");
   },
   someFun3: function() {
     //do some stuff relative to this instance ...
-    return console.log("Error 3");
+    console.log("Error 3");
   },
   onError: function(state) {
     if (state === States.ERROR_1) {
-      return this.someFun1();
+      this.someFun1();
     } else if (state === States.ERROR_2) {
-      return this.someFun2();
+      this.someFun2();
     } else if (state === States.ERROR_3) {
-      return this.someFun3();
+      this.someFun3();
     }
   },
   onSuccess: function() {
-    return console.log("Success!");
+     console.log("Success!");
   },
   handle: function(state) {
     if (state === States.OK) {
-      return this.onSuccess();
+      this.onSuccess();
     } else {
-      return this.onError(state);
+      this.onError(state);
     }
   }
 };

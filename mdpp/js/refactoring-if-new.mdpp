@@ -8,7 +8,7 @@ var States = new Enumeration('States', {
   ERROR_3: { _id: 3, msg: "An error of type 3 occurred" }
 }, { 
   report: function() {
-    return console.log(this.msg);
+    console.log(this.msg);
   }
 });
 

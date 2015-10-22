@@ -254,7 +254,7 @@ stateHandler=
 ```
 
 Cleaner, isn't it?
-<br/>
+<br/><br>
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
 **← Back to [README.MD](README.MD#top)**  
 

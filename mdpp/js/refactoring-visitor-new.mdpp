@@ -7,25 +7,25 @@ States = new Enumeration('States', {
   ERROR_2: {  _id: 2, fun: 'someFun2' },
   ERROR_3: {  _id: 3, fun: 'someFun3' }
 }, { handle: function(handler) {
-    return handler[this.fun]();
+    handler[this.fun]();
   }
 });
 
 stateHandler = {
   someFun1: function() {
-    return console.log("Error 1");
+    console.log("Error 1");
   },
   someFun2: function() {
-    return console.log("Error 2");
+    console.log("Error 2");
   },
   someFun3: function() {
-    return console.log("Error 3");
+    console.log("Error 3");
   },
   onSuccess: function() {
-    return console.log("Success!");
+    console.log("Success!");
   },
   handle: function(state) {
-    return state.handle(this);
+    state.handle(this);
   }
 };
 ```

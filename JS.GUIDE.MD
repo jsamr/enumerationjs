@@ -223,7 +223,7 @@ var States = new Enumeration('States', {
   ERROR_3: { _id: 3, msg: "An error of type 3 occurred" }
 }, { 
   report: function() {
-    return console.log(this.msg);
+    console.log(this.msg);
   }
 });
 
@@ -245,33 +245,33 @@ States = Object.freeze({
 stateHandler = {
   someFun1: function() {
     //do some stuff relative to this instance ...
-    return console.log("Error 1");
+    console.log("Error 1");
   },
   someFun2: function() {
     //do some stuff relative to this instance ...
-    return console.log("Error 2");
+     console.log("Error 2");
   },
   someFun3: function() {
     //do some stuff relative to this instance ...
-    return console.log("Error 3");
+    console.log("Error 3");
   },
   onError: function(state) {
     if (state === States.ERROR_1) {
-      return this.someFun1();
+      this.someFun1();
     } else if (state === States.ERROR_2) {
-      return this.someFun2();
+      this.someFun2();
     } else if (state === States.ERROR_3) {
-      return this.someFun3();
+      this.someFun3();
     }
   },
   onSuccess: function() {
-    return console.log("Success!");
+     console.log("Success!");
   },
   handle: function(state) {
     if (state === States.OK) {
-      return this.onSuccess();
+      this.onSuccess();
     } else {
-      return this.onError(state);
+      this.onError(state);
     }
   }
 };
@@ -285,30 +285,30 @@ States = new Enumeration('States', {
   ERROR_2: {  _id: 2, fun: 'someFun2' },
   ERROR_3: {  _id: 3, fun: 'someFun3' }
 }, { handle: function(handler) {
-    return handler[this.fun]();
+    handler[this.fun]();
   }
 });
 
 stateHandler = {
   someFun1: function() {
-    return console.log("Error 1");
+    console.log("Error 1");
   },
   someFun2: function() {
-    return console.log("Error 2");
+    console.log("Error 2");
   },
   someFun3: function() {
-    return console.log("Error 3");
+    console.log("Error 3");
   },
   onSuccess: function() {
-    return console.log("Success!");
+    console.log("Success!");
   },
   handle: function(state) {
-    return state.handle(this);
+    state.handle(this);
   }
 };
 ```
 
 Cleaner, isn't it?
-<br>
+<br><br>
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
 **← Back to [README.MD](README.MD#top)**  
