@@ -18,4 +18,5 @@ closeEventCodes.CLOSE_PROTOCOL_ERROR.type()                  # evaluates to 'clo
 closeEventCodes.CLOSE_PROTOCOL_ERROR.describe()              # evaluates to 'CLOSE_PROTOCOL_ERROR:1002'
 closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL # evaluates to true
 1006 is closeEventCodes.CLOSE_ABNORMAL                       # evaluates to false
+closeEventCodes.CLOSE_ABNORMAL instanceof closeEventCodes    # evaluates to true
 ```

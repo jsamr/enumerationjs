@@ -1,8 +1,8 @@
 <a name="top"></a>
-#enumeration : Java-like enum for javascript/coffeescript  
+# enumeration : Java-like enum for javascript/coffeescript  
 
 ![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master) 
-**42 specs, 0 failures**
+**43 specs, 0 failures**
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript with even more flexibility?*  
@@ -14,6 +14,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ The enumerations are guarantied unique and frozen : you cannot instantiate two enumerations with a same name    
 - ✓ Lightweight deserialization with `enumInstance.from(identifier)` and serialization with `enumInstance.ENUM_VALUE.id()`  
 - ✓ Rock solid jasmine specified tests. 
+- ✓ Enum values are typed : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` 
 
 **Cons**
 - ✗ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, or at least provide the appropriate workaround, see [this section](#ecmascript)
@@ -63,8 +64,9 @@ Each **enum value** will have the following methods :
 <a name="enumerationinstance"></a>
 
 #### 1.3\. Enumeration instance
-- `from(id)`  : retrieve the enum value instance that matches given `id`  
-- `pretty()`  : give a pretty description of this Enumeration instance and all its enum values, useful for logging/debugging  
+- `from(id,throwOnFailure=false)`  : retrieve the enum value instance that matches given `id`. [optional] throwOnFailure, default to false, throws an error when no id match.  
+- `pretty()`                       : give a pretty description of this Enumeration instance and all its enum values, useful for logging/debugging  
+- `()`                             : shortcut for pretty()
  
 <a name="enumerationobject"></a>
 
@@ -105,7 +107,7 @@ The only issue might be with `Object.defineProperty`[on IE8](https://github.com/
 <a name="dependencies"></a>
 
 ### 4\. Dependencies
-Relies on coffeescript 1.x and underscore >=1.1. 
+Relies on underscore >=1.1. 
 Therefore, runs one node >=0.10
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  

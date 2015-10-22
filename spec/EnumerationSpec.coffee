@@ -31,6 +31,8 @@ describe 'Enumeration values when descriptors are raw types :',  ->
     expect(enumType).toBe(closeEventCodes[key].type()) for key of descriptors
   it 'should share prototype\'s properties', ->
     expect(prototype.someStupidFun).toBe(closeEventCodes[key].someStupidFun) for key of descriptors
+  it 'should be instanceof their Enumeration instance object', ->
+    expect(enumvVal instanceof closeEventCodes).toBe(true) for key,enumvVal of closeEventCodes
 
 describe 'Enumeration values when descriptors are structured objects :',  ->
   closeEventCodes=null
