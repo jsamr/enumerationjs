@@ -1,7 +1,7 @@
 {
   "name": "enumeration.js",
   "description": "Java-like super flexible enums ! Move the logic. ",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Jules Randolph <jules.randolph@usherbrooke.ca>",
   "main": "lib/Enumeration.js",
   "scripts": {

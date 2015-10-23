@@ -17,6 +17,7 @@ describe 'Enumeration ', ->
     list.pop
     expect(Enumeration.list().length).toBe(length)
 
+
 describe 'Enumeration values when descriptors are raw types :',  ->
   closeEventCodes=null
   descriptors=null
@@ -158,4 +159,10 @@ describe 'Enumeration instance', ->
     expect(-> new Enumeration(nextEnumerationType(),{KEY1:1,KEY2:2}).from(3)).not.toThrow()
   it '\'s prototype should be Function.prototype ', ->
     expect(new Enumeration(nextEnumerationType(),{}).__proto__).toBe(Function.prototype)
-
+  it ' pretty field should be a function' , ->
+    expect( (new Enumeration(nextEnumerationType(),{KEY1:1,KEY2:2})).pretty?).toBe(true)
+    expect( _.isFunction  (new Enumeration(nextEnumerationType(),{KEY1:1,KEY2:2})).pretty ).toBe(true)
+  it 'pretty function should return a string', ->
+      expect( _.isString (new Enumeration(nextEnumerationType(),{KEY1:1,KEY2:2})).pretty() ).toBe(true)
+  it 'function should return a string', ->
+      expect( _.isString (new Enumeration(nextEnumerationType(),{KEY1:1,KEY2:2})()) ).toBe(true)
