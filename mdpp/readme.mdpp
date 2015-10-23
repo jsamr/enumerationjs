@@ -37,10 +37,10 @@ You want to use the source from scratch? You want the bundle.
 > [PRETTY SOURCE](pub/Enumeration.bd.js) | [MINIFIED SOURCE](pub/Enumeration.bd.min.js)
 
 #### Light version ~ AMD Compatible
-**Works for AMD module users (Requirejs...)**
-⚠ Assuming you can provide **underscore** dependency, see [this section](#dependencies)
-**For other users**
-⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.
+**Works for AMD module users (Requirejs...)**  
+⚠ Assuming you can provide **underscore** dependency, see [this section](#dependencies)  
+**For other users**  
+⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.  
 
 > [PRETTY SOURCE](pub/Enumeration.js) | [MINIFIED SOURCE](Enumeration.min.js)
 

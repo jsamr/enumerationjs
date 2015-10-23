@@ -3,10 +3,10 @@
   "description": "Java-like super flexible enums ! Move the logic. ",
   "version": "1.2.1",
   "author": "Jules Randolph <jules.randolph@usherbrooke.ca>",
-  "main": "lib/Enumeration.js",
+  "main": "pub/Enumeration.min.js",
   "scripts": {
     "test": "jasmine",
-    "prepublish": "coffee --compile --bare -p src/Enumeration.coffee | uglifyjs > lib/Enumeration.js"
+    "prepublish": "coffee --compile --bare -p src/Enumeration.coffee | uglifyjs > pub/Enumeration.min.js"
   },
   "repository": {
     "type": "git",

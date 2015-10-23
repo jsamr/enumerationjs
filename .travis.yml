@@ -10,4 +10,3 @@ adfter_success:
   - 'coffee --compile --bare -p src/Enumeration.coffee |  browserify - --standalone Enumeration > pub/Enumeration.bd.js'
   - 'coffee --compile --bare -p src/Enumeration.coffee |  browserify - --standalone Enumeration | uglifyjs > pub/Enumeration.bd.min.js'
   - 'coffee --compile --bare -p src/Enumeration.coffee > pub/Enumeration.js'
-  - 'coffee --compile --bare -p src/Enumeration.coffee | uglifyjs > pub/Enumeration.min.js'
