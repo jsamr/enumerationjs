@@ -67,16 +67,20 @@ Don't want to waste space?
 
 #### 1.3\. Node
 > `npm install enumeration.js`    
-> `var Enumeration = require("enumeration.js")`   
+> `Enumeration = require("enumeration.js")`   
 
 Runs one node >=0.10  
 
 <a name="meteor"></a>
 
+
 #### 1.4\. Meteor
+<!---
 > `meteor add sveinburne:enumeration.js`
 
 Global constructor `Enumeration` will be available
+-->
+Comming soon...
 
 
 

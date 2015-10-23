@@ -52,10 +52,16 @@ Don't want to waste space?
 
 Runs one node >=0.10  
 
+#### Bower
+
+
 #### Meteor
+<!---
 > `meteor add sveinburne:enumeration.js`
 
 Global constructor `Enumeration` will be available
+-->
+Comming soon...
 
 
 
