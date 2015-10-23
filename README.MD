@@ -2,7 +2,7 @@
 # enumeration : Java-like enum for javascript/coffeescript  
 
 ![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master) ![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
-**38 specs, 14 failures**
+**44 specs, 0 failures**
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript with even more flexibility?*  
@@ -50,17 +50,17 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 #### 1.1\. Bundled version ~ AMD Compatible
 You want to use the source from scratch? You want the bundle.
 
-> [PRETTY SOURCE](pub/Enumeration.bd.js) | [MINIFIED SOURCE](pub/Enumeration.bd.min.js)
+> [PRETTY SOURCE](publish/Enumeration.bd.js) | [MINIFIED SOURCE](publish/Enumeration.bd.min.js)
 
 <a name="lightversion~amdcompatible"></a>
 
 #### 1.2\. Light version ~ AMD Compatible
-**Works for AMD module users (Requirejs...)**
-⚠ Assuming you can provide **underscore** dependency, see [this section](#dependencies)
-**For other users**
-⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.
+**Works for AMD module users (Requirejs...)**  
+⚠ Assuming you can provide **underscore** dependency, see [this section](#dependencies)  
+**For other users**  
+⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.  
 
-> [PRETTY SOURCE](pub/Enumeration.js) | [MINIFIED SOURCE](Enumeration.min.js)
+> [PRETTY SOURCE](publish/Enumeration.js) | [MINIFIED SOURCE]((publish/Enumeration.min.js)
 
 <a name="node"></a>
 
