@@ -52,7 +52,7 @@ class Enumeration
   ###
   constructor:(enumType,enumValues,proto={}) ->
     idToKeyMap=_.object(_.map(enumValues,(key,value) -> [key._id or key,value]))
-    self= -> @pretty()
+    self= -> self.pretty()
     #Guarantees identifiers uniqueness
     ids=[]
     if not _.isString(enumType) then throw "missing or bad enumType value : must be a string"
