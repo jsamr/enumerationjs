@@ -6,7 +6,7 @@
   "main": "publish/Enumeration.min.js",
   "scripts": {
     "test": "jasmine",
-    "prepublish": "coffee --compile --bare -p src/Enumeration.coffee | uglifyjs > pub/Enumeration.min.js"
+    "prepublish": "coffee --compile --bare -p src/Enumeration.coffee | uglifyjs > publish/Enumeration.min.js"
   },
   "repository": {
     "type": "git",
