@@ -1,7 +1,7 @@
 'strict mode'
 enumTypes=[]
 
-_=require("underscore")
+_= require('lodash')
 #Java like enum
 class Enumeration
   ###*

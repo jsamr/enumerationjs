@@ -1,7 +1,8 @@
 <a name="top"></a>
 # enumeration : Java-like enum for javascript/coffeescript  
 
-![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master) 
+![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)
+![Dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
 **43 specs, 0 failures**
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
@@ -16,10 +17,10 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ Rock solid jasmine specified tests. 
 - ✓ Enum values are typed : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` 
 
-**Cons**
-- ✗ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, or at least provide the appropriate workaround, see [this section](#ecmascript)
-- ✗ adds a dependency to **underscore.js**  
-- ✗ the key/identifier of an enum value does not appear explicitly inside the object instance. See the [enum values API](#enumeration.valueinstances) for more info.
+**?**
+- ⚠ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, or at least provide the appropriate workaround, see [this section](#ecmascript)
+- ⚠ adds a dependency to **lodash**  
+- ⚠ the key/identifier of an enum value does not appear explicitly inside the object instance. See the [enum values API](#enumeration.valueinstances) for more info.
  
 Critics and suggestions are welcome
 
@@ -107,7 +108,7 @@ The only issue might be with `Object.defineProperty`[on IE8](https://github.com/
 <a name="dependencies"></a>
 
 ### 4\. Dependencies
-Relies on underscore >=1.1. 
+Relies on lodash >=3.0 
 Therefore, runs one node >=0.10
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
