@@ -5,7 +5,7 @@
   "author": "Jules Randolph <jules.randolph@usherbrooke.ca>",
   "main": "lib/Enumeration.js",
   "scripts": {
-    "test": "istanbul cover --include-all-sources jasmine ",
+    "test": "jasmine",
     "prepublish": "coffee --bare --compile --output lib/ src/Enumeration.coffee"
   },
   "repository": {
@@ -16,10 +16,9 @@
     "url": "https://github.com/sveinburne/enumeration.js/issues"
   },
   "devDependencies": {
-    "istanbul": "^0.4.0",
     "coffee-script": "1.x",
-    "jasmine": "2.x",
-    "coveralls": "^2.11.4"
+    "coveralls": "^2.11.4",
+    "jasmine": "2.x"
   },
   "dependencies": {
     "lodash": "3"
@@ -29,7 +28,8 @@
   },
   "keywords": [
     "enum",
-    "enumeration"
+    "enumeration",
+    "java-like"
   ],
   "analyse": true,
   "license": "MIT"

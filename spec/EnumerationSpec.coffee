@@ -1,9 +1,21 @@
-Enumeration=require('../src/Enumeration.coffee')
+Enumeration=require '../src/Enumeration.coffee'
+_=require "lodash"
 nextEnumerationType=do ->
   counter=0
   -> "enumerationInstance#{counter++}"
 
 
+
+describe 'Enumeration ', ->
+  it ' should be a function', ->
+    expect(_.isFunction(Enumeration)).toBe(true)
+  it ' list method should return a copy of Enumeration\'s backed up array, i.e. no side effect can occur', ->
+    new Enumeration(nextEnumerationType(),{})
+    list=Enumeration.list()
+    length=list.length
+    expect(list).toEqual(jasmine.any(Array))
+    list.pop
+    expect(Enumeration.list().length).toBe(length)
 
 describe 'Enumeration values when descriptors are raw types :',  ->
   closeEventCodes=null
@@ -147,11 +159,3 @@ describe 'Enumeration instance', ->
   it '\'s prototype should be Function.prototype ', ->
     expect(new Enumeration(nextEnumerationType(),{}).__proto__).toBe(Function.prototype)
 
-describe 'Enumeration object', ->
-  it ' list method should return a copy of Enumeration\'s backed up array, i.e. no side effect can occur', ->
-    new Enumeration(nextEnumerationType(),{})
-    list=Enumeration.list()
-    length=list.length
-    expect(list).toEqual(jasmine.any(Array))
-    list.pop
-    expect(Enumeration.list().length).toBe(length)
