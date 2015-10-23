@@ -1,4 +1,3 @@
-'strict mode'
 enumTypes=[]
 
 _= require('underscore')
