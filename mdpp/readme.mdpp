@@ -34,7 +34,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 #### Bundled version ~ AMD Compatible
 You want to use the source from scratch? You want the bundle.
 
-> [PRETTY SOURCE](pub/Enumeration.bd.js) | [MINIFIED SOURCE](pub/Enumeration.bd.min.js)
+> [PRETTY SOURCE](publish/Enumeration.bd.js) | [MINIFIED SOURCE](publish/Enumeration.bd.min.js)
 
 #### Light version ~ AMD Compatible
 **Works for AMD module users (Requirejs...)**  
@@ -42,7 +42,7 @@ You want to use the source from scratch? You want the bundle.
 **For other users**  
 ⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.  
 
-> [PRETTY SOURCE](pub/Enumeration.js) | [MINIFIED SOURCE](Enumeration.min.js)
+> [PRETTY SOURCE](publish/Enumeration.js) | [MINIFIED SOURCE]((publish/Enumeration.min.js)
 
 #### Node
 > `npm install enumeration.js` 
