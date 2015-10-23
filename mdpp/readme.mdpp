@@ -6,7 +6,7 @@
 *Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript with even more flexibility?*  
 
-**Pros**
+**PROS**
 - ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.  
 - ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.  
 - ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring)) 
@@ -15,14 +15,14 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ Rock solid jasmine specified tests. 
 - ✓ Enum values are typed : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` 
 
-**Warns**
+**WARNS**
 - ⚠ you **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
 - ⚠ adds a dependency to **lodash**  
  
-**Examples**
+**EXAMPLES**
 
-> for coffescript devs [→ COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top)  
-> for js devs          [→ JS.GUIDE.MD](JS.GUIDE.MD#top)  
+> [→ COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top) for coffescript devs   
+> [→ JS.GUIDE.MD](JS.GUIDE.MD#top)         for js devs         
 
 <a name="toc"></a>
 **TABLE OF CONTENTS**  
