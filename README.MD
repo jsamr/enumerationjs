@@ -48,9 +48,9 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 <a name="bundledversion~amdcompatible"></a>
 
 #### 1.1\. Bundled version ~ AMD Compatible
-You want to use the source from scratch? 
+You want to use the source from scratch? Bundled with **underscore**
 
-> [SOURCE ~ 59K](publish/Enumeration.bd.js) | [MINIFIED ~ 30K](publish/Enumeration.bd.min.js)
+> [SOURCE ~ 59K](https://github.com/sveinburne/enumeration.js/publish/Enumeration.bd.js) | [MINIFIED ~ 30K](https://github.com/sveinburne/enumeration.js/publish/Enumeration.bd.min.js)
 
 <a name="lightweightversion~amdcompatible"></a>
 
@@ -62,7 +62,7 @@ Don't want to waste space?
 **For other users**  
 ⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.  
 
-> [SOURCE ~ 6.4K](publish/Enumeration.js) | [MINIFIED ~ 3.5K](publish/Enumeration.min.js)
+> [SOURCE ~ 6.4K](https://github.com/sveinburne/enumeration.js/publish/Enumeration.js) | [MINIFIED ~ 3.5K](https://github.com/sveinburne/enumeration.js/publish/Enumeration.min.js)
 
 <a name="node"></a>
 
