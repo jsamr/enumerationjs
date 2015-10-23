@@ -28,8 +28,8 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 
 **TABLE OF CONTENTS**  
 1\.  [Install](#install)  
-1.1\.  [Bundled version ~ AMD Compatible](#bundledversion~amdcompatible)  
-1.2\.  [Lightweight version ~ AMD Compatible](#lightweightversion~amdcompatible)  
+1.1\.  [Bundled version ~ AMD Compatible, CommonJS compatible](#bundledversion~amdcompatiblecommonjscompatible)  
+1.2\.  [Lightweight version ~ AMD Compatible, CommonJS compatible](#lightweightversion~amdcompatiblecommonjscompatible)  
 1.3\.  [Node](#node)  
 1.4\.  [Meteor](#meteor)  
 2\.  [Quick api overview](#quickapioverview)  
@@ -44,16 +44,16 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 
 ### 1\. Install
 
-<a name="bundledversion~amdcompatible"></a>
+<a name="bundledversion~amdcompatiblecommonjscompatible"></a>
 
-#### 1.1\. Bundled version ~ AMD Compatible
+#### 1.1\. Bundled version ~ AMD Compatible, CommonJS compatible
 You want to use the source from scratch? Bundled with **underscore**
 
-> [SOURCE ~ 59K](https://github.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.js) | [MINIFIED ~ 30K](https://github.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.min.js)
+> [SOURCE ~ 59K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.min.js)
 
-<a name="lightweightversion~amdcompatible"></a>
+<a name="lightweightversion~amdcompatiblecommonjscompatible"></a>
 
-#### 1.2\. Lightweight version ~ AMD Compatible
+#### 1.2\. Lightweight version ~ AMD Compatible, CommonJS compatible
 Don't want to waste space? 
 
 **Works for AMD module users (Requirejs...)**  
@@ -61,7 +61,7 @@ Don't want to waste space?
 **For other users**  
 ⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.  
 
-> [SOURCE ~ 6.4K](https://github.com/sveinburne/enumeration.js/master/publish/Enumeration.js) | [MINIFIED ~ 3.5K](https://github.com/sveinburne/enumeration.js/master/publish/Enumeration.min.js)
+> [SOURCE ~ 6.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.js) | [MINIFIED ~ 3.5K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.min.js)
 
 <a name="node"></a>
 
@@ -74,7 +74,7 @@ Runs one node >=0.10
 <a name="meteor"></a>
 
 #### 1.4\. Meteor
-> Meteor `meteor add sveinburne:enumeration.js`
+> `meteor add sveinburne:enumeration.js`
 
 Global constructor `Enumeration` will be available
 
