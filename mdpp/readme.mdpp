@@ -15,12 +15,14 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ Rock solid jasmine specified tests. 
 - ✓ Enum values are typed : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` 
 
-**Disclaimers**
-- ⚠ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
+**Warns**
+- ⚠ you **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
 - ⚠ adds a dependency to **lodash**  
-- ⚠ the key/identifier of an enum value does not appear explicitly inside the object instance. See the [enum values API](#enumeration.valueinstances) for more info.
  
-Critics and suggestions are welcome
+**Examples**
+
+> for coffescript devs [→ COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top)  
+> for js devs          [→ JS.GUIDE.MD](JS.GUIDE.MD#top)  
 
 <a name="toc"></a>
 **TABLE OF CONTENTS**  
@@ -53,11 +55,6 @@ Each **enum value** will have the following methods :
 #### Enumeration object
 - `Enumeration.list()` : returns an array containing the `enumType` for each Enumeration instance. 
 
-### Guides
-#### For Coffeescript users
-> → [COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top)  
-#### For Javascript users
-> → [JS.GUIDE.MD](JS.GUIDE.MD#top)  
 
 <a name="ecmascript"></a>
 ### Ecmascript compatibility

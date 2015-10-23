@@ -1,7 +1,7 @@
 <a name="top"></a>
 # enumeration : Java-like enum for javascript/coffeescript  
 
-![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master)![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
+![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master) ![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
 **44 specs, 0 failures**
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
@@ -16,12 +16,14 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ Rock solid jasmine specified tests. 
 - ✓ Enum values are typed : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` 
 
-**Disclaimers**
-- ⚠ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
+**Warns**
+- ⚠ you **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
 - ⚠ adds a dependency to **lodash**  
-- ⚠ the key/identifier of an enum value does not appear explicitly inside the object instance. See the [enum values API](#enumeration.valueinstances) for more info.
  
-Critics and suggestions are welcome
+**Examples**
+
+> for coffescript devs [→ COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top)  
+> for js devs          [→ JS.GUIDE.MD](JS.GUIDE.MD#top)  
 
 <a name="toc"></a>
 **TABLE OF CONTENTS**  
@@ -30,11 +32,8 @@ Critics and suggestions are welcome
 1.2\.  [Enumeration.value instances](#enumeration.valueinstances)  
 1.3\.  [Enumeration instance](#enumerationinstance)  
 1.4\.  [Enumeration object](#enumerationobject)  
-2\.  [Guides](#guides)  
-2.1\.  [For Coffeescript users](#forcoffeescriptusers)  
-2.2\.  [For Javascript users](#forjavascriptusers)  
-3\.  [Ecmascript compatibility](#ecmascriptcompatibility)  
-4\.  [Dependencies](#dependencies)  
+2\.  [Ecmascript compatibility](#ecmascriptcompatibility)  
+3\.  [Dependencies](#dependencies)  
 
 <a name="quickapioverview"></a>
 
@@ -73,22 +72,11 @@ Each **enum value** will have the following methods :
 #### 1.4\. Enumeration object
 - `Enumeration.list()` : returns an array containing the `enumType` for each Enumeration instance. 
 
-<a name="guides"></a>
-
-### 2\. Guides
-<a name="forcoffeescriptusers"></a>
-
-#### 2.1\. For Coffeescript users
-> → [COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top)  
-<a name="forjavascriptusers"></a>
-
-#### 2.2\. For Javascript users
-> → [JS.GUIDE.MD](JS.GUIDE.MD#top)  
 
 <a name="ecmascript"></a>
 <a name="ecmascriptcompatibility"></a>
 
-### 3\. Ecmascript compatibility
+### 2\. Ecmascript compatibility
 
 > ECMA-262 5th edition was published on December 3, 2009 
 
@@ -105,7 +93,7 @@ For older browser, those methods can be polyfilled with [es5-shim](https://githu
 
 <a name="dependencies"></a>
 
-### 4\. Dependencies
+### 3\. Dependencies
 Relies on lodash >=3.0. 
 Therefore, runs one node >=0.10
 
