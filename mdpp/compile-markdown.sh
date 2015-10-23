@@ -11,23 +11,20 @@ if [[ $? -eq 127 ]] ; then echo "xmlstarlet is not installed" && exit 1;
 markdown-pp > /dev/null 2>&1
 fi
 if [[ $? -eq 127 ]] ; then echo "markdown-pp is not installed" && exit 1;
+rsvg-converter --version > /dev/null 2>&1
 fi
-reportFile=jasmine-report.svg
+if [[ $? -eq 127 ]] ; then echo "rsvg-converter from package librsvg2-bin is not installed" && exit 1;
+fi
+reportFile=jasmine-report
 jasmineReport=$(cd ../ && jasmine | sed -e '$!{h;d;}' -e x)
 reports=(${jasmineReport//,/ })
 style=""
 failures=${reports[@]:2:2}
 specs=${reports[@]:0:2}
-pwd
-xmlstarlet ed -L -N svg="http://www.w3.org/2000/svg" -u '//svg:defs/svg:text[@id="failures"]' -v "$failures"  $reportFile
-xmlstarlet ed -L -N svg="http://www.w3.org/2000/svg" -u '//svg:defs/svg:text[@id="specs"]' -v "$specs"  $reportFile
 if [[ ${reports[2]}  -eq 0 ]]; then style="fill:#44cc11;"
 else style="fill:#e05d44;"
 fi
-xmlstarlet ed -L -N svg="http://www.w3.org/2000/svg" -u '//svg:*[@class="wrapped"]/@style' -v $style  $reportFile
-
-
-
+xmlstarlet ed -N svg="http://www.w3.org/2000/svg" -u '//svg:defs/svg:text[@id="failures"]' -v "$failures" -u '//svg:defs/svg:text[@id="specs"]' -v "$specs" -u '//svg:*[@class="wrapped"]/@style' -v $style  ${reportFile}.svg | rsvg-convert -o ${reportFile}.png
 markdown-pp js-guide.mdpp -o ../JS.GUIDE.MD
 markdown-pp coffee-guide.mdpp -o ../COFFEE.GUIDE.MD
 markdown-pp readme.mdpp -o ../README.MD

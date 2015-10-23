@@ -1,7 +1,7 @@
 <a name="top"></a>
 # enumeration.js : Java-like enum for javascript/coffeescript  
 
-![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master) ![jasmine](https://raw.githubusercontent.com/sveinburne/enumeration.js/umd/mdpp/jasmine-report.svg) ![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
+![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master) ![jasmine](mdpp/jasmine-report.png) ![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript with even more flexibility?*  
