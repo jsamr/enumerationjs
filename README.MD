@@ -1,5 +1,5 @@
 <a name="top"></a>
-# enumeration : Java-like enum for javascript/coffeescript  
+# enumeration.js : Java-like enum for javascript/coffeescript  
 
 ![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master) ![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
 **44 specs, 0 failures**
@@ -50,7 +50,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 #### 1.1\. Bundled version ~ AMD Compatible
 You want to use the source from scratch? Bundled with **underscore**
 
-> [SOURCE ~ 59K](https://github.com/sveinburne/enumeration.js/publish/Enumeration.bd.js) | [MINIFIED ~ 30K](https://github.com/sveinburne/enumeration.js/publish/Enumeration.bd.min.js)
+> [SOURCE ~ 59K](https://github.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.js) | [MINIFIED ~ 30K](https://github.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.min.js)
 
 <a name="lightweightversion~amdcompatible"></a>
 
@@ -62,7 +62,7 @@ Don't want to waste space?
 **For other users**  
 ⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.  
 
-> [SOURCE ~ 6.4K](https://github.com/sveinburne/enumeration.js/publish/Enumeration.js) | [MINIFIED ~ 3.5K](https://github.com/sveinburne/enumeration.js/publish/Enumeration.min.js)
+> [SOURCE ~ 6.4K](https://github.com/sveinburne/enumeration.js/master/publish/Enumeration.js) | [MINIFIED ~ 3.5K](https://github.com/sveinburne/enumeration.js/master/publish/Enumeration.min.js)
 
 <a name="node"></a>
 
