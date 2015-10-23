@@ -1,7 +1,7 @@
 <a name="top"></a>
 # enumeration : Java-like enum for javascript/coffeescript  
 
-![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master) 
+![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
 **43 specs, 0 failures**
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
@@ -17,7 +17,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ Enum values are typed : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` 
 
 **Disclaimers**
-- ⚠ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, or at least provide the es5-shim package, see [this section](#ecmascript)
+- ⚠ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
 - ⚠ adds a dependency to **lodash**  
 - ⚠ the key/identifier of an enum value does not appear explicitly inside the object instance. See the [enum values API](#enumeration.valueinstances) for more info.
  

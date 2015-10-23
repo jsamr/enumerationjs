@@ -1,2 +1,2 @@
-![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master) 
+![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
 **43 specs, 0 failures**

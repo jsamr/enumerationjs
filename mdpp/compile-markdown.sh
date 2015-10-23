@@ -2,7 +2,7 @@
 # This script compiles markdown pre processor files (.mdpp) to README.MD and README.JS.MD files.
 # See the markdown-pp github project here : https://github.com/jreese/markdown-pp
 cd "${BASH_SOURCE%/*}" || exit 1
-travisTest='![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master) '
+travisTest='![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)'
 if [[ ! -f js-guide.mdpp ]] || [[ ! -f coffee-guide.mdpp ]] || [[ ! -f readme.mdpp ]]; then
     echo "Missing mdpp files !"
 fi
