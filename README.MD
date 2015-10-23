@@ -30,7 +30,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 **TABLE OF CONTENTS**  
 1\.  [Install](#install)  
 1.1\.  [Bundled version ~ AMD Compatible](#bundledversion~amdcompatible)  
-1.2\.  [Light version ~ AMD Compatible](#lightversion~amdcompatible)  
+1.2\.  [Lightweight version ~ AMD Compatible](#lightweightversion~amdcompatible)  
 1.3\.  [Node](#node)  
 1.4\.  [Meteor](#meteor)  
 2\.  [Quick api overview](#quickapioverview)  
@@ -48,31 +48,35 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 <a name="bundledversion~amdcompatible"></a>
 
 #### 1.1\. Bundled version ~ AMD Compatible
-You want to use the source from scratch? You want the bundle.
+You want to use the source from scratch? 
 
-> [PRETTY SOURCE](publish/Enumeration.bd.js) | [MINIFIED SOURCE](publish/Enumeration.bd.min.js)
+> [SOURCE ~ 59K](publish/Enumeration.bd.js) | [MINIFIED ~ 30K](publish/Enumeration.bd.min.js)
 
-<a name="lightversion~amdcompatible"></a>
+<a name="lightweightversion~amdcompatible"></a>
 
-#### 1.2\. Light version ~ AMD Compatible
+#### 1.2\. Lightweight version ~ AMD Compatible
+Don't want to waste space? 
+
 **Works for AMD module users (Requirejs...)**  
-⚠ Assuming you can provide **underscore** dependency, see [this section](#dependencies)  
+⚠ Assuming you can provide **underscore** dependency, see [this section](#dependencies)   
 **For other users**  
 ⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.  
 
-> [PRETTY SOURCE](publish/Enumeration.js) | [MINIFIED SOURCE]((publish/Enumeration.min.js)
+> [SOURCE ~ 6.4K](publish/Enumeration.js) | [MINIFIED ~ 3.5K](publish/Enumeration.min.js)
 
 <a name="node"></a>
 
 #### 1.3\. Node
-> `npm install enumeration.js` 
-> `var Enumeration = require("enumeration.js")`
-Runs one node >=0.10
+> `npm install enumeration.js`    
+> `var Enumeration = require("enumeration.js")`   
+
+Runs one node >=0.10  
 
 <a name="meteor"></a>
 
 #### 1.4\. Meteor
 > Meteor `meteor add sveinburne:enumeration.js`
+
 Global constructor `Enumeration` will be available
 
 
