@@ -10,23 +10,50 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.  
 - ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.  
 - ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring)) 
-- ✓ The enumerations are guarantied unique and frozen : you cannot instantiate two enumerations with a same name    
-- ✓ Lightweight deserialization with `enumInstance.from(identifier)` and serialization with `enumInstance.ENUM_VALUE.id()`  
-- ✓ Rock solid jasmine specified tests. 
-- ✓ Enum values are typed : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` 
+- ✓ The enumerations are guarantied unique and immutable : you cannot instantiate two enumerations with a same name    
+- ✓ Lightweight **deserialization** with `enumInstance.from(identifier)` and **serialization** with `enumInstance.ENUM_VALUE.id()`  
+- ✓ **Rock solid** jasmine specified tests. 
+- ✓ Enum values are **typed** : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` | since v1.1 
 
 **WARNS**
 - ⚠ you **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
-- ⚠ adds a dependency to **lodash**  
+- ⚠ Requires **lodash** or **underscore**, see [this section](#dependencies)  
  
+<a name="toc"></a>
 **EXAMPLES**
 
 > [→ COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top) for coffescript devs   
 > [→ JS.GUIDE.MD](JS.GUIDE.MD#top)         for js devs         
 
-<a name="toc"></a>
+
 **TABLE OF CONTENTS**  
 !TOC
+
+### Install
+
+#### Bundled version ~ AMD Compatible
+You want to use the source from scratch? You want the bundle.
+
+> [PRETTY SOURCE](pub/Enumeration.bd.js) | [MINIFIED SOURCE](pub/Enumeration.bd.min.js)
+
+#### Light version ~ AMD Compatible
+**Works for AMD module users (Requirejs...)**
+⚠ Assuming you can provide **underscore** dependency, see [this section](#dependencies)
+**For other users**
+⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.
+
+> [PRETTY SOURCE](pub/Enumeration.js) | [MINIFIED SOURCE](Enumeration.min.js)
+
+#### Node
+> `npm install enumeration.js` 
+> `var Enumeration = require("enumeration.js")`
+Runs one node >=0.10
+
+#### Meteor
+> Meteor `meteor add sveinburne:enumeration.js`
+Global constructor `Enumeration` will be available
+
+
 
 ### Quick api overview
 
@@ -73,7 +100,9 @@ These methods prevent user from mistakenly modify any property from the Enumerat
 For older browser, those methods can be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim), however the write permissions will be ignored.   
 
 ### Dependencies
-Relies on lodash >=3.0. 
-Therefore, runs one node >=0.10
+Relies on underscore >=1.1. 
+**NB** : On version 1.2 I switched to **lodash** for its optimizations and improvements, but on the other hand **underscore** appeared lighter for the bundled version, 
+plus it's heavily used my meteor.
+
 
 !INCLUDE "common/go-toc.mdpp"
