@@ -1,8 +1,7 @@
 <a name="top"></a>
 # enumeration : Java-like enum for javascript/coffeescript  
 
-![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master)
-![Dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
+![Travis build](https://travis-ci.org/sveinburne/enumeration.svg?branch=master) 
 **43 specs, 0 failures**
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
@@ -17,8 +16,8 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ Rock solid jasmine specified tests. 
 - ✓ Enum values are typed : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` 
 
-**?**
-- ⚠ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, or at least provide the appropriate workaround, see [this section](#ecmascript)
+**Disclaimers**
+- ⚠ you **must** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, or at least provide the es5-shim package, see [this section](#ecmascript)
 - ⚠ adds a dependency to **lodash**  
 - ⚠ the key/identifier of an enum value does not appear explicitly inside the object instance. See the [enum values API](#enumeration.valueinstances) for more info.
  
@@ -103,12 +102,11 @@ These methods prevent user from mistakenly modify any property from the Enumerat
 **any attempt to write a read-only property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.  
 **any attempt to reconfigure a non-configurable property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.     
 For older browser, those methods can be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim), however the write permissions will be ignored.   
-The only issue might be with `Object.defineProperty`[on IE8](https://github.com/es-shims/es5-shim/issues/5) for versions lower then v2.0.10.   
 
 <a name="dependencies"></a>
 
 ### 4\. Dependencies
-Relies on lodash >=3.0 
+Relies on lodash >=3.0. 
 Therefore, runs one node >=0.10
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
