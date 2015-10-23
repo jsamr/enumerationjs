@@ -49,7 +49,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 #### 1.1\. Bundled version ~ AMD Compatible, CommonJS compatible
 You want to use the source from scratch? Bundled with **underscore**
 
-> [SOURCE ~ 59K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.min.js)
+><a href="https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.js" download>SOURCE ~ 59K</a> | <a href="https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.min.js" download>MINIFIED ~ 30K</a>
 
 <a name="lightweightversion~amdcompatiblecommonjscompatible"></a>
 
@@ -61,7 +61,7 @@ Don't want to waste space?
 **For other users**  
 ⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.  
 
-> [SOURCE ~ 6.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.js) | [MINIFIED ~ 3.5K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.min.js)
+> <a href="https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.js" download>SOURCE ~ 6.4K</a> | <a href="https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.min.js" download>MINIFIED ~ 3.5K</a>
 
 <a name="node"></a>
 
