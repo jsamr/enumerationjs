@@ -1,5 +1,5 @@
 Enumeration=require '../src/Enumeration.coffee'
-_=require "lodash"
+_=require "underscore"
 nextEnumerationType=do ->
   counter=0
   -> "enumerationInstance#{counter++}"
