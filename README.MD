@@ -29,7 +29,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 
 **DOWNLOAD**
 <a name="bundled"></a>
-> Shipped with **underscore**, ready-to-use  
+> _ Shipped with **underscore**, ready-to-use  
 > → [COMMENTED ~ 61K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.min.js)
 
 > ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`  
