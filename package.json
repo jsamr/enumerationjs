@@ -7,6 +7,7 @@
   "scripts": {
     "test": "jasmine",
     "bundleIt":"./dist/publish.sh",
+    "markdown":"./mdpp/compile-markdown.sh",
     "prepublish": "coffee --compile --bare -p src/Enumeration.coffee | uglifyjs > dist/Enumeration.min.js"
   },
   "repository": {
