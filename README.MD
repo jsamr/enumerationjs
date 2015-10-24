@@ -15,10 +15,9 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ **Rock solid** jasmine specified tests. 
 - ✓ Enum values are **typed** : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` | since v1.1 
 - ✓ Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0 
-- ℹ Depends on **underscore**, but you should be able to use **lodash** if you wish. See [this section](#dependencies) for more infos.  
+- ℹ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.  
 - ⚠ You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
 
-<a name="toc"></a>
 **EXAMPLES**
 
 > [→ COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top) for coffescript devs   
@@ -31,17 +30,16 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 > [COMMENTED ~ 59K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.min.js)
 
 > ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`
-> ⚠ For AMD Users, [**read this section first**](#amd)
 > [COMMENTED ~ 6.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.js) | [MINIFIED ~ 3.5K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.min.js)
 
-
+<a name="toc"></a>
 **TABLE OF CONTENTS**  
 1\.  [Dependency managers](#dependencymanagers)  
 1.1\.  [NPM](#npm)  
 1.2\.  [Bower](#bower)  
 1.3\.  [Meteor](#meteor)  
 2\.  [AMD](#amd)  
-2.1\.  [Underscore](#underscore)  
+2.1\.  [UMD Behaviour](#umdbehaviour)  
 2.2\.  [Requirejs + lodash](#requirejs+lodash)  
 3\.  [Quick api overview](#quickapioverview)  
 3.1\.  [Enumeration.constructor](#enumeration.constructor)  
@@ -51,7 +49,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 3.5\.  [More examples](#moreexamples)  
 4\.  [Ecmascript compatibility](#ecmascriptcompatibility)  
 5\.  [Dependencies](#dependencies)  
-5.1\.  [Underscore](#underscore-1)  
+5.1\.  [Underscore](#underscore)  
 5.2\.  [For lodash users](#forlodashusers)  
 
 <a name="dependencymanagers"></a>
@@ -84,13 +82,11 @@ Comming soon...
 <a name="amd"></a>
 
 ### 2\. AMD 
+<a name="umdbehaviour"></a>
 
-<a name="underscore"></a>
-
-#### 2.1\. Underscore
-
-If you are using an Asynchronous Module Loader, underscore **must be** of version >= 1.6 , or ~1.2.0, see their [changelog](http://underscorejs.org/#changelog) about AMD compatibility.
-
+#### 2.1\. UMD Behaviour
+If `_` is defined global, the **enumeration.js** will be defined with **no dependency**.
+Otherwise, it will call `define` with a dependency on **underscore**
 <a name="requirejs+lodash"></a>
 
 #### 2.2\. Requirejs + lodash
@@ -169,7 +165,7 @@ For older browser, those methods can be polyfilled with [es5-shim](https://githu
 
 ### 5\. Dependencies
 
-<a name="underscore-1"></a>
+<a name="underscore"></a>
 
 #### 5.1\. Underscore
 Relies on underscore >=1.1. 
@@ -182,6 +178,7 @@ plus it's heavily used my meteor.
 >
 ℹ By loading **lodash** which will define a global `_` variable, it will work seamlessly if you are **not** using an AMD loader.
 ℹ With **requirejs** or any other AMD loader allowing mapping, check [this section](#amd). 
-⚠ Not possible through Dependency managers (**Npm** and **bower**)
+ℹ With **bower**, it seems possible by overriding underscore dependency, see [this so thread](http://stackoverflow.com/questions/24231184/bower-override-dependency) 
+⚠ With **Npm**, you cannot override dependencies. It is however still possible to shim `_` globally with [browserify](https://gist.github.com/malte-wessel/8a295bc604c4a0d0dbe1). 
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  

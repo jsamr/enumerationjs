@@ -1554,8 +1554,13 @@
   var indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   (function(root, factory) {
+    var deps;
     if (typeof define === 'function' && define.amd) {
-      return define("enumeration.js", ['underscore'], factory);
+      deps = [];
+      if (root._ == null) {
+        deps.push("underscore");
+      }
+      return define("enumeration.js", deps, factory);
     } else if (typeof module === 'object' && module.exports) {
       return module.exports = factory(require('underscore'));
     } else {

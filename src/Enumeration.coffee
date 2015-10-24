@@ -1,8 +1,12 @@
 # Universal module definition
 ((root, factory) ->
   if typeof define == 'function' and define.amd
+    deps=[]
+    #Allows compatibility with any underscore version
+    #and lodash
+    if(not root._?) then deps.push "underscore"
     # AMD. Register enumeration.js module
-    define "enumeration.js", [ 'underscore' ], factory
+    define "enumeration.js", deps, factory
   else if typeof module == 'object' and module.exports
     # Node. Does not work with strict CommonJS, but
     # only CommonJS-like environments that support module.exports,
