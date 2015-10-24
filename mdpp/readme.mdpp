@@ -4,19 +4,23 @@
 ![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master)
 !INCLUDE "jasmine-badge.mdpp"
  ![License](https://img.shields.io/npm/l/express.svg)
-
-*Since java 5, you can define enum static fields and enum constant fields and methods. 
-How about doing the same in javascript/coffeescript with even more flexibility?*  
+ [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumeration.js.svg)](https://github.com/sveinburne/enumeration.js)
+*Straightforward though very flexible solution addressing the unimplemented `enum` keyword.*  
 
 **KEY POINTS**
 
 - *functionalities*  
-  ✓  Straightforward though very flexible solution addressing the missing `enum` keyword.  
-  ⓘ An **enum type** `MyEnum` is an `instanceof` the `Enumeration` constructor.   
-  ⓘ An **enum constant** `MyEnum.SOME_CONSTANT` is an `instanceof` `MyEnum`   
-  ✓  Enum constants are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.      
-  ✓  Move a lot of the logic and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring))   
-  ✓  Enum types are guarantied unique and immutable : you cannot instantiate two Enumeration*s* with a same name    
+  ⓘ An **enum type** `MyEnum`  
+       &#09;→ is `instanceof` the `Enumeration` constructor  
+       &#09;→ is **immutable**  
+       &#09;→ can be inherited ([JS](JS.GUIDE.MD#extendyourenumerationwithprototypeinheritance) | [COFFEE](COFFEE.GUIDE.MD#extendyourenumerationwithprototypeinheritance))  
+       &#09;→ `Object.keys(MyEnum)` is `["SOME_CONST1","SOME_CONST2"]`      
+  ⓘ An **enum constant** `MyEnum.SOME_CONSTANT1`    
+     &#09;→ is `instanceof` `MyEnum`   
+     &#09;→ is **immutable**   
+     &#09;→ can **inherit a prototype shared across `MyEnum` constants** ([JS](JS.GUIDE.MD#aprototypeforenumconstants) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumconstants))       
+     &#09;→ can have **its own specific properties** ([JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))          
+  ✓  Allow easy refactoring, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring))   
   ✓  Lightweight **deserialization** with `MyEnum.from(identifier)` and **serialization** with `MyEnum.ENUM_CONST.id()`   
      
 - *integration*  
@@ -24,7 +28,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
   ✓  Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
   ✓  Available for **npm**, **bower** and **Meteor**, see the [dependency managers section](#dependencymanagers)  
   ⓘ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
-  ⚠  You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)    
+  ⚠  You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)      
 
 **EXAMPLES**
 
@@ -40,24 +44,15 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 > ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`  
 > → [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
 
+**INSTALL**
+> 
+[![npm version](https://badge.fury.io/js/enumeration.js.svg)](https://www.npmjs.com/package/enumeration.js) `npm install enumeration.js`   
+**bower** `bower install enumerationjs`   
+**meteor** coming soon...  
+
 <a name="toc"></a>
 **TABLE OF CONTENTS**  
 !TOC
-
-### Dependency managers
-
-##### NPM 
-> `npm install enumeration.js`      
-
-##### Bower
-> `bower install enumerationjs`
-
-##### Meteor
-<!---
-> `meteor add sveinburne:enumeration.js`
-
--->
-Comming soon...
 
 ### AMD 
 
