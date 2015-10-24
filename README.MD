@@ -10,15 +10,16 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 
 **KEY POINTS**
 
-- FUNCTIONALITIES  
+- *functionalities*  
   ✓  Straightforward though very flexible solution addressing the missing `enum` keyword.  
   ⓘ An **enum type** `MyEnum` is an `instanceof` the `Enumeration` constructor.   
   ⓘ An **enum constant** `MyEnum.SOME_CONSTANT` is an `instanceof` `MyEnum`   
   ✓  Enum constants are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.      
   ✓  Move a lot of the logic and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring))   
   ✓  Enum types are guarantied unique and immutable : you cannot instantiate two Enumeration*s* with a same name    
-  ✓  Lightweight **deserialization** with `MyEnum.from(identifier)` and **serialization** with `MyEnum.ENUM_CONST.id()`      
-- INTEGRATION  
+  ✓  Lightweight **deserialization** with `MyEnum.from(identifier)` and **serialization** with `MyEnum.ENUM_CONST.id()`   
+     
+- *integration*  
   ✓  **Rock solid** jasmine specified tests.  
   ✓  Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
   ✓  Available for **npm**, **bower** and **Meteor**, see the [dependency managers section](#dependencymanagers)  
