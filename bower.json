@@ -1,12 +1,12 @@
 {
   "name": "enumerationjs",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "authors": [
     "Jules Randolph <jules.randolph@usherbrooke.ca>"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sveinburne/enumeration.js/"
+    "url": "https://github.com/sveinburne/enumerationjs/"
   },
   "description": "Java-like super flexible enums ! Move the logic and refactor. Type-safe, immutables enums. Package is UMD defined and well tested.",
   "main": "dist/Enumeration.min.js",
