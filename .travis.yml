@@ -7,6 +7,6 @@ node_js:
   - "0.10"
   - "iojs"
 adfter_success:
-  - 'coffee --compile --bare -p src/Enumeration.coffee |  browserify - --standalone Enumeration > publish/Enumeration.bd.js'
-  - 'coffee --compile --bare -p src/Enumeration.coffee |  browserify - --standalone Enumeration | uglifyjs > publish/Enumeration.bd.min.js'
-  - 'coffee --compile --bare -p src/Enumeration.coffee > publish/Enumeration.js'
+  - 'coffee --compile --bare -p src/Enumeration.coffee |  browserify - --standalone Enumeration > dist/Enumeration.bd.js'
+  - 'coffee --compile --bare -p src/Enumeration.coffee |  browserify - --standalone Enumeration | uglifyjs > dist/Enumeration.bd.min.js'
+  - 'coffee --compile --bare -p src/Enumeration.coffee > dist/Enumeration.js'

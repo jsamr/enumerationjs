@@ -9,7 +9,7 @@
     "url": "https://github.com/sveinburne/enumeration.js/tree/umd"
   },
   "description": "Java-like super flexible enums ! Move the logic and refactor. Type-safe, immutables enums. Package is UMD defined and well tested.",
-  "main": "publish/Enumeration.min.js",
+  "main": "dist/Enumeration.min.js",
   "dependencies": {
     "underscore":"^1.1"
   },
@@ -25,13 +25,9 @@
   ],
   "license": "MIT",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "mdpp",
-    "bower_components",
-    "test",
-    "tests",
-    "spec",
-    "src"
+    "*",
+    "!*.MD",
+    "!LICENSE",
+    "!dist/Enumeration.min.js"
   ]
 }
