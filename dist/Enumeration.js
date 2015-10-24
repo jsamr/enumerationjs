@@ -18,12 +18,12 @@
       if (!isUnderscoreDefined(root)) {
         deps.push("underscore");
       }
-      return define("enumeration.js", deps, factory);
+      return define("enumerationjs", deps, factory);
     } else if (typeof module === 'object' && module.exports) {
       return module.exports = factory(require('underscore'));
     } else {
       if (root._ == null) {
-        throw new ReferenceError("underscore global object '_' must be defined. Get the bundled version of enumeration.js here : https://github.com/sveinburne/enumeration.js/#bundled or install underscore : http://underscorejs.org/ ");
+        throw new ReferenceError("underscore global object '_' must be defined. Get the bundled version of enumerationjs here : https://github.com/sveinburne/enumerationjs/#bundled or install underscore : http://underscorejs.org/ ");
       }
       return root.Enumeration = factory(root._);
     }

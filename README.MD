@@ -1,10 +1,10 @@
 <a name="top"></a>
-# enumeration.js : Java-like enum for javascript/coffeescript  
+# enumerationjs : Java-like enum for javascript/coffeescript  
 
-![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master)
+![Travis build](https://travis-ci.org/sveinburne/enumerationjs.svg?branch=master)
  ![jasmine](https://img.shields.io/badge/47_specs-0_failures-brightgreen.svg)
  ![License](https://img.shields.io/npm/l/express.svg)
- [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumeration.js.svg)](https://github.com/sveinburne/enumeration.js)  
+ [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumeration.js.svg)](https://github.com/sveinburne/enumerationjs)  
 *Straightforward though very flexible solution addressing the unimplemented `enum` keyword.*   
 
 **KEY POINTS**
@@ -47,13 +47,13 @@
 <a name="packages"></a>
 **PACKAGES**
 > 
-[![npm version](https://badge.fury.io/js/enumeration.js.svg)](https://www.npmjs.com/package/enumeration.js)
+[![npm version](https://badge.fury.io/js/enumerationjs.svg)](https://www.npmjs.com/package/enumerationjs)
  [![bower version](https://badge.fury.io/bo/enumerationjs.svg)]()
- [![atmosphere version](https://img.shields.io/badge/atmosphere-v1.3.3-brightgreen.svg)]()
+ [![atmosphere version](https://img.shields.io/badge/atmosphere_package-1.3.3-brightgreen.svg)]()
 
-> `npm install enumeration.js`   
+> `npm install enumerationjs`   
 > `bower install enumerationjs`  
-> `meteor add sveinburne:enumeration.js`
+> `meteor add sveinburne:enumerationjs`
 
 <a name="toc"></a>
 **TABLE OF CONTENTS**  
@@ -74,6 +74,7 @@
 <a name="amd"></a>
 
 ### 1\. AMD 
+> dependency name is "enumerationjs"
 
 <a name="umdbehaviour"></a>
 

@@ -9,8 +9,8 @@ isUnderscoreDefined= (root) ->
     #Allows compatibility with any underscore version
     #and lodash
     if(not isUnderscoreDefined root) then deps.push "underscore"
-    # AMD. Register enumeration.js module
-    define "enumeration.js", deps, factory
+    # AMD. Register enumerationjs module
+    define "enumerationjs", deps, factory
   else if typeof module == 'object' and module.exports
     # Node. Does not work with strict CommonJS, but
     # only CommonJS-like environments that support module.exports,
@@ -20,7 +20,7 @@ isUnderscoreDefined= (root) ->
     # Browser globals (root is window)
     if not root._?
       throw new ReferenceError "underscore global object '_' must be defined.
-        Get the bundled version of enumeration.js here : https://github.com/sveinburne/enumeration.js/#bundled
+        Get the bundled version of enumerationjs here : https://github.com/sveinburne/enumerationjs/#bundled
         or install underscore : http://underscorejs.org/ "
     #Export to global window
     root.Enumeration = factory(root._)
