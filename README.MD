@@ -167,7 +167,7 @@ For older browser, those methods can be polyfilled with [es5-shim](https://githu
 <a name="underscore"></a>
 
 #### 5.1\. Underscore
-Relies on underscore >=1.1. 
+Relies on underscore >=1.1.   
 **NB** : On version 1.2 I switched to **lodash** for its optimizations and improvements, but on the other hand **underscore** appeared lighter for the bundled version, 
 plus it's heavily used my meteor.
 
