@@ -67,7 +67,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 <a name="bower"></a>
 
 ##### 1.0.2\. Bower
-> `npm install enumerationjs`
+> `bower install enumerationjs`
 
 <a name="meteor"></a>
 

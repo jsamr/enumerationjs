@@ -45,7 +45,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 > `npm install enumeration.js`      
 
 ##### Bower
-> `npm install enumerationjs`
+> `bower install enumerationjs`
 
 ##### Meteor
 <!---
