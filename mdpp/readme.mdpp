@@ -26,7 +26,7 @@
 - *integration*  
   ✓  **Rock solid** jasmine specified tests.  
   ✓  Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
-  ✓  Available for **npm**, **bower** and **Meteor**, see the [dependency managers section](#dependencymanagers)  
+  ✓  Available for **npm**, **bower** and **Meteor**, see the [packages section](#packages)  
   ⓘ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
   ⚠  You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)      
 
@@ -44,11 +44,16 @@
 > ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`  
 > → [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
 
-**INSTALL**
+<a name="packages"></a>
+**PACKAGES**
 > 
-[![npm version](https://badge.fury.io/js/enumeration.js.svg)](https://www.npmjs.com/package/enumeration.js) `npm install enumeration.js`   
-**bower** `bower install enumerationjs`   
-**meteor** coming soon...  
+[![npm version](https://badge.fury.io/js/enumeration.js.svg)](https://www.npmjs.com/package/enumeration.js)
+ [![bower version](https://badge.fury.io/bo/enumerationjs.svg)]()
+ [![atmosphere version](https://img.shields.io/badge/atmosphere-v1.3.3-brightgreen.svg)]()
+
+> `npm install enumeration.js`   
+> `bower install enumerationjs`  
+> `meteor add sveinburne:enumeration.js`
 
 <a name="toc"></a>
 **TABLE OF CONTENTS**  
