@@ -6,7 +6,7 @@
 *Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript with even more flexibility?*  
 
-**PROS**
+**KEY POINTS**
 - ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.  
 - ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.  
 - ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring)) 
@@ -14,11 +14,10 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 - ✓ Lightweight **deserialization** with `enumInstance.from(identifier)` and **serialization** with `enumInstance.ENUM_VALUE.id()`  
 - ✓ **Rock solid** jasmine specified tests. 
 - ✓ Enum values are **typed** : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` | since v1.1 
+- ✓ Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0 
+- ℹ Depends on **underscore**, but you should be able to use **lodash** if you wish. See [this section](#dependencies) for more infos.  
+- ⚠ You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
 
-**WARNS**
-- ⚠ you **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
-- ⚠ Requires **lodash** or **underscore**, see [this section](#dependencies)  
- 
 <a name="toc"></a>
 **EXAMPLES**
 
@@ -26,55 +25,55 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 > [→ JS.GUIDE.MD](JS.GUIDE.MD#top)         for js devs         
 
 
+**DOWNLOAD**
+<a name="bundled"></a>
+> Shipped with **underscore**, ready-to-use
+> [COMMENTED ~ 59K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.min.js)
+
+> ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`
+> ⚠ For AMD Users, [**read this section first**](#amd)
+> [COMMENTED ~ 6.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.js) | [MINIFIED ~ 3.5K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.min.js)
+
+
 **TABLE OF CONTENTS**  
-1\.  [Install](#install)  
-1.1\.  [Bundled version ~ AMD Compatible, CommonJS compatible](#bundledversion~amdcompatiblecommonjscompatible)  
-1.2\.  [Lightweight version ~ AMD Compatible, CommonJS compatible](#lightweightversion~amdcompatiblecommonjscompatible)  
-1.3\.  [Node](#node)  
-1.4\.  [Meteor](#meteor)  
-2\.  [Quick api overview](#quickapioverview)  
-2.1\.  [Enumeration.constructor](#enumeration.constructor)  
-2.2\.  [Enumeration.value instances](#enumeration.valueinstances)  
-2.3\.  [Enumeration instance](#enumerationinstance)  
-2.4\.  [Enumeration object](#enumerationobject)  
-3\.  [Ecmascript compatibility](#ecmascriptcompatibility)  
-4\.  [Dependencies](#dependencies)  
+1\.  [Dependency managers](#dependencymanagers)  
+1.1\.  [NPM](#npm)  
+1.2\.  [Bower](#bower)  
+1.3\.  [Meteor](#meteor)  
+2\.  [AMD](#amd)  
+2.1\.  [Underscore](#underscore)  
+2.2\.  [Requirejs + lodash](#requirejs+lodash)  
+3\.  [Quick api overview](#quickapioverview)  
+3.1\.  [Enumeration.constructor](#enumeration.constructor)  
+3.2\.  [Enumeration.value instances](#enumeration.valueinstances)  
+3.3\.  [Enumeration instance](#enumerationinstance)  
+3.4\.  [Enumeration object](#enumerationobject)  
+3.5\.  [More examples](#moreexamples)  
+4\.  [Ecmascript compatibility](#ecmascriptcompatibility)  
+5\.  [Dependencies](#dependencies)  
+5.1\.  [Underscore](#underscore-1)  
+5.2\.  [For lodash users](#forlodashusers)  
 
-<a name="install"></a>
+<a name="dependencymanagers"></a>
 
-### 1\. Install
+### 1\. Dependency managers
 
-<a name="bundledversion~amdcompatiblecommonjscompatible"></a>
+<a name="npm"></a>
 
-#### 1.1\. Bundled version ~ AMD Compatible, CommonJS compatible
-You want to use the source from scratch? Bundled with **underscore**
-
-><a href="https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.js" download>SOURCE ~ 59K</a> | <a href="https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.min.js" download>MINIFIED ~ 30K</a>
-
-<a name="lightweightversion~amdcompatiblecommonjscompatible"></a>
-
-#### 1.2\. Lightweight version ~ AMD Compatible, CommonJS compatible
-Don't want to waste space? 
-
-**Works for AMD module users (Requirejs...)**  
-⚠ Assuming you can provide **underscore** dependency, see [this section](#dependencies)   
-**For other users**  
-⚠ Assuming the global variable `_` is defined, wether it's from **lodash** or **underscore** is not relevant.  
-
-> <a href="https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.js" download>SOURCE ~ 6.4K</a> | <a href="https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.min.js" download>MINIFIED ~ 3.5K</a>
-
-<a name="node"></a>
-
-#### 1.3\. Node
+#### 1.1\. NPM
 > `npm install enumeration.js`    
-> `Enumeration = require("enumeration.js")`   
+> `var Enumeration = require("enumeration.js")`   
 
 Runs one node >=0.10  
 
+<a name="bower"></a>
+
+#### 1.2\. Bower
+
+
 <a name="meteor"></a>
 
-
-#### 1.4\. Meteor
+#### 1.3\. Meteor
 <!---
 > `meteor add sveinburne:enumeration.js`
 
@@ -82,15 +81,36 @@ Global constructor `Enumeration` will be available
 -->
 Comming soon...
 
+<a name="amd"></a>
 
+### 2\. AMD 
+
+<a name="underscore"></a>
+
+#### 2.1\. Underscore
+
+If you are using an Asynchronous Module Loader, underscore **must be** of version >= 1.6 , or ~1.2.0, see their [changelog](http://underscorejs.org/#changelog) about AMD compatibility.
+
+<a name="requirejs+lodash"></a>
+
+#### 2.2\. Requirejs + lodash
+you can map *underscore* to *lodash* to avoid an extra dependency easily :
+
+    require.config({
+      map: {
+        '*': {
+          'underscore': 'lodash'
+        }
+      }
+    })
 
 <a name="quickapioverview"></a>
 
-### 2\. Quick api overview
+### 3\. Quick api overview
 
 <a name="enumeration.constructor"></a>
 
-#### 2.1\. Enumeration.constructor
+#### 3.1\. Enumeration.constructor
 You can instantiate an enumeration with the provided `Enumeration` constructor. It will take three arguments :
 - `enumType` : the name of this enumeration, must be unique amongst other Enumeration instances.
 - `enumValues` : an object containing the set of enum values. Keys are enum value names and values, aka descriptors can either be ...
@@ -100,7 +120,7 @@ You can instantiate an enumeration with the provided `Enumeration` constructor. 
 
 <a name="enumeration.valueinstances"></a>
 
-#### 2.2\. Enumeration.value instances
+#### 3.2\. Enumeration.value instances
 Each **enum value** will have the following methods :
 - `key()`      : retrieve the key (`SOME_ENUM_VALUE` for example)
 - `id()`       : retrieve the identifier (`1000` for example)
@@ -111,21 +131,26 @@ Each **enum value** will have the following methods :
 
 <a name="enumerationinstance"></a>
 
-#### 2.3\. Enumeration instance
+#### 3.3\. Enumeration instance
 - `from(id,throwOnFailure=false)`  : retrieve the enum value instance that matches given `id`. [optional] throwOnFailure, default to false, throws an error when no id match.  
 - `pretty()`                       : give a pretty description of this Enumeration instance and all its enum values, useful for logging/debugging  
 - `()`                             : shortcut for pretty()
  
 <a name="enumerationobject"></a>
 
-#### 2.4\. Enumeration object
+#### 3.4\. Enumeration object
 - `Enumeration.list()` : returns an array containing the `enumType` for each Enumeration instance. 
 
+<a name="moreexamples"></a>
+
+#### 3.5\. More examples
+> [→ COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top) for coffescript devs   
+> [→ JS.GUIDE.MD](JS.GUIDE.MD#top)         for js devs   
 
 <a name="ecmascript"></a>
 <a name="ecmascriptcompatibility"></a>
 
-### 3\. Ecmascript compatibility
+### 4\. Ecmascript compatibility
 
 > ECMA-262 5th edition was published on December 3, 2009 
 
@@ -142,10 +167,21 @@ For older browser, those methods can be polyfilled with [es5-shim](https://githu
 
 <a name="dependencies"></a>
 
-### 4\. Dependencies
+### 5\. Dependencies
+
+<a name="underscore-1"></a>
+
+#### 5.1\. Underscore
 Relies on underscore >=1.1. 
 **NB** : On version 1.2 I switched to **lodash** for its optimizations and improvements, but on the other hand **underscore** appeared lighter for the bundled version, 
 plus it's heavily used my meteor.
 
+<a name="forlodashusers"></a>
+
+#### 5.2\. For lodash users
+>
+ℹ By loading **lodash** which will define a global `_` variable, it will work seamlessly if you are **not** using an AMD loader.
+ℹ With **requirejs** or any other AMD loader allowing mapping, check [this section](#amd). 
+⚠ Not possible through Dependency managers (**Npm** and **bower**)
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  

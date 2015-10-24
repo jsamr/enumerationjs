@@ -23,9 +23,6 @@
 
 !INCLUDE "coffee/hack_da_class.mdpp"
 
-!INCLUDE "common/constructor_signature.mdpp"
-!INCLUDE "coffee/constructor_signature.mdpp"
-
 !INCLUDE "common/refactoring-if-old.mdpp"
 !INCLUDE "coffee/refactoring-if-old.mdpp"
 !INCLUDE "common/refactoring-if-new.mdpp"

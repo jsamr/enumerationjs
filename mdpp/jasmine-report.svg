@@ -11,7 +11,7 @@
   <defs id="defs29">
     <linearGradient xlink:href="#a" id="linearGradient3063" gradientUnits="userSpaceOnUse" gradientTransform="matrix(2.5382122,0,0,0.35805744,0.15803493,-0.15803533)" x1="0" y1="0" x2="0" y2="55.85696"/>
     <text x="121" y="14" id="failures">0 failures</text>
-    <text x="45" y="14" id="specs">44 specs</text>
+    <text x="45" y="14" id="specs">47 specs</text>
   </defs>
   <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" id="namedview27" showgrid="false" fit-margin-top="0" fit-margin-left="0" fit-margin-right="0" fit-margin-bottom="0"/>
   <linearGradient id="a" x2="0" y2="55.85696" gradientTransform="matrix(2.5382122,0,0,0.35805744,0.15803493,-0.15803533)" x1="0" y1="0" gradientUnits="userSpaceOnUse">

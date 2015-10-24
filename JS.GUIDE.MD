@@ -13,10 +13,9 @@
 3\.  [Use of structured descriptors](#useofstructureddescriptors)  
 4\.  [Extend your Enumeration with prototype inheritance](#extendyourenumerationwithprototypeinheritance)  
 5\.  [Hack da class, incorporate as public class fields](#hackdaclassincorporateaspublicclassfields)  
-6\.  [The constructor signature](#theconstructorsignature)  
-7\.  [Refactoring](#refactoring)  
-7.1\.  [get rid of a if / else or switch mess](#getridofaif/elseorswitchmess)  
-7.2\.  [What about the visitor pattern?](#whataboutthevisitorpattern?)  
+6\.  [Refactoring](#refactoring)  
+6.1\.  [get rid of a if / else or switch mess](#getridofaif/elseorswitchmess)  
+6.2\.  [What about the visitor pattern?](#whataboutthevisitorpattern?)  
 
 <a name="basicusagewithrawdescriptors"></a>
 
@@ -151,28 +150,13 @@ Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
 > ✓ If you don't like this hack, you can either define a class' static field holding the enum by replacing `@__proto__` with `@colors` or `@states` ...
 or use [prototype inheritance instead](#extendyourenumerationwithprototypeinheritance).
 
-<a name="theconstructorsignature"></a>
-
-## 6\. The constructor signature
-
-
-```javascript
-  /**
-  * @param  {string}  enumType A string identifying the type of this Enumeration instance
-  * @param  {object}  enumValues an object which keys are the enum names, and values are each enum descriptor.
-  * A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
-  * a field '_id' must be provided identifying this enum value.
-  * @param  {object} proto [optional] a prototype each enum value will inherit from
-  */
-  function Enumeration(enumType, enumValues, proto) { ...
-```
 <a name="refactoring"></a>
 
-## 7\. Refactoring
+## 6\. Refactoring
 
 <a name="getridofaif/elseorswitchmess"></a>
 
-### 7.1\. get rid of a if / else or switch mess
+### 6.1\. get rid of a if / else or switch mess
 
 ```javascript
 //Old school enum
@@ -212,7 +196,7 @@ state.report();
 
 <a name="whataboutthevisitorpattern?"></a>
 
-### 7.2\. What about the visitor pattern? 
+### 6.2\. What about the visitor pattern? 
 ```javascript
 //Old school enum
 States = Object.freeze({
