@@ -5,23 +5,24 @@
  ![jasmine](https://img.shields.io/badge/47_specs-0_failures-brightgreen.svg)
  ![License](https://img.shields.io/npm/l/express.svg)
 
-*Since java 5, you can define enum static fields and enum value fields and methods. 
+*Since java 5, you can define enum static fields and enum constant fields and methods. 
 How about doing the same in javascript/coffeescript with even more flexibility?*  
 
 **KEY POINTS**
 
-  ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.    
-  ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.    
-  ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring))   
-  ✓ The enumerations are guarantied unique and immutable : you cannot instantiate two enumerations with a same name    
-  ✓ Lightweight **deserialization** with `enumInstance.from(identifier)` and **serialization** with `enumInstance.ENUM_VALUE.id()`  
-  ✓ **Rock solid** jasmine specified tests.  
-  ✓ Enum values are **typed** : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` | since v1.1  
+  ✓  Straightforward though very flexible solution addressing the missing `enum` keyword.
+  ⓘ An **enum type** `MyEnum` is an `instanceof` the `Enumeration` constructor. 
+  ⓘ An **enum constant** `MyEnum.SOME_CONSTANT` is an `instanceof` `MyEnum` | since v1.1  
+  ✓  Enum constants are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.      
+  ✓  Move a lot of the logic and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring))   
+  ✓  Enum types are guarantied unique and immutable : you cannot instantiate two Enumeration*s* with a same name    
+  ✓  Lightweight **deserialization** with `MyEnum.from(identifier)` and **serialization** with `MyEnum.ENUM_CONST.id()`  
+  ✓  **Rock solid** jasmine specified tests.    
      
-  ✓ Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
-  ✓ Available for **npm**, **bower** and **Meteor**, see the [dependency managers section](#dependencymanagers)  
-  ⇆ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
-  ⚠ You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)    
+  ✓  Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
+  ✓  Available for **npm**, **bower** and **Meteor**, see the [dependency managers section](#dependencymanagers)  
+  ⓘ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
+  ⚠  You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)    
 
 **EXAMPLES**
 
@@ -48,8 +49,8 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 2.2\.  [Requirejs + lodash](#requirejs+lodash)  
 3\.  [Quick api overview](#quickapioverview)  
 3.1\.  [Enumeration.constructor](#enumeration.constructor)  
-3.2\.  [Enumeration.value instances](#enumeration.valueinstances)  
-3.3\.  [Enumeration instance](#enumerationinstance)  
+3.2\.  [Enumeration constant](#enumerationconstant)  
+3.3\.  [Enumeration instance aka enum type](#enumerationinstanceakaenumtype)  
 3.4\.  [Enumeration object](#enumerationobject)  
 3.5\.  [More examples](#moreexamples)  
 4\.  [Ecmascript compatibility](#ecmascriptcompatibility)  
@@ -108,35 +109,35 @@ you can map *underscore* to *lodash* to avoid an extra dependency easily :
 <a name="enumeration.constructor"></a>
 
 #### 3.1\. Enumeration.constructor
-You can instantiate an enumeration with the provided `Enumeration` constructor. It will take three arguments :
-- `enumType` : the name of this enumeration, must be unique amongst other Enumeration instances.
-- `enumValues` : an object containing the set of enum values. Keys are enum value names and values, aka descriptors can either be ...
+You can instantiate an enum type with the provided `Enumeration` constructor. It will take three arguments :
+- `MyEnum` : the name of this enumeration, must be unique amongst other Enumeration instances.
+- `enumConstants` : an object containing the set of enum constants. Each key is the enum constant name and each value is a descriptor that can either be ...
     * a **raw descriptor** i.e. a unique identifier of type string or number  ([JS](JS.GUIDE.MD#basicusagewithrawdescriptors) | [COFFEE](COFFEE.GUIDE.MD#basicusagewithrawdescriptors))      
     * a **structured descriptor** i.e. a plain object ([JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))   
-- `prototype` : [optional] a prototype all the enum values will inherit ([JS](JS.GUIDE.MD#aprototypeforenumvalues) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumvalues))
+- `prototype` : [optional] a prototype all the enum constants will inherit ([JS](JS.GUIDE.MD#aprototypeforenumconstants) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumconstants))
 
-<a name="enumeration.valueinstances"></a>
+<a name="enumerationconstant"></a>
 
-#### 3.2\. Enumeration.value instances
-Each **enum value** will have the following methods :
-- `key()`      : retrieve the key (`SOME_ENUM_VALUE` for example)
+#### 3.2\. Enumeration constant 
+Each **enum constant** will have the following methods :
+- `key()`      : retrieve the key (`SOME_ENUM_CONST` for example)
 - `id()`       : retrieve the identifier (`1000` for example)
-- `type()`     : retrieve the Enumeration instance type,`enumType` Enumeration constructor's argument
+- `type()`     : retrieve the enum type,`MyEnum` Enumeration constructor's argument
 - `describe()` : return a string of the form 'key:id', useful for logging/debugging  
 
  ...plus the properties provided at instantiation time (inherited from `prototype` and provided by descriptors)
 
-<a name="enumerationinstance"></a>
+<a name="enumerationinstanceakaenumtype"></a>
 
-#### 3.3\. Enumeration instance
-- `from(id,throwOnFailure=false)`  : retrieve the enum value instance that matches given `id`. [optional] throwOnFailure, default to false, throws an error when no id match.  
-- `pretty()`                       : give a pretty description of this Enumeration instance and all its enum values, useful for logging/debugging  
-- `()`                             : shortcut for pretty()
+#### 3.3\. Enumeration instance aka enum type
+- `from(id,throwOnFailure=false)`  : retrieve the enum constant that matches given `id`. [optional] throwOnFailure, default to false, throws an error when no id match.  
+- `pretty()`                       : give a pretty description of this enum type and all its constants, useful for logging/debugging  
+- `()`                             : shortcut for `pretty()`
  
 <a name="enumerationobject"></a>
 
 #### 3.4\. Enumeration object
-- `Enumeration.list()` : returns an array containing the `enumType` for each Enumeration instance. 
+- `Enumeration.list()` : returns an array containing the `MyEnum` for each enum type. 
 
 <a name="moreexamples"></a>
 
@@ -157,7 +158,7 @@ Object.defineProperty(object,property,propertyDescriptor)
 Object.freeze(object)
 Object.create(prototype,propertiesDescriptors)
 ```
-These methods prevent user from mistakenly modify any property from the Enumeration instance and its bound enum values :  
+These methods prevent user from mistakenly modify any property from the enum type and its bound constants :  
 **any attempt to write a read-only property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.  
 **any attempt to reconfigure a non-configurable property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.     
 For older browser, those methods can be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim), however the write permissions will be ignored.   

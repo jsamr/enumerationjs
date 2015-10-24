@@ -48,7 +48,7 @@
       * @param {string or object} descriptor a string that identifies this value, or an object with fields that will be copied on the returned value. In this case
       * a field '_id' must be provided
       * @param {object} valueProto a prototype the returned object will inherit from
-      * @param {string} enumType a string identifying the Enumeration instance this enum value is bound to
+      * @param {string} enumType a string identifying the Enumeration instance this enum constant is bound to
       * @param {object} enumerationProto : the prototype shared with Enumeration instance.prototype
        */
 
@@ -126,9 +126,9 @@
       /**
       * @param  {string}  enumType A string identifying the type of this Enumeration instance
       * @param  {object}  enumValues an object which keys are the enum names, and values are each enum descriptor.
-      * A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum value instance. In this case
-      * a field '_id' must be provided identifying this enum value.
-      * @param  {object} proto [optional] a prototype each enum value will inherit from
+      * A descriptor can be a single unique identifier (string or number),  or an object whose fields will be copied on the enum constant instance. In this case
+      * a field '_id' must be provided identifying this enum constant.
+      * @param  {object} proto [optional] a prototype each enum constant will inherit from
        */
 
       function Enumeration(enumType, enumValues, proto) {

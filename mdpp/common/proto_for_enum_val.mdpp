@@ -1,4 +1,4 @@
-## A prototype for enum values
+## A prototype for enum constants
 > ✓ If you mistakenly use a reserved property in the given prototype (id,key,describe or type), an error will show up  
 <br/>
 

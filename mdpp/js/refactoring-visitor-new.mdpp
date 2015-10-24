@@ -13,15 +13,19 @@ States = new Enumeration('States', {
 
 stateHandler = {
   someFun1: function() {
+    //do some stuff relative to this instance ...
     console.log("Error 1");
   },
   someFun2: function() {
+    //do some stuff relative to this instance ...
     console.log("Error 2");
   },
   someFun3: function() {
+    //do some stuff relative to this instance ...
     console.log("Error 3");
   },
   onSuccess: function() {
+    //do some stuff relative to this instance ...
     console.log("Success!");
   },
   handle: function(state) {

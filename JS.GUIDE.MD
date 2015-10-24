@@ -9,7 +9,7 @@
 **TABLE OF CONTENTS**
 <br/>
 1\.  [Basic usage with raw descriptors](#basicusagewithrawdescriptors)  
-2\.  [A prototype for enum values](#aprototypeforenumvalues)  
+2\.  [A prototype for enum constants](#aprototypeforenumconstants)  
 3\.  [Use of structured descriptors](#useofstructureddescriptors)  
 4\.  [Extend your Enumeration with prototype inheritance](#extendyourenumerationwithprototypeinheritance)  
 5\.  [Hack da class, incorporate as public class fields](#hackdaclassincorporateaspublicclassfields)  
@@ -20,9 +20,9 @@
 <a name="basicusagewithrawdescriptors"></a>
 
 ## 1\. Basic usage with raw descriptors
-> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
-> ✓ If a duplicate id (value associated to key) is given, an error will show up  
-> ✓ If a key conflicts with one amongst Enumeration instance reserved methods, an error will show up : you should always use uppercase strings as keys to avoid any conflict - plus it's a standard for enums.  
+> ✓ If an enum type called 'closeEventCodes' already exists, an error will show up  
+> ✓ If a duplicate id is given, an error will show up  
+> ✓ If a key conflicts with one amongst enum type reserved methods, an error will show up : you should always use uppercase strings as keys to avoid any conflict - plus it's a standard for enums.  
 
 
 
@@ -48,9 +48,9 @@ closeEventCodes.from(1006) is closeEventCodes.CLOSE_ABNORMAL // evaluates to tru
 closeEventCodes.CLOSE_ABNORMAL instanceof closeEventCodes    // evaluates to true
 ```
 
-<a name="aprototypeforenumvalues"></a>
+<a name="aprototypeforenumconstants"></a>
 
-## 2\. A prototype for enum values
+## 2\. A prototype for enum constants
 > ✓ If you mistakenly use a reserved property in the given prototype (id,key,describe or type), an error will show up  
 <br/>
 
@@ -79,7 +79,7 @@ closeEventCodes.CLOSE_NO_STATUS.print() // prints 'CLOSE_NO_STATUS:1005'
 ## 3\. Use of structured descriptors
 
 > ⚠ Each descriptor **must** contain an `_id` field of type `string` or `number`, an exception will be thrown otherwise.  
-> ✓ If an enumeration called 'closeEventCodes' already exists, an error will show up  
+> ✓ If an enum type called 'closeEventCodes' already exists, an error will show up  
 > ✓ If a duplicate _id is given, an error will show up   
 > ✓ If you mistakenly use a reserved property in the given descriptor (id,key,describe or type), an error will show up  
 
@@ -109,21 +109,19 @@ closeEventCodes.from(1006) === closeEventCodes.CLOSE_ABNORMAL // evaluates to tr
 
 ## 4\. Extend your Enumeration with prototype inheritance
 
-> ⚠ The Enumeration instance is **frozen**, so you cannot add fields directly to the instance, 
+> ⚠ The enum type is **frozen**, so you cannot add fields directly to the instance, 
 you *must* inherit through the prototype chain or [hack da class](#hackdaclassincorporateaspublicclassfields).  
 
 ```javascript
-//Inherit all Enumeration instance fields by moving it to myEnum prototype
-//The prototype will still be frozen, but myEnum instance will not.
-var myEnum=Object.create(new Enumeration('myEnum',{STATE1:1,STATE2:2,STATE3:3}))
-myEnum.newFunction = function() { return this.STATE1.describe() }
+//Inherit all the enum type fields by moving it to MyEnum prototype
+//The prototype will still be frozen, but MyEnum will not.
+var MyEnum=Object.create(new Enumeration('MyEnum',{STATE1:1,STATE2:2,STATE3:3}))
+MyEnum.newFunction = function() { console.log(this.STATE1.describe()); };
 ```
 <a name="hackdaclassincorporateaspublicclassfields"></a>
 
 ## 5\. Hack da class, incorporate as public class fields
-Yeah, that's the funny thing with prototype inheritance : your javascript class can inherit this Enumeration instance.
-
-> ⚠ Be carefull, `MyClass.__proto__` can be overridden if and only if it is the last class statement. Otherwise you will override the forthcoming statements
+Yeah, that's the funny thing with prototype inheritance : your javascript class can inherit this enum type.
 
 ```javascript
 var MyClass = (function() {
@@ -147,7 +145,7 @@ var MyClass = (function() {
 ```
 Now `MyClass.PUBLIC_STATIC_ENUM1` and `MyClass.PUBLIC_STATIC_ENUM2` are defined.
 
-> ✓ If you don't like this hack, you can either define a class' static field holding the enum by replacing `@__proto__` with `@colors` or `@states` ...
+> ✓ If you don't like this hack, you can either define a class' static field holding the enum type by replacing `@__proto__` with `@colors` or `@states` ...
 or use [prototype inheritance instead](#extendyourenumerationwithprototypeinheritance).
 
 <a name="refactoring"></a>
@@ -177,7 +175,7 @@ if (state === States.OK) {
   console.log("An error of type 3 occurred");
 }
 ```
-Move the logic inside the Enumeration instance...
+Move the logic inside the enum type...
 ```javascript
 //New school enum
 var States = new Enumeration('States', {
@@ -240,7 +238,7 @@ stateHandler = {
   }
 };
 ```
-Move the logic, and pass the stateHandler instance to the enum value handle function!
+Move the logic, and pass the stateHandler instance to the enum constant handle function!
 ```javascript
 //New school enum
 States = new Enumeration('States', {
@@ -255,15 +253,19 @@ States = new Enumeration('States', {
 
 stateHandler = {
   someFun1: function() {
+    //do some stuff relative to this instance ...
     console.log("Error 1");
   },
   someFun2: function() {
+    //do some stuff relative to this instance ...
     console.log("Error 2");
   },
   someFun3: function() {
+    //do some stuff relative to this instance ...
     console.log("Error 3");
   },
   onSuccess: function() {
+    //do some stuff relative to this instance ...
     console.log("Success!");
   },
   handle: function(state) {
