@@ -6,8 +6,8 @@
   "main": "publish/Enumeration.min.js",
   "scripts": {
     "test": "jasmine",
-    "prepublish": "coffee --compile --bare -p src/Enumeration.coffee | uglifyjs > publish/Enumeration.min.js",
-    "generate":"coffee --compile --bare -p src/Enumeration.coffee | uglifyjs > publish/Enumeration.min.js && coffee --compile --bare -p src/Enumeration.coffee |  browserify - --standalone Enumeration > publish/Enumeration.bd.js && coffee --compile --bare -p src/Enumeration.coffee |  browserify - --standalone Enumeration | uglifyjs > publish/Enumeration.bd.min.js && coffee --compile --bare -p src/Enumeration.coffee > publish/Enumeration.js"
+    "bundleIt":"./publish/publish.sh",
+    "prepublish": "coffee --compile --bare -p src/Enumeration.coffee | uglifyjs > publish/Enumeration.min.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "uglify-js":">=2.5"
   },
   "dependencies": {
-    "underscore": ">= 1.1"
+    "underscore": "~1.2 || >=1.6"
   },
   "engines": {
     "node": ">=0.10"
