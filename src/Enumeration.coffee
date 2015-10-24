@@ -1,10 +1,14 @@
+isUnderscoreDefined= (root) ->
+  isFunction= (obj) -> typeof obj is 'function'
+  isFunction(us=root?._) and isFunction(us.isObject) and isFunction(us.isFunction) and isFunction(us.keys) and isFunction(us.map) and isFunction(us.clone) and isFunction(us.extend)
+
 # Universal module definition
 ((root, factory) ->
   if typeof define == 'function' and define.amd
     deps=[]
     #Allows compatibility with any underscore version
     #and lodash
-    if(not root._?) then deps.push "underscore"
+    if(not isUnderscoreDefined root) then deps.push "underscore"
     # AMD. Register enumeration.js module
     define "enumeration.js", deps, factory
   else if typeof module == 'object' and module.exports
