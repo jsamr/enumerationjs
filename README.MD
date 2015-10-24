@@ -7,16 +7,19 @@
 How about doing the same in javascript/coffeescript with even more flexibility?*  
 
 **KEY POINTS**
-- ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.  
-- ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.  
-- ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring)) 
-- ✓ The enumerations are guarantied unique and immutable : you cannot instantiate two enumerations with a same name    
-- ✓ Lightweight **deserialization** with `enumInstance.from(identifier)` and **serialization** with `enumInstance.ENUM_VALUE.id()`  
-- ✓ **Rock solid** jasmine specified tests. 
-- ✓ Enum values are **typed** : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` | since v1.1 
-- ✓ Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0 
-- ℹ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.  
-- ⚠ You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)
+
+  ✓ Straightforward though very flexible solution addressing the missing `enum` keyword.    
+  ✓ Enum values are guarantied **unique** and **read only**, can **inherit properties from a shared prototype** and have **their own specific properties**.    
+  ✓ You can move a lot of the logic to those instances and refactor, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring))   
+  ✓ The enumerations are guarantied unique and immutable : you cannot instantiate two enumerations with a same name    
+  ✓ Lightweight **deserialization** with `enumInstance.from(identifier)` and **serialization** with `enumInstance.ENUM_VALUE.id()`  
+  ✓ **Rock solid** jasmine specified tests. 
+  ✓ Enum values are **typed** : `enumInstance.ENUM_VALUE instanceof enumInstance` evaluates to `true` | since v1.1
+     
+  ℹ Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
+  ℹ Available for **npm**, **bower** and **Meteor**, see the [dependency managers section](#dependencymanagers)  
+  ℹ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
+  ⚠ You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)    
 
 **EXAMPLES**
 
@@ -26,18 +29,18 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 
 **DOWNLOAD**
 <a name="bundled"></a>
-> Shipped with **underscore**, ready-to-use
-> [COMMENTED ~ 61K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.min.js)
+> Shipped with **underscore**, ready-to-use  
+> → [COMMENTED ~ 61K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.min.js)
 
-> ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`
-> [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
+> ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`  
+> → [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
 
 <a name="toc"></a>
 **TABLE OF CONTENTS**  
 1\.  [Dependency managers](#dependencymanagers)  
-1.1\.  [NPM](#npm)  
-1.2\.  [Bower](#bower)  
-1.3\.  [Meteor](#meteor)  
+1.0.1\.  [NPM](#npm)  
+1.0.2\.  [Bower](#bower)  
+1.0.3\.  [Meteor](#meteor)  
 2\.  [AMD](#amd)  
 2.1\.  [UMD Behaviour](#umdbehaviour)  
 2.2\.  [Requirejs + lodash](#requirejs+lodash)  
@@ -58,24 +61,20 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 
 <a name="npm"></a>
 
-#### 1.1\. NPM
-> `npm install enumeration.js`    
-> `var Enumeration = require("enumeration.js")`   
-
-Runs one node >=0.10  
+##### 1.0.1\. NPM 
+> `npm install enumeration.js`      
 
 <a name="bower"></a>
 
-#### 1.2\. Bower
+##### 1.0.2\. Bower
 > `npm install enumerationjs`
 
 <a name="meteor"></a>
 
-#### 1.3\. Meteor
+##### 1.0.3\. Meteor
 <!---
 > `meteor add sveinburne:enumeration.js`
 
-Global constructor `Enumeration` will be available
 -->
 Comming soon...
 
@@ -85,8 +84,8 @@ Comming soon...
 <a name="umdbehaviour"></a>
 
 #### 2.1\. UMD Behaviour
-If `_` is defined global, the **enumeration.js** will be defined with **no dependency**.
-Otherwise, it will call `define` with a dependency on **underscore**
+If `_` is defined global, the **enumeration.js** will be defined with **no dependency**.  
+Otherwise, it will call `define` with a dependency on **underscore**  
 <a name="requirejs+lodash"></a>
 
 #### 2.2\. Requirejs + lodash
@@ -176,9 +175,9 @@ plus it's heavily used my meteor.
 
 #### 5.2\. For lodash users
 >
-ℹ By loading **lodash** which will define a global `_` variable, it will work seamlessly if you are **not** using an AMD loader.
-ℹ With **requirejs** or any other AMD loader allowing mapping, check [this section](#amd). 
-ℹ With **bower**, it seems possible by overriding underscore dependency, see [this so thread](http://stackoverflow.com/questions/24231184/bower-override-dependency) 
-⚠ With **Npm**, you cannot override dependencies. It is however still possible to shim `_` globally with [browserify](https://gist.github.com/malte-wessel/8a295bc604c4a0d0dbe1). 
+ℹ By loading **lodash** which will define a global `_` variable, it will work seamlessly if you are **not** using an AMD loader.  
+ℹ With **requirejs** or any other AMD loader allowing mapping, check [this section](#amd).   
+ℹ With **bower**, it seems possible by overriding underscore dependency, see [this so thread](http://stackoverflow.com/questions/24231184/bower-override-dependency)   
+⚠ With **Npm**, you cannot override dependencies. It is however still possible to shim `_` globally with [browserify](https://gist.github.com/malte-wessel/8a295bc604c4a0d0dbe1).   
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
