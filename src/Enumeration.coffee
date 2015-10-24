@@ -43,7 +43,7 @@ isUnderscoreDefined= (root) ->
     * @param {string} enumType a string identifying the Enumeration instance this enum value is bound to
     * @param {object} enumerationProto : the prototype shared with Enumeration instance.prototype
     ###
-    @value:(enumName,descriptor,valueProto,ids,enumerationProto)->
+    @constant:(enumName,descriptor,valueProto,ids,enumerationProto)->
       identifier=descriptor._id or descriptor
       valueIsObject=descriptor._id?
       if identifier in ids then throw "Duplicate identifier : #{identifier}"
@@ -64,7 +64,7 @@ isUnderscoreDefined= (root) ->
           enumerable:true
       if _.isObject(descriptor)
         testReserved descriptor
-        if not descriptor._id? then throw "field '_id' must be defined when passing object as enum value"
+        if not descriptor._id? then throw "field '_id' must be defined when passing object as enum constant"
         if _.isObject(descriptor._id) then throw "_id descriptor field must be of type string or number"
         defineReadOnlyProperty key1,val1 for key1,val1 of descriptor when key1 isnt '_id'
       Object.freeze(Object.create prototype, properties)
@@ -86,11 +86,11 @@ isUnderscoreDefined= (root) ->
       if enumType in enumTypes then throw "#{enumType} already exists!"
       else
         if (key for key in _.keys(enumValues) when key in ["pretty","from","value"]).length>0
-          throw "Cannot have enum value as one amongst reserved enumeration property [pretty,from]"
+          throw "Cannot have enum constant as one amongst reserved enumeration property [pretty,from]"
       #Non enumerable prototype property
       Object.defineProperty(self,"prototype", value:{type:->enumType})
       #Lambda to write enum values
-      writeProperty = (descriptor,key) => self[key]=Enumeration.value(key,descriptor,proto,ids,self.prototype)
+      writeProperty = (descriptor,key) => self[key]=Enumeration.constant(key,descriptor,proto,ids,self.prototype)
       writeProperty val,key for key,val of enumValues
       #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
       Object.defineProperty self, 'pretty', value:-> "#{enumType}:#{"\n\t"+enumVal.describe() for key,enumVal of self}"

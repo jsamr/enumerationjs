@@ -120,7 +120,7 @@ describe 'Enumeration instantiation with structured descriptor', () ->
   it 'should throw an error when a descriptor "_id" property is a function', ->
     expect(-> new Enumeration(nextEnumerationType(),{FIELD_ONE:{_id:->}})).toThrow()
 
-  it 'shall throw an error when a reserved property conflicts with an enum value key', ->
+  it 'shall throw an error when a reserved property conflicts with an enum constant key', ->
     expect(-> new Enumeration(nextEnumerationType(),{from:1})).toThrow()
     expect(-> new Enumeration(nextEnumerationType(),{pretty:1})).toThrow()
 
@@ -146,7 +146,7 @@ describe 'Enumeration instance', ->
     duplicate=nextEnumerationType()
     expect(-> new Enumeration(duplicate,{})).not.toThrow()
     expect(-> new Enumeration(duplicate,{})).toThrow()
-  it 'from(id) method shall return the matching enum value instance which id is equal ', ->
+  it 'from(id) method shall return the matching enum constant instance which id is equal ', ->
     expect(enumeration2.from(2)).toBe(enumeration2.KEY2)
     expect(enumeration2.from(1)).toBe(enumeration2.KEY1)
   it 'from(id,throwOnFailure=true) shall throw an error when no matching id are found', ->

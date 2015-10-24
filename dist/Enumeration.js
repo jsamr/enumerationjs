@@ -51,7 +51,7 @@
       * @param {object} enumerationProto : the prototype shared with Enumeration instance.prototype
        */
 
-      Enumeration.value = function(enumName, descriptor, valueProto, ids, enumerationProto) {
+      Enumeration.constant = function(enumName, descriptor, valueProto, ids, enumerationProto) {
         var defineReadOnlyProperty, identifier, key1, methods, properties, prototype, testReserved, val1, valueIsObject;
         identifier = descriptor._id || descriptor;
         valueIsObject = descriptor._id != null;
@@ -106,7 +106,7 @@
         if (_.isObject(descriptor)) {
           testReserved(descriptor);
           if (descriptor._id == null) {
-            throw "field '_id' must be defined when passing object as enum value";
+            throw "field '_id' must be defined when passing object as enum constant";
           }
           if (_.isObject(descriptor._id)) {
             throw "_id descriptor field must be of type string or number";
@@ -163,7 +163,7 @@
             }
             return results;
           })()).length > 0) {
-            throw "Cannot have enum value as one amongst reserved enumeration property [pretty,from]";
+            throw "Cannot have enum constant as one amongst reserved enumeration property [pretty,from]";
           }
         }
         Object.defineProperty(self, "prototype", {
@@ -175,7 +175,7 @@
         });
         writeProperty = (function(_this) {
           return function(descriptor, key) {
-            return self[key] = Enumeration.value(key, descriptor, proto, ids, self.prototype);
+            return self[key] = Enumeration.constant(key, descriptor, proto, ids, self.prototype);
           };
         })(this);
         for (key in enumValues) {
