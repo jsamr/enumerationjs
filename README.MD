@@ -27,10 +27,10 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 **DOWNLOAD**
 <a name="bundled"></a>
 > Shipped with **underscore**, ready-to-use
-> [COMMENTED ~ 61K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.bd.min.js)
+> [COMMENTED ~ 61K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.min.js)
 
 > ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`
-> [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/publish/Enumeration.min.js)
+> [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
 
 <a name="toc"></a>
 **TABLE OF CONTENTS**  
@@ -67,7 +67,7 @@ Runs one node >=0.10
 <a name="bower"></a>
 
 #### 1.2\. Bower
-
+> `npm install enumerationjs`
 
 <a name="meteor"></a>
 

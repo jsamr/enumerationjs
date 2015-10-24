@@ -6,7 +6,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sveinburne/enumeration.js/tree/umd"
+    "url": "https://github.com/sveinburne/enumeration.js/"
   },
   "description": "Java-like super flexible enums ! Move the logic and refactor. Type-safe, immutables enums. Package is UMD defined and well tested.",
   "main": "dist/Enumeration.min.js",
