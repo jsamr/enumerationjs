@@ -1,7 +1,9 @@
 <a name="top"></a>
 # enumeration.js : Java-like enum for javascript/coffeescript  
 
-![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master) ![jasmine](https://rawgit.com/sveinburne/enumeration.js/umd/mdpp/jasmine-report.svg) ![dependencies](https://david-dm.org/sveinburne/enumeration.js.svg)
+![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master)
+!INCLUDE "jasmine-badge.mdpp"
+ ![License](https://img.shields.io/npm/l/express.svg)
 
 *Since java 5, you can define enum static fields and enum value fields and methods. 
 How about doing the same in javascript/coffeescript with even more flexibility?*  
@@ -29,7 +31,7 @@ How about doing the same in javascript/coffeescript with even more flexibility?*
 
 **DOWNLOAD**
 <a name="bundled"></a>
-> _ Shipped with **underscore**, ready-to-use  
+> ❗ Shipped with **underscore**, ready-to-use  
 > → [COMMENTED ~ 61K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.min.js)
 
 > ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`  
