@@ -84,6 +84,7 @@ Comming soon...
 <a name="amd"></a>
 
 ### 2\. AMD 
+
 <a name="umdbehaviour"></a>
 
 #### 2.1\. UMD Behaviour
@@ -177,10 +178,17 @@ plus it's heavily used my meteor.
 <a name="forlodashusers"></a>
 
 #### 5.2\. For lodash users
+
+**Downloaded version**
 >
-⇾ By loading **lodash** which will define a global `_` variable, it will work seamlessly if you are **not** using an AMD loader.  
-⇾ With **requirejs** or any other AMD loader allowing mapping, check [this section](#amd).   
-⇾ With **bower**, it seems possible by overriding underscore dependency, see [this so thread](http://stackoverflow.com/questions/24231184/bower-override-dependency)   
-⚠ With **Npm**, you cannot override dependencies. It is however still possible to shim `_` globally with [browserify](https://gist.github.com/malte-wessel/8a295bc604c4a0d0dbe1).   
+ⓘ By loading lodash in a non-AMD context, a global `_` variable will be defined and it will work seamlessly  
+ⓘ With **requirejs** or any other AMD loader allowing mapping, check [this section](#amd).   
+
+
+**Dependency managers version**
+>
+ⓘ With **bower**, it seems possible by overriding underscore dependency, see [this so thread](http://stackoverflow.com/questions/24231184/bower-override-dependency)   
+⚠  With **npm**, you cannot override dependencies. It is however still possible to shim `_` globally with [browserify](https://gist.github.com/malte-wessel/8a295bc604c4a0d0dbe1).   
+
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
