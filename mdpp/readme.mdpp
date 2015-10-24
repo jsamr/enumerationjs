@@ -4,22 +4,22 @@
 ![Travis build](https://travis-ci.org/sveinburne/enumeration.js.svg?branch=master)
 !INCLUDE "jasmine-badge.mdpp"
  ![License](https://img.shields.io/npm/l/express.svg)
- [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumeration.js.svg)](https://github.com/sveinburne/enumeration.js)
-*Straightforward though very flexible solution addressing the unimplemented `enum` keyword.*  
+ [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumeration.js.svg)](https://github.com/sveinburne/enumeration.js)  
+*Straightforward though very flexible solution addressing the unimplemented `enum` keyword.*   
 
 **KEY POINTS**
 
 - *functionalities*  
   ⓘ An **enum type** `MyEnum`  
-       &#09;→ is `instanceof` the `Enumeration` constructor  
-       &#09;→ is **immutable**  
-       &#09;→ can be inherited ([JS](JS.GUIDE.MD#extendyourenumerationwithprototypeinheritance) | [COFFEE](COFFEE.GUIDE.MD#extendyourenumerationwithprototypeinheritance))  
-       &#09;→ `Object.keys(MyEnum)` is `["SOME_CONST1","SOME_CONST2"]`      
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ is `instanceof` the `Enumeration` constructor  
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ is **immutable**  
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ can be inherited ([JS](JS.GUIDE.MD#extendyourenumerationwithprototypeinheritance) | [COFFEE](COFFEE.GUIDE.MD#extendyourenumerationwithprototypeinheritance))  
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ `Object.keys(MyEnum)` is `["SOME_CONST1","SOME_CONST2"]`      
   ⓘ An **enum constant** `MyEnum.SOME_CONSTANT1`    
-     &#09;→ is `instanceof` `MyEnum`   
-     &#09;→ is **immutable**   
-     &#09;→ can **inherit a prototype shared across `MyEnum` constants** ([JS](JS.GUIDE.MD#aprototypeforenumconstants) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumconstants))       
-     &#09;→ can have **its own specific properties** ([JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))          
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ is `instanceof` `MyEnum`   
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ is **immutable**   
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ can **inherit a prototype shared across `MyEnum` constants** ([JS](JS.GUIDE.MD#aprototypeforenumconstants) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumconstants))       
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ can have **its own specific properties** ([JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))          
   ✓  Allow easy refactoring, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring))   
   ✓  Lightweight **deserialization** with `MyEnum.from(identifier)` and **serialization** with `MyEnum.ENUM_CONST.id()`   
      
