@@ -46,10 +46,6 @@
 
 <a name="packages"></a>
 **PACKAGES**
-> 
-[![npm version](https://badge.fury.io/js/enumerationjs.svg)](https://www.npmjs.com/package/enumerationjs)
- ![bower version](https://badge.fury.io/bo/enumerationjs.svg)]
- [![atmosphere version](https://img.shields.io/badge/atmosphere_package-1.3.3-brightgreen.svg)]()
 
 > `npm install enumerationjs`   
 > `bower install enumerationjs`  
