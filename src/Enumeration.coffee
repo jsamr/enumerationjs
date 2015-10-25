@@ -34,6 +34,10 @@ isUnderscoreDefined= (root) ->
     * @return {array} an array containing all the registered enumTypes
     ###
     @list:-> _.clone(enumTypes)
+    ###
+    *
+    ###
+    @types:@list
     ###*
     * Static function that creates an enum object value. Uniqueness guarantied by object reference.
     * This objects's unique own field is the Enumeration name. It's read only.

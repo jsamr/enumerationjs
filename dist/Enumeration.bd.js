@@ -42,6 +42,13 @@
       };
 
 
+      /*
+      *
+       */
+
+      Enumeration.types = Enumeration.list;
+
+
       /**
       * Static function that creates an enum object value. Uniqueness guarantied by object reference.
       * This objects's unique own field is the Enumeration name. It's read only.

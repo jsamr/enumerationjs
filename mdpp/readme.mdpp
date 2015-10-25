@@ -97,7 +97,7 @@ Each **enum constant** will have the following methods :
 - `()`                             : shortcut for `pretty()`
  
 #### Enumeration object
-- `Enumeration.list()` : returns an array containing the `MyEnum` for each enum type. 
+- `Enumeration.types()` : returns an array containing the `MyEnum` for each enum type. 
 
 #### More examples
 > [→ COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top) for coffescript devs   

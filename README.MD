@@ -2,7 +2,7 @@
 # enumerationjs : Java-like enum for javascript/coffeescript  
 
 ![Travis build](https://travis-ci.org/sveinburne/enumerationjs.svg?branch=master)
- ![jasmine](https://img.shields.io/badge/47_specs-0_failures-brightgreen.svg)
+ ![jasmine](https://img.shields.io/badge/48_specs-0_failures-brightgreen.svg)
  ![License](https://img.shields.io/npm/l/express.svg)
  [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumeration.js.svg)](https://github.com/sveinburne/enumerationjs)  
 *Straightforward though very flexible solution addressing the unimplemented `enum` keyword.*   
@@ -125,7 +125,7 @@ Each **enum constant** will have the following methods :
 <a name="enumerationobject"></a>
 
 #### 2.4\. Enumeration object
-- `Enumeration.list()` : returns an array containing the `MyEnum` for each enum type. 
+- `Enumeration.types()` : returns an array containing the `MyEnum` for each enum type. 
 
 <a name="moreexamples"></a>
 

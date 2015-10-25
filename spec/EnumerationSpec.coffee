@@ -16,6 +16,9 @@ describe 'Enumeration ', ->
     expect(list).toEqual(jasmine.any(Array))
     list.pop
     expect(Enumeration.list().length).toBe(length)
+  it ' types method should be equal to its list method', ->
+    expect(Enumeration.list).toBe(Enumeration.types)
+    expect(Enumeration.types).not.toThrow()
 
 
 describe 'Enumeration values when descriptors are raw types :',  ->
