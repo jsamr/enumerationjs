@@ -4,6 +4,7 @@ isUnderscoreDefined= (root) ->
 
 # Universal module definition
 ((root, factory) ->
+  #AMD Style
   if typeof define == 'function' and define.amd
     deps=[]
     #Allows compatibility with any underscore version
@@ -11,19 +12,19 @@ isUnderscoreDefined= (root) ->
     if(not isUnderscoreDefined root) then deps.push "underscore"
     # AMD. Register enumerationjs module
     define "enumerationjs", deps, factory
+  #CommonJS style
   else if typeof module == 'object' and module.exports
     # Node. Does not work with strict CommonJS, but
     # only CommonJS-like environments that support module.exports,
     # like Node.
     module.exports = factory(require('underscore'))
-  else
-    # Browser globals (root is window)
-    if not root._?
-      throw new ReferenceError "underscore global object '_' must be defined.
+  #Meteor style
+  else if root.Package?.underscore?._? then root.Enumeration = factory(root.Package.underscore._)
+  #Globals
+  else if root._ then  root.Enumeration = factory(root._)
+  else throw new ReferenceError "underscore global object '_' must be defined.
         Get the bundled version of enumerationjs here : https://github.com/sveinburne/enumerationjs/#bundled
         or install underscore : http://underscorejs.org/ "
-    #Export to global window
-    root.Enumeration = factory(root._)
 
 ) this, (_) ->
   enumTypes=[]

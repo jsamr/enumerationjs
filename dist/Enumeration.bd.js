@@ -13,7 +13,7 @@
   };
 
   (function(root, factory) {
-    var deps;
+    var deps, ref, ref1;
     if (typeof define === 'function' && define.amd) {
       deps = [];
       if (!isUnderscoreDefined(root)) {
@@ -22,11 +22,12 @@
       return define("enumerationjs", deps, factory);
     } else if (typeof module === 'object' && module.exports) {
       return module.exports = factory(require('underscore'));
-    } else {
-      if (root._ == null) {
-        throw new ReferenceError("underscore global object '_' must be defined. Get the bundled version of enumerationjs here : https://github.com/sveinburne/enumerationjs/#bundled or install underscore : http://underscorejs.org/ ");
-      }
+    } else if (((ref = root.Package) != null ? (ref1 = ref.underscore) != null ? ref1._ : void 0 : void 0) != null) {
+      return root.Enumeration = factory(root.Package.underscore._);
+    } else if (root._) {
       return root.Enumeration = factory(root._);
+    } else {
+      throw new ReferenceError("underscore global object '_' must be defined. Get the bundled version of enumerationjs here : https://github.com/sveinburne/enumerationjs/#bundled or install underscore : http://underscorejs.org/ ");
     }
   })(this, function(_) {
     var Enumeration, enumTypes;
