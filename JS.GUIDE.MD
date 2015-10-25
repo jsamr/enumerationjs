@@ -86,7 +86,7 @@ closeEventCodes.CLOSE_NO_STATUS.print() // prints 'CLOSE_NO_STATUS:1005'
 
 ```javascript
 //the descriptor MUST contain an _id field as it is an object
-var = closeEventCodes = new Enumeration("closeEventCodes", {
+var closeEventCodes = new Enumeration("closeEventCodes", {
   CLOSE_NORMAL:          { _id: 1000, info: "Connection closed normally" },
   CLOSE_GOING_AWAY:      { _id: 1001, info: "Connection closed going away" },
   CLOSE_PROTOCOL_ERROR:  { _id: 1002, info: "Connection closed due to protocol error"  },
