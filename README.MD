@@ -66,6 +66,7 @@
 4\.  [Dependencies](#dependencies)  
 4.1\.  [Underscore](#underscore)  
 4.2\.  [For lodash users](#forlodashusers)  
+5\.  [Changelog](#changelog)  
 
 <a name="amd"></a>
 
@@ -98,6 +99,7 @@ you can map *underscore* to *lodash* to avoid an extra dependency easily :
 
 #### 2.1\. Enumeration.constructor
 You can instantiate an enum type with the provided `Enumeration` constructor. It will take three arguments :
+
 - `MyEnum` : the name of this enumeration, must be unique amongst other Enumeration instances.
 - `enumConstants` : an object containing the set of enum constants. Each key is the enum constant name and each value is a descriptor that can either be ...
     * a **raw descriptor** i.e. a unique identifier of type string or number  ([JS](JS.GUIDE.MD#basicusagewithrawdescriptors) | [COFFEE](COFFEE.GUIDE.MD#basicusagewithrawdescriptors))      
@@ -108,6 +110,7 @@ You can instantiate an enum type with the provided `Enumeration` constructor. It
 
 #### 2.2\. Enumeration constant 
 Each **enum constant** will have the following methods :
+
 - `key()`      : retrieve the key (`SOME_ENUM_CONST` for example)
 - `id()`       : retrieve the identifier (`1000` for example)
 - `type()`     : retrieve the enum type,`MyEnum` Enumeration constructor's argument
@@ -118,6 +121,7 @@ Each **enum constant** will have the following methods :
 <a name="enumerationinstanceakaenumtype"></a>
 
 #### 2.3\. Enumeration instance aka enum type
+
 - `from(id,throwOnFailure=false)`  : retrieve the enum constant that matches given `id`. [optional] throwOnFailure, default to false, throws an error when no id match.  
 - `pretty()`                       : give a pretty description of this enum type and all its constants, useful for logging/debugging  
 - `()`                             : shortcut for `pretty()`
@@ -125,6 +129,7 @@ Each **enum constant** will have the following methods :
 <a name="enumerationobject"></a>
 
 #### 2.4\. Enumeration object
+
 - `Enumeration.types()` : returns an array containing the `MyEnum` for each enum type. 
 
 <a name="moreexamples"></a>
@@ -177,5 +182,39 @@ plus it's heavily used my meteor.
 ⓘ With **bower**, it seems possible by overriding underscore dependency, see [this so thread](http://stackoverflow.com/questions/24231184/bower-override-dependency)   
 ⚠  With **npm**, you cannot override dependencies. It is however still possible to shim `_` globally with [browserify](https://gist.github.com/malte-wessel/8a295bc604c4a0d0dbe1).   
 
+<a name="changelog"></a>
+
+### 5\. Changelog
+
+
+**v1.3.6**  
+
+- Fixed bug with describe() method when descriptors are structured  
+
+**v1.3.4**  
+
+- Meteor support    
+- Added Enumeration.types() as an alias to Enumeration.list() to be semantically consistent  
+ 
+**v1.3.2**  
+
+- Enhanced semantic consistency  
+
+**v1.3.0**  
+
+- UML loader, AMD compliant  
+- replaced lodash with underscore
+
+**v1.2.2**  
+
+- Fixed MyEnum() function bug  
+
+**v1.2.0**  
+
+- Replaced underscore with lodash  
+  
+**v1.0**  
+
+- First release  
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  

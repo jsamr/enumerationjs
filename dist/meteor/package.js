@@ -1,6 +1,6 @@
 Package.describe({
   name: 'sveinburne:enumerationjs',
-  version: '1.3.6',
+  version: '1.3.7',
   // Brief, one-line summary of the package.
   summary: 'Java-like super flexible enums ! Move the logic and refactor.',
   // URL to the Git repository containing the source code for this package.
