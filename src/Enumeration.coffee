@@ -57,7 +57,7 @@ isUnderscoreDefined= (root) ->
         #Returns descriptor if not an object, descriptor._id otherwise
         id:    -> identifier
         key:   -> enumName
-        describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of extend(descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
+        describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of _.extend(descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
       testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in _.keys(_.extend({},methods,enumerationProto))
       testReserved valueProto
       prototype=_.extend methods, valueProto

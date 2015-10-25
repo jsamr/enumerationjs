@@ -80,7 +80,7 @@
             var prop;
             return enumName + ":" + identifier + (valueIsObject ? "  {" + ((function() {
               var ref, results;
-              ref = extend(descriptor, valueProto);
+              ref = _.extend(descriptor, valueProto);
               results = [];
               for (enumName in ref) {
                 prop = ref[enumName];
