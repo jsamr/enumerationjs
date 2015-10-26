@@ -185,6 +185,8 @@ plus it's heavily used by meteor.
 
 ### 5\. Changelog
 
+NB : minor doc fixes are not listed above
+
 **v1.3.8**
 
 - Fixed underscore minimum version to 1.4, their changelog didn't mention `_.object` method so I tought it to be shipped from the beginning  
