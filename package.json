@@ -21,7 +21,8 @@
     "coffee-script": "^1.10",
     "jasmine": "^2.x",
     "browserify":"^11",
-    "uglify-js":"^2.5"
+    "uglify-js":"^2.5",
+    "underscore": "^1.2"
   },
   "dependencies": {
     "underscore": "^1.2"
