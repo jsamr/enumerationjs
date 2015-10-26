@@ -31,16 +31,20 @@ isUnderscoreDefined= (root) ->
 ) this, (_) ->
   enumTypes=[]
   defineNonEnumerableProperty=do ->
+    #check for IE <= V8 first, then check defineProperty
     if ((window?.attachEvent && !window?.addEventListener) or not Object.defineProperty?) then (obj,name,prop)->obj[name]=prop
-    else (obj,name,prop)->Object.defineProperty(obj,name,{value:prop})
-  freezeObject=Object.freeze or _.identity
-  baseCreate = (prototype) ->
-      if !_.isObject(prototype)
-        return {}
-      if Object.create
-        return Object.create(prototype)
-      ctor={prototype:prototype}
-      new ctor
+    else (obj,name,prop)->Object.defineProperty(obj,name,{value:prop,configurable:false})
+  freezeObject= Object.freeze or _.identity
+  baseCreate = do ->
+      create=(prototype)->
+          ctor=Object.create or ->
+          ctor.prototype=prototype
+          new ctor()
+      (prototype) ->
+        if !_.isObject(prototype)
+          return {}
+        create(prototype)
+
   createObject= (prototype, props) ->
       result = baseCreate(prototype)
       if props then  _.extend result, props

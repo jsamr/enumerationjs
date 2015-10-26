@@ -29,8 +29,46 @@
       throw new ReferenceError("underscore global object '_' must be defined. Get the bundled version of enumerationjs here : https://github.com/sveinburne/enumerationjs/#bundled or install underscore : http://underscorejs.org/ ");
     }
   })(this, function(_) {
-    var Enumeration, enumTypes;
+    var Enumeration, baseCreate, createObject, defineNonEnumerableProperty, enumTypes, freezeObject;
     enumTypes = [];
+    defineNonEnumerableProperty = (function() {
+      if (((typeof window !== "undefined" && window !== null ? window.attachEvent : void 0) && !(typeof window !== "undefined" && window !== null ? window.addEventListener : void 0)) || (Object.defineProperty == null)) {
+        return function(obj, name, prop) {
+          return obj[name] = prop;
+        };
+      } else {
+        return function(obj, name, prop) {
+          return Object.defineProperty(obj, name, {
+            value: prop,
+            configurable: false
+          });
+        };
+      }
+    })();
+    freezeObject = Object.freeze || _.identity;
+    baseCreate = (function() {
+      var create;
+      create = function(prototype) {
+        var ctor;
+        ctor = Object.create || function() {};
+        ctor.prototype = prototype;
+        return new ctor();
+      };
+      return function(prototype) {
+        if (!_.isObject(prototype)) {
+          return {};
+        }
+        return create(prototype);
+      };
+    })();
+    createObject = function(prototype, props) {
+      var result;
+      result = baseCreate(prototype);
+      if (props) {
+        _.extend(result, props);
+      }
+      return result;
+    };
     Enumeration = (function() {
 
       /**
@@ -102,7 +140,7 @@
           return results;
         };
         testReserved(valueProto);
-        prototype = _.create(enumerationProto);
+        prototype = baseCreate(enumerationProto);
         _.extend(prototype, methods, valueProto);
         properties = {};
         defineReadOnlyProperty = function(key0, value0) {
@@ -123,7 +161,7 @@
             }
           }
         }
-        return Object.freeze(_.create(prototype, properties));
+        return freezeObject(createObject(prototype, properties));
       };
 
 
@@ -136,7 +174,7 @@
        */
 
       function Enumeration(enumType, enumValues, proto) {
-        var idToKeyMap, ids, key, self, val, writeProperty;
+        var idToKeyMap, ids, key, self, val, writeConstant;
         if (proto == null) {
           proto = {};
         }
@@ -171,49 +209,41 @@
             throw "Cannot have enum constant as one amongst reserved enumeration property [pretty,from]";
           }
         }
-        Object.defineProperty(self, "prototype", {
-          value: {
-            type: function() {
-              return enumType;
-            }
+        self.prototype = {
+          type: function() {
+            return enumType;
           }
-        });
-        writeProperty = (function(_this) {
+        };
+        writeConstant = (function(_this) {
           return function(descriptor, key) {
             return self[key] = Enumeration.constant(key, descriptor, proto, ids, self.prototype);
           };
         })(this);
         for (key in enumValues) {
           val = enumValues[key];
-          writeProperty(val, key);
+          writeConstant(val, key);
         }
-        Object.defineProperty(self, 'pretty', {
-          value: function() {
-            var enumVal;
-            return enumType + ":" + ((function() {
-              var results;
-              results = [];
-              for (key in self) {
-                enumVal = self[key];
-                results.push("\n\t" + enumVal.describe());
-              }
-              return results;
-            })());
-          }
-        });
-        Object.defineProperty(self, 'from', {
-          value: function(identifier, throwOnFailure) {
-            if (throwOnFailure == null) {
-              throwOnFailure = false;
+        defineNonEnumerableProperty(self, 'pretty', function() {
+          return enumType + ":" + ((function() {
+            var results;
+            results = [];
+            for (key in enumValues) {
+              results.push("\n\t" + self[key].describe());
             }
-            return self[idToKeyMap[identifier]] || ((function() {
-              if (throwOnFailure) {
-                throw "identifier " + identifier + " does not match any";
-              }
-            })());
-          }
+            return results;
+          })());
         });
-        Object.freeze(self);
+        defineNonEnumerableProperty(self, 'from', function(identifier, throwOnFailure) {
+          if (throwOnFailure == null) {
+            throwOnFailure = false;
+          }
+          return self[idToKeyMap[identifier]] || ((function() {
+            if (throwOnFailure) {
+              throw "identifier " + identifier + " does not match any";
+            }
+          })());
+        });
+        freezeObject(self);
         enumTypes.push(enumType);
         return self;
       }

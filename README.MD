@@ -2,7 +2,7 @@
 # enumerationjs : Java-like enum for javascript/coffeescript  
 
 ![Travis build](https://travis-ci.org/sveinburne/enumerationjs.svg?branch=master)
- ![jasmine](https://img.shields.io/badge/50_specs-0_failures-brightgreen.svg)
+ ![jasmine](https://img.shields.io/badge/41_specs-14_failures-red.svg)
  ![License](https://img.shields.io/npm/l/express.svg)
  [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumerationjs.svg)](https://github.com/sveinburne/enumerationjs)  
 *Straightforward though very flexible solution addressing the unimplemented `enum` keyword.*   
@@ -28,7 +28,7 @@
   ✓  Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
   ✓  Available for **npm**, **bower** and **Meteor**, see the [packages section](#packages)  
   ⓘ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
-  ⚠  You **shall** guaranty the javascript engine is [ECMA-262 5th edition](https://people.mozilla.org/~jorendorff/es5.html) compatible, **or at least** provide the es5-shim package, see [this section](#ecmascript)      
+  ⚠  You cannot rely on immutability for old browsers not supporting `Object.defineProperty` and `Object.freeze`, especially IE<9. This package will work though, but with enum constants won't be frozen. See [this section](#ecmascript)    
 
 **EXAMPLES**
 
@@ -145,16 +145,15 @@ Each **enum constant** will have the following methods :
 
 > ECMA-262 5th edition was published on December 3, 2009 
 
-Among those specifications, the following methods must be available:
+Among those specifications, the following methods must be available to have control over immutability:
 ```javascript
 Object.defineProperty(object,property,propertyDescriptor)
 Object.freeze(object)
-Object.create(prototype,propertiesDescriptors)
 ```
 These methods prevent user from mistakenly modify any property from the enum type and its bound constants :  
 **any attempt to write a read-only property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.  
 **any attempt to reconfigure a non-configurable property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.     
-For older browser, those methods can be polyfilled with [es5-shim](https://github.com/es-shims/es5-shim), however the write permissions will be ignored.   
+For older browser, those methods have fallbacks so no exception will show up, however the write permissions will be ignored.   
 
 <a name="dependencies"></a>
 
@@ -163,9 +162,9 @@ For older browser, those methods can be polyfilled with [es5-shim](https://githu
 <a name="underscore"></a>
 
 #### 4.1\. Underscore
-Relies on underscore >=1.1.   
+Relies on underscore >=1.4.   
 **NB** : On version 1.2 I switched to **lodash** for its optimizations and improvements, but on the other hand **underscore** appeared lighter for the bundled version, 
-plus it's heavily used my meteor.
+plus it's heavily used by meteor.
 
 <a name="forlodashusers"></a>
 
@@ -186,6 +185,16 @@ plus it's heavily used my meteor.
 
 ### 5\. Changelog
 
+**v1.3.8**
+
+- Fixed underscore minimum version to 1.4, their changelog didn't mention `_.object` method so I tought it to be shipped from the beginning  
+- Partial support for non ECMA5 engines
+- Replaced `__proto__` direct assignments with custom `createObject` to allow full integration with old browsers 
+- Performed check over `Object.defineProperty` and `Object.create` with IE8 and lower check support
+
+**v1.3.7**
+
+- Added changelog
 
 **v1.3.6**  
 

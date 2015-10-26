@@ -48,9 +48,9 @@ describe 'Enumeration values when descriptors are raw types :',  ->
   it 'should share prototype\'s properties', ->
     expect(prototype.someStupidFun).toBe(closeEventCodes[key].someStupidFun) for key of descriptors
   it 'should be instanceof their Enumeration instance object', ->
-    expect(enumvVal instanceof closeEventCodes).toBe(true) for key,enumvVal of closeEventCodes
+    expect(closeEventCodes[key] instanceof closeEventCodes).toBe(true) for key of descriptors
   it 'should have a describe method returning a string', ->
-    expect(_.isString(enumvVal.describe())).toBe(true) for key,enumvVal of closeEventCodes
+    expect(_.isString(closeEventCodes[key].describe())).toBe(true) for key of descriptors
 
 
 describe 'Enumeration values when descriptors are structured objects :',  ->
@@ -84,7 +84,7 @@ describe 'Enumeration values when descriptors are structured objects :',  ->
   it 'should not have an _id property', ->
     expect(closeEventCodes[key]._id).not.toBeDefined() for key of descriptors
   it 'should have a describe method returning a string', ->
-    expect(_.isString(enumvVal.describe())).toBe(true) for key,enumvVal of closeEventCodes
+    expect(_.isString(closeEventCodes[key].describe())).toBe(true) for key of descriptors
 
 describe 'Enumeration instantiation with raw descriptor', () ->
   it 'should throw an error when reserved property "id" is a prototype property', ->
