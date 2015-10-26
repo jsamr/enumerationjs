@@ -11,7 +11,7 @@
   "description": "Java-like super flexible enums ! Move the logic and refactor. Type-safe, immutables enums. Package is UMD defined and well tested.",
   "main": "dist/Enumeration.min.js",
   "dependencies": {
-    "underscore":"^1.2"
+    "underscore":"^1.4"
   },
   "moduleType": [
     "amd",
