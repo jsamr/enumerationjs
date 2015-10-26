@@ -69,7 +69,6 @@
 4.1\.  [Underscore](#underscore)  
 4.2\.  [For lodash users](#forlodashusers)  
 5\.  [Changelog](#changelog)  
-6\.  [Changelog](#changelog-1)  
 
 <a name="amd"></a>
 
@@ -197,6 +196,10 @@ Note that it the changelogs, `MyEnum` is any instance of `Enumeration.`
 
 - Added explicit support for serialization with **enum constants** implementing the `toJSON` standard method
 - Added enhanced support for cross engine validation (client/server) with `MyEnum.assertSchema`
+- `MyEnum` is no longer all-frozen, only **enum constants** and built-in methods are. you can directly define new properties
+- Added `MyEnum.toJSON` utility method, with two optional arguments to evaluate fields from prototype and functions returning non-undefined values.
+- Added `MyEnum.pretty(evalFunctions=false)` optional argument to evaluate functions returning non-undefined values.
+- Added `MyEnum.print(evalFunctions=false)` utility method that prints only the **enum constants** and its type to the console. Equivalent to `console.log(MyEnum.toJSON(true,evalFunctions))` 
 
 **v1.3.7**
 
@@ -233,32 +236,5 @@ Note that it the changelogs, `MyEnum` is any instance of `Enumeration.`
 
 - First release  
 
-<a name="changelog-1"></a>
-
-### 6\. Changelog
-
-
-**v1.3.6** 
-* Fixed bug with describe() method when descriptors are structured  
-
-**v1.3.4**  
-* Meteor support    
-* Added Enumeration.types() as an alias to Enumeration.list() to be semantically consistent  
- 
-**v1.3.2**  
-* Enhanced semantic consistency  
-
-**v1.3.0**  
-* UML loader, AMD compliant  
-* replaced lodash with underscore
-
-**v1.2.2**  
-* Fixed MyEnum() function bug  
-
-**v1.2.0**  
-* Replaced underscore with lodash  
-  
-**v1.0**  
-* First release  
 
 **↑ Back to [TABLE OF CONTENTS](#toc)**  

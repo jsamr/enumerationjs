@@ -195,30 +195,5 @@ Note that it the changelogs, `MyEnum` is any instance of `Enumeration.`
 
 - First release  
 
-### Changelog
-
-
-**v1.3.6** 
-* Fixed bug with describe() method when descriptors are structured  
-
-**v1.3.4**  
-* Meteor support    
-* Added Enumeration.types() as an alias to Enumeration.list() to be semantically consistent  
- 
-**v1.3.2**  
-* Enhanced semantic consistency  
-
-**v1.3.0**  
-* UML loader, AMD compliant  
-* replaced lodash with underscore
-
-**v1.2.2**  
-* Fixed MyEnum() function bug  
-
-**v1.2.0**  
-* Replaced underscore with lodash  
-  
-**v1.0**  
-* First release  
 
 !INCLUDE "common/go-toc.mdpp"
