@@ -49,9 +49,9 @@
     freezeObject = Object.freeze || _.identity;
     baseCreate = (function() {
       var create;
-      create = function(prototype) {
+      create = Object.create || function(prototype) {
         var ctor;
-        ctor = Object.create || function() {};
+        ctor = function() {};
         ctor.prototype = prototype;
         return new ctor();
       };

@@ -36,8 +36,8 @@ isUnderscoreDefined= (root) ->
     else (obj,name,prop)->Object.defineProperty(obj,name,{value:prop,configurable:false})
   freezeObject= Object.freeze or _.identity
   baseCreate = do ->
-      create=(prototype)->
-          ctor=Object.create or ->
+      create=Object.create or (prototype)->
+          ctor= ->
           ctor.prototype=prototype
           new ctor()
       (prototype) ->

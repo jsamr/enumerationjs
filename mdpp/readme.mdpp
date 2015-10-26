@@ -145,6 +145,8 @@ plus it's heavily used by meteor.
 ### Changelog
 
 NB : minor doc fixes are not listed above
+**v1.3.10**
+- Hot bugfix with `function create is not a constructor`
 
 **v1.3.8**
 

@@ -2,7 +2,7 @@
 # enumerationjs : Java-like enum for javascript/coffeescript  
 
 ![Travis build](https://travis-ci.org/sveinburne/enumerationjs.svg?branch=master)
- ![jasmine](https://img.shields.io/badge/41_specs-14_failures-red.svg)
+ ![jasmine](https://img.shields.io/badge/50_specs-0_failures-brightgreen.svg)
  ![License](https://img.shields.io/npm/l/express.svg)
  [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumerationjs.svg)](https://github.com/sveinburne/enumerationjs)  
 *Straightforward though very flexible solution addressing the unimplemented `enum` keyword.*   
@@ -186,6 +186,8 @@ plus it's heavily used by meteor.
 ### 5\. Changelog
 
 NB : minor doc fixes are not listed above
+**v1.3.10**
+- Hot bugfix with `function create is not a constructor`
 
 **v1.3.8**
 
