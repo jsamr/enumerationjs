@@ -149,16 +149,20 @@ plus it's heavily used my meteor.
 
 ### Changelog
 
-Note that it the changelogs, `MyEnum` is any instance of `Enumeration.`
+Note that it the changelogs :
+- `MyEnum` is any instance of `Enumeration.`
+- `MyEnum.SOME_CONST` is an **enum constant** of type `MyEnum`
 
 **v1.4.0**
 
-- Added explicit support for serialization with **enum constants** implementing the `toJSON` standard method
-- Added enhanced support for cross engine validation (client/server) with `MyEnum.assertSchema`
+- Added `MyEnum.assertSchema` to enhance support for cross engine validation (client/server) when implementation differs from server to client but you need to assert compatibility. 
 - `MyEnum` is no longer all-frozen, only **enum constants** and built-in methods are. you can directly define new properties
 - Added `MyEnum.toJSON` utility method, with two optional arguments to evaluate fields from prototype and functions returning non-undefined values.
 - Added `MyEnum.pretty(evalFunctions=false)` optional argument to evaluate functions returning non-undefined values.
 - Added `MyEnum.print(evalFunctions=false)` utility method that prints only the **enum constants** and its type to the console. Equivalent to `console.log(MyEnum.toJSON(true,evalFunctions))` 
+- Added `MyEnum.print(evalFunctions=false)` utility method that prints only the **enum constants** and its type to the console. Equivalent to `console.log(MyEnum.toJSON(true,evalFunctions))` 
+- Added `MyEnum.SOME_CONST.toString` to allow non-strict equality with `==` 
+- Added `MyEnum.SOME_CONST.toJSON` support for serialization with **enum constants** 
 
 **v1.3.7**
 

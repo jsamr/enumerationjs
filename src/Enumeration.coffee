@@ -60,6 +60,7 @@ isUnderscoreDefined= (root) ->
     if identifier in ids then throw "Duplicate identifier : #{identifier}"
     else ids.push identifier
     getId=-> identifier
+    getKey=-> enumName
     evaluateSchema=(schema,includePrototype,evaluateMethods)->
       recursiveEval=(obj)->
         if _.isFunction(obj) then recursiveEval(obj.call(thatConstant))
@@ -76,8 +77,8 @@ isUnderscoreDefined= (root) ->
       schema:(includePrototype=true,evaluateMethods=true)->
         base=if valueIsObject then descriptor else {_id:identifier}
         evaluateSchema(base,includePrototype,evaluateMethods)
-
-      key:   -> enumName
+      toString:getKey
+      key:     getKey
       describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of _.extend({},descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
     testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in _.keys(_.extend({},methods,enumerationProto))
     testReserved valueProto

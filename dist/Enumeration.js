@@ -66,7 +66,7 @@
     * @param {object} enumerationProto : the prototype shared with Enumeration instance.prototype
      */
     constant = function(enumName, descriptor, valueProto, ids, enumerationProto) {
-      var defineReadOnlyProperty, evaluateSchema, getId, identifier, key1, methods, properties, prototype, testReserved, thatConstant, val1, valueIsObject;
+      var defineReadOnlyProperty, evaluateSchema, getId, getKey, identifier, key1, methods, properties, prototype, testReserved, thatConstant, val1, valueIsObject;
       thatConstant = null;
       identifier = descriptor._id || descriptor;
       valueIsObject = descriptor._id != null;
@@ -77,6 +77,9 @@
       }
       getId = function() {
         return identifier;
+      };
+      getKey = function() {
+        return enumName;
       };
       evaluateSchema = function(schema, includePrototype, evaluateMethods) {
         var objectToIterateOn, recursiveEval;
@@ -114,9 +117,8 @@
           };
           return evaluateSchema(base, includePrototype, evaluateMethods);
         },
-        key: function() {
-          return enumName;
-        },
+        toString: getKey,
+        key: getKey,
         describe: function() {
           var prop;
           return enumName + ":" + identifier + (valueIsObject ? "  {" + ((function() {
