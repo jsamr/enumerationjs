@@ -2,9 +2,20 @@ isUnderscoreDefined= (root) ->
   isFunction= (obj) -> typeof obj is 'function'
   isFunction(us=root?._) and isFunction(us.isObject) and isFunction(us.isFunction) and isFunction(us.keys) and isFunction(us.map) and isFunction(us.clone) and isFunction(us.extend)
 
+###
+* Function that creates an enum object value. Uniqueness guarantied by object reference.
+* This objects's unique own field is the Enumeration name. It's read only.
+* @param {string or number} key the enum name, recommanded uppercase
+* @param {string or object} descriptor a string that identifies this value, or an object with fields that will be copied on the returned value. In this case
+* a field '_id' must be provided
+* @param {object} valueProto a prototype the returned object will inherit from
+* @param {string} enumType a string identifying the Enumeration instance this enum constant is bound to
+* @param {object} enumerationProto : the prototype shared with Enumeration instance.prototype
+###
+
 # Universal module definition
 ((root, factory) ->
-  #AMD Style
+#AMD Style
   if typeof define == 'function' and define.amd
     deps=[]
     #Allows compatibility with any underscore version
@@ -12,22 +23,80 @@ isUnderscoreDefined= (root) ->
     if(not isUnderscoreDefined root) then deps.push "underscore"
     # AMD. Register enumerationjs module
     define "enumerationjs", deps, factory
-  #CommonJS style
+#CommonJS style
   else if typeof module == 'object' and module.exports
-    # Node. Does not work with strict CommonJS, but
-    # only CommonJS-like environments that support module.exports,
-    # like Node.
+# Node. Does not work with strict CommonJS, but
+# only CommonJS-like environments that support module.exports,
+# like Node.
     module.exports = factory(require('underscore'))
-  #Meteor style
+#Meteor style
   else if root.Package?.underscore?._? then root.Enumeration = factory(root.Package.underscore._)
-  #Globals
+#Globals
   else if root._ then  root.Enumeration = factory(root._)
   else throw new ReferenceError "underscore global object '_' must be defined.
         Get the bundled version of enumerationjs here : https://github.com/sveinburne/enumerationjs/#bundled
         or install underscore : http://underscorejs.org/ "
-
 ) this, (_) ->
+  mapObject=(object,transform,ignorePredicate)->
+    unfiltered=_.object(_.map(object,((value,key)-> [key,transform(value,key)])))
+    if not ignorePredicate then unfiltered
+    else _.omit(unfiltered,ignorePredicate)
+
   enumTypes=[]
+  ###*
+  * Static function that creates an enum object value. Uniqueness guarantied by object reference.
+  * This objects's unique own field is the Enumeration name. It's read only.
+  * @param {string or number} key the enum name, recommanded uppercase
+  * @param {string or object} descriptor a string that identifies this value, or an object with fields that will be copied on the returned value. In this case
+  * a field '_id' must be provided
+  * @param {object} valueProto a prototype the returned object will inherit from
+  * @param {string} enumType a string identifying the Enumeration instance this enum constant is bound to
+  * @param {object} enumerationProto : the prototype shared with Enumeration instance.prototype
+  ###
+  constant=(enumName,descriptor,valueProto,ids,enumerationProto)->
+    thatConstant=null
+    identifier=descriptor._id or descriptor
+    valueIsObject=descriptor._id?
+    if identifier in ids then throw "Duplicate identifier : #{identifier}"
+    else ids.push identifier
+    getId=-> identifier
+    evaluateSchema=(schema,includePrototype,evaluateMethods)->
+      recursiveEval=(obj)->
+        if _.isFunction(obj) then recursiveEval(obj.call(thatConstant))
+        else if not _.isObject(obj) or obj is null then obj
+        else mapObject(obj,recursiveEval, (val)-> val is undefined or _.isFunction(val))
+      objectToIterateOn=if not includePrototype then schema else _.extend(schema,valueProto)
+      if evaluateMethods then recursiveEval(objectToIterateOn)
+      else JSON.parse(JSON.stringify(objectToIterateOn))
+
+    methods=
+      #Returns descriptor if not an object, descriptor._id otherwise
+      id:getId
+      toJSON:getId
+      schema:(includePrototype=true,evaluateMethods=true)->
+        base=if valueIsObject then descriptor else {_id:identifier}
+        evaluateSchema(base,includePrototype,evaluateMethods)
+
+      key:   -> enumName
+      describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of _.extend({},descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
+    testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in _.keys(_.extend({},methods,enumerationProto))
+    testReserved valueProto
+    prototype=_.extend methods, valueProto
+    properties={}
+    prototype.__proto__=enumerationProto
+    defineReadOnlyProperty= (key0,value0)->
+      properties[key0]=
+        value:value0
+        enumerable:true
+    if _.isObject(descriptor)
+      testReserved descriptor
+      if not descriptor._id? then throw "field '_id' must be defined when passing object as enum constant"
+      if _.isObject(descriptor._id) then throw "_id descriptor field must be of type string or number"
+      defineReadOnlyProperty key1,val1 for key1,val1 of descriptor when key1 isnt '_id'
+    thatConstant=Object.freeze(Object.create prototype, properties)
+    thatConstant
+
+
   #Java like enum
   class Enumeration
     ###*
@@ -35,44 +104,9 @@ isUnderscoreDefined= (root) ->
     ###
     @list:-> _.clone(enumTypes)
     ###
-    *
+    * alias to Enumeration.list
     ###
     @types:@list
-    ###*
-    * Static function that creates an enum object value. Uniqueness guarantied by object reference.
-    * This objects's unique own field is the Enumeration name. It's read only.
-    * @param {string or number} key the enum name, recommanded uppercase
-    * @param {string or object} descriptor a string that identifies this value, or an object with fields that will be copied on the returned value. In this case
-    * a field '_id' must be provided
-    * @param {object} valueProto a prototype the returned object will inherit from
-    * @param {string} enumType a string identifying the Enumeration instance this enum constant is bound to
-    * @param {object} enumerationProto : the prototype shared with Enumeration instance.prototype
-    ###
-    @constant:(enumName,descriptor,valueProto,ids,enumerationProto)->
-      identifier=descriptor._id or descriptor
-      valueIsObject=descriptor._id?
-      if identifier in ids then throw "Duplicate identifier : #{identifier}"
-      else ids.push identifier
-      methods=
-        #Returns descriptor if not an object, descriptor._id otherwise
-        id:    -> identifier
-        key:   -> enumName
-        describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of _.extend(descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
-      testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in _.keys(_.extend({},methods,enumerationProto))
-      testReserved valueProto
-      prototype=_.extend methods, valueProto
-      properties={}
-      prototype.__proto__=enumerationProto
-      defineReadOnlyProperty= (key0,value0)->
-        properties[key0]=
-          value:value0
-          enumerable:true
-      if _.isObject(descriptor)
-        testReserved descriptor
-        if not descriptor._id? then throw "field '_id' must be defined when passing object as enum constant"
-        if _.isObject(descriptor._id) then throw "_id descriptor field must be of type string or number"
-        defineReadOnlyProperty key1,val1 for key1,val1 of descriptor when key1 isnt '_id'
-      Object.freeze(Object.create prototype, properties)
 
     ###*
     * @param  {string}  enumType A string identifying the type of this Enumeration instance
@@ -90,20 +124,41 @@ isUnderscoreDefined= (root) ->
       if not _.isObject(enumValues) or _.isArray(enumValues) then throw "missing or bad enumValues : must be an object"
       if enumType in enumTypes then throw "#{enumType} already exists!"
       else
-        if (key for key in _.keys(enumValues) when key in ["pretty","from","value"]).length>0
+        if (key for key in _.keys(enumValues) when key in ["pretty","from","toJSON","assertScheme","type"]).length>0
           throw "Cannot have enum constant as one amongst reserved enumeration property [pretty,from]"
       #Non enumerable prototype property
       Object.defineProperty(self,"prototype", value:{type:->enumType})
       #Lambda to write enum constants
-      writeProperty = (descriptor,key) => self[key]=Enumeration.constant(key,descriptor,proto,ids,self.prototype)
+      writeProperty = (descriptor,key) => Object.defineProperty(self,key,
+        value:constant(key,descriptor,proto,ids,self.prototype)
+        enumerable:true
+      )
       writeProperty val,key for key,val of enumValues
       #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
-      Object.defineProperty self, 'pretty', value:-> "#{enumType}:#{"\n\t"+enumVal.describe() for key,enumVal of self}"
+      Object.defineProperty self, 'pretty', value:(evalConstantsMethods=false)-> JSON.stringify(self.toJSON(true,evalConstantsMethods),null,2)
+      #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
+      Object.defineProperty self, 'prettyPrint', value:(evalConstantsMethods=false)-> console.log(self.toJSON(true,evalConstantsMethods))
       #Define non-enumerable method that returns the enum instance which matches identifier (descriptor if string, descriptor._id if object)
       Object.defineProperty self, 'from', value:
         (identifier,throwOnFailure=false) -> self[idToKeyMap[identifier]] or (throw "identifier #{identifier} does not match any" if throwOnFailure )
-      #Guaranties properties to be 'final', non writable
-      Object.freeze(self)
+      Object.defineProperty self, 'toJSON', value:(includeConstantsPrototype=false,evalConstantsMethods=false) ->
+        _.extend({type:enumType},mapObject(_.pick(self,_.keys(enumValues)), (val)-> val.schema(includeConstantsPrototype,evalConstantsMethods)))
+      Object.defineProperty self, 'type', value:enumType
+      Object.defineProperty self, 'assertSchema', value: (schemaString,strict=true,providedType=null)->
+        'use strict'
+        if not _.isString(schemaString) then throw new TypeError("first argument must be a string")
+        remoteShema=JSON.parse(schemaString)
+        localSchema=self.toJSON()
+        if providedType? then remoteShema.type=providedType
+        if remoteShema.type isnt localSchema.type then throw new Error("Assertion failed. Local schema type differs from remote schema type.")
+        if strict
+          if not _.isEqual(localSchema,remoteShema) then throw new Error("Assertion failed. Local schema differs from remote schema.")
+        else
+          id=(val)->val._id
+          if not (_.isEqual(mapObject(remoteShema,id),mapObject(self.toJSON(),id)))
+            throw new Error("Assertion failed. Local schema differs from remote schema.")
+        true
+
       #Push the enum type upon success
       enumTypes.push enumType
       return self

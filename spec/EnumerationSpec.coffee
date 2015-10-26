@@ -5,7 +5,6 @@ nextEnumerationType=do ->
   -> "enumerationInstance#{counter++}"
 
 
-
 describe 'Enumeration ', ->
   it ' should be a function', ->
     expect(_.isFunction(Enumeration)).toBe(true)
@@ -51,7 +50,8 @@ describe 'Enumeration values when descriptors are raw types :',  ->
     expect(enumvVal instanceof closeEventCodes).toBe(true) for key,enumvVal of closeEventCodes
   it 'should have a describe method returning a string', ->
     expect(_.isString(enumvVal.describe())).toBe(true) for key,enumvVal of closeEventCodes
-
+  it 'schema should be assertable with itself', ->
+    expect(closeEventCodes.assertSchema(JSON.stringify(closeEventCodes))).toBe(true)
 
 describe 'Enumeration values when descriptors are structured objects :',  ->
   closeEventCodes=null
@@ -67,12 +67,16 @@ describe 'Enumeration values when descriptors are structured objects :',  ->
       CLOSE_PROTOCOL_ERROR:{_id:1002,info:"Connection closed due to protocol error"}
       CLOSE_UNSUPPORTED:   {_id:1003,info:"Connection closed due to unsupported operation"}
       CLOSE_NO_STATUS:     {_id:1005,info:"Connection closed with no status"}
-      CLOSE_ABNORMAL:      {_id:1006,info:"Connection closed abnormally"}
+      CLOSE_ABNORMAL:      {_id:1006,info:"Connection closed abnormally",fun:->}
       CLOSE_TOO_LARGE:     {_id:1009,info:"Connection closed due to too large packet"}
     closeEventCodes=new Enumeration(enumType, descriptors, prototype)
 
-  it 'should have their descriptor\'s id matching the result of id() ', ->
+  it 'should have their descriptor\'s _id matching the result of id() ', ->
     expect(descr._id).toBe(closeEventCodes[key].id()) for key,descr of descriptors
+  it 'should have their toJSON method as an alias to id method ', ->
+    expect(closeEventCodes[key].toJSON).toBe(closeEventCodes[key].id) for key,descr of descriptors
+  it 'should have their descriptor\'s _id matching the result of toJSON() ', ->
+    expect(descr._id).toBe(closeEventCodes[key].toJSON()) for key,descr of descriptors
   it 'should have their descriptor\'s key matching the result of key() ', ->
     expect(key).toBe(closeEventCodes[key].key()) for key of descriptors
   it 'should have an info field matching descriptor\'s info field ', ->
@@ -85,6 +89,14 @@ describe 'Enumeration values when descriptors are structured objects :',  ->
     expect(closeEventCodes[key]._id).not.toBeDefined() for key of descriptors
   it 'should have a describe method returning a string', ->
     expect(_.isString(enumvVal.describe())).toBe(true) for key,enumvVal of closeEventCodes
+  it 'should be serializable with stringify', ->
+    expect(JSON.parse(JSON.stringify(closeEventCodes))).toEqual(_.extend(JSON.parse(JSON.stringify(descriptors)),{type:closeEventCodes.type}))
+
+  it 'schema should be assertable with itself', ->
+    expect(closeEventCodes.assertSchema(JSON.stringify(closeEventCodes))).toBe(true)
+  it 'schema should be assertable with a similar enum having a different constant prototype', ->
+    remoteSchema=new Enumeration(nextEnumerationType(),descriptors,someFunction:->"Yolo!")
+    expect(closeEventCodes.assertSchema(JSON.stringify(remoteSchema),true,closeEventCodes.type)).toBe(true)
 
 describe 'Enumeration instantiation with raw descriptor', () ->
   it 'should throw an error when reserved property "id" is a prototype property', ->
@@ -97,6 +109,9 @@ describe 'Enumeration instantiation with raw descriptor', () ->
     expect(-> new Enumeration(nextEnumerationType(),{FIELD_ONE:1,FIELD_TWO:2},{type:->"Hi!"})).toThrow()
   it 'should throw an error when two descriptors are equal (duplicate id)', ->
     expect(-> new Enumeration(nextEnumerationType(),{FIELD_ONE:1,FIELD_TWO:1})).toThrow()
+  it 'schema method should return an object with one _id field matching descriptor', ->
+    enumeration=new Enumeration(nextEnumerationType(),{FIELD_ONE:1,FIELD_TWO:2})
+    expect(enumeration[key].schema()).toEqual({_id:descr}) for key,descr of {FIELD_ONE:1,FIELD_TWO:2}
 
 describe 'Enumeration instantiation with structured descriptor', () ->
   it 'should throw an error when reserved property "id" is a prototype property', ->
