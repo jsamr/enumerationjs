@@ -116,7 +116,6 @@ Among those specifications, the following methods must be available:
 ```javascript
 Object.defineProperty(object,property,propertyDescriptor)
 Object.freeze(object)
-Object.create(prototype,propertiesDescriptors)
 ```
 These methods prevent user from mistakenly modify any property from the enum type and its bound constants :  
 **any attempt to write a read-only property [in 'strict mode' will throw an error](http://www.w3schools.com/js/js_strict.asp)**, ignored otherwise.  
@@ -145,6 +144,10 @@ plus it's heavily used my meteor.
 
 ### Changelog
 
+**v1.3.8**
+
+- Replaced `__proto__` direct assignments with custom `createObject` to allow full integration with old browsers 
+- Performed check over `Object.defineProperty` and `Object.create` with IE8 and lower check support
 
 **v1.3.7**
 

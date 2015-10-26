@@ -2,6 +2,8 @@ isUnderscoreDefined= (root) ->
   isFunction= (obj) -> typeof obj is 'function'
   isFunction(us=root?._) and isFunction(us.isObject) and isFunction(us.isFunction) and isFunction(us.keys) and isFunction(us.map) and isFunction(us.clone) and isFunction(us.extend)
 
+
+
 # Universal module definition
 ((root, factory) ->
   #AMD Style
@@ -28,6 +30,21 @@ isUnderscoreDefined= (root) ->
 
 ) this, (_) ->
   enumTypes=[]
+  defineNonEnumerableProperty=do ->
+    if ((window?.attachEvent && !window?.addEventListener) or not Object.defineProperty?) then (obj,name,prop)->obj[name]=prop
+    else (obj,name,prop)->Object.defineProperty(obj,name,{value:prop})
+  freezeObject=Object.freeze or _.identity
+  baseCreate = (prototype) ->
+      if !_.isObject(prototype)
+        return {}
+      if Object.create
+        return Object.create(prototype)
+      ctor={prototype:prototype}
+      new ctor
+  createObject= (prototype, props) ->
+      result = baseCreate(prototype)
+      if props then  _.extend result, props
+      result
   #Java like enum
   class Enumeration
     ###*
@@ -60,19 +77,16 @@ isUnderscoreDefined= (root) ->
         describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of _.extend(descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
       testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in _.keys(_.extend({},methods,enumerationProto))
       testReserved valueProto
-      prototype=_.extend methods, valueProto
+      prototype=baseCreate(enumerationProto)
+      _.extend prototype, methods, valueProto
       properties={}
-      prototype.__proto__=enumerationProto
-      defineReadOnlyProperty= (key0,value0)->
-        properties[key0]=
-          value:value0
-          enumerable:true
+      defineReadOnlyProperty= (key0,value0)-> properties[key0]= value0
       if _.isObject(descriptor)
         testReserved descriptor
         if not descriptor._id? then throw "field '_id' must be defined when passing object as enum constant"
         if _.isObject(descriptor._id) then throw "_id descriptor field must be of type string or number"
         defineReadOnlyProperty key1,val1 for key1,val1 of descriptor when key1 isnt '_id'
-      Object.freeze(Object.create prototype, properties)
+      freezeObject(createObject prototype, properties)
 
     ###*
     * @param  {string}  enumType A string identifying the type of this Enumeration instance
@@ -92,18 +106,17 @@ isUnderscoreDefined= (root) ->
       else
         if (key for key in _.keys(enumValues) when key in ["pretty","from","value"]).length>0
           throw "Cannot have enum constant as one amongst reserved enumeration property [pretty,from]"
-      #Non enumerable prototype property
-      Object.defineProperty(self,"prototype", value:{type:->enumType})
+      self.prototype={type:->enumType}
       #Lambda to write enum constants
-      writeProperty = (descriptor,key) => self[key]=Enumeration.constant(key,descriptor,proto,ids,self.prototype)
-      writeProperty val,key for key,val of enumValues
+      writeConstant = (descriptor,key) => self[key]=Enumeration.constant(key,descriptor,proto,ids,self.prototype)
+      writeConstant val,key for key,val of enumValues
       #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
-      Object.defineProperty self, 'pretty', value:-> "#{enumType}:#{"\n\t"+enumVal.describe() for key,enumVal of self}"
+      defineNonEnumerableProperty self,'pretty', -> "#{enumType}:#{"\n\t"+self[key].describe() for key of enumValues}"
       #Define non-enumerable method that returns the enum instance which matches identifier (descriptor if string, descriptor._id if object)
-      Object.defineProperty self, 'from', value:
+      defineNonEnumerableProperty self, 'from',
         (identifier,throwOnFailure=false) -> self[idToKeyMap[identifier]] or (throw "identifier #{identifier} does not match any" if throwOnFailure )
       #Guaranties properties to be 'final', non writable
-      Object.freeze(self)
+      freezeObject(self)
       #Push the enum type upon success
       enumTypes.push enumType
       return self

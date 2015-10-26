@@ -103,14 +103,11 @@
           return results;
         };
         testReserved(valueProto);
-        prototype = _.extend(methods, valueProto);
+        prototype = _.create(enumerationProto);
+        _.extend(prototype, methods, valueProto);
         properties = {};
-        prototype.__proto__ = enumerationProto;
         defineReadOnlyProperty = function(key0, value0) {
-          return properties[key0] = {
-            value: value0,
-            enumerable: true
-          };
+          return properties[key0] = value0;
         };
         if (_.isObject(descriptor)) {
           testReserved(descriptor);
@@ -127,7 +124,7 @@
             }
           }
         }
-        return Object.freeze(Object.create(prototype, properties));
+        return Object.freeze(_.create(prototype, properties));
       };
 
 
