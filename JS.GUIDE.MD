@@ -16,6 +16,7 @@
 6\.  [Refactoring](#refactoring)  
 6.1\.  [get rid of a if / else or switch mess](#getridofaif/elseorswitchmess)  
 6.2\.  [What about the visitor pattern?](#whataboutthevisitorpattern?)  
+6.2.1\.  [Considering serialization and cross-engine compatibility](#consideringserializationandcross-enginecompatibility)  
 
 <a name="basicusagewithrawdescriptors"></a>
 
@@ -237,7 +238,7 @@ stateHandler = {
     }
   }
 };
-```
+```<a name="refactorvisitor"></a>
 Move the logic, and pass the stateHandler instance to the enum constant handle function!
 ```javascript
 //New school enum
@@ -275,6 +276,17 @@ stateHandler = {
 ```
 
 Cleaner, isn't it?
+<a name="consideringserializationandcross-enginecompatibility"></a>
+
+#### 6.2.1\. Considering serialization and cross-engine compatibility
+Enumerations are by-nature immutable. So they should be hard-coded. If you need to serialize a variable holding an enum value constant and send it through network, 
+you should use `myConstant=MyEnum.SOME_ENUM_CONST.id()` which is guarantied unique across MyEnum. 
+On the other side, whether it's client or server, you would use `MyEnum.from(myConstant)` to retrieve the appropriate instance.  
+
+Sharing a common library between a node server and browser client holding `MyEnum` is an option, but you could also have two distinct implementations of `MyEnum`
+with distinct prototypes since the behaviours of the bound methods might not be the same ([see the visitor refactoring example](#refactorvisitor)). 
+If you want to assert two implementations of `MyEnum` are compatible though having different [constants prototypes](#aprototypeforenumconstants), you can use for example `ServerEnum.assertSchema(SerializedClientEnum)` where `SerializedClientEnum` is equal to
+`JSON.stringify(ClientEnum)`. It will assert equality regarding schemas, i.e. ignoring functions and properties [inherited from prototype](#aprototypeforenumconstants). 
 <br><br>
 **↑ Back to [TABLE OF CONTENTS](#toc)**  
 **← Back to [README.MD](README.MD#top)**  

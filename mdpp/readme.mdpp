@@ -10,21 +10,23 @@
 **KEY POINTS**
 
 - *functionalities*  
-  ⓘ An **enum type** `MyEnum`  
+  ⓘ An **enum type** `MyEnum = new Enuemrtation('MyEnum', { CONSTANT1 : descriptor1, CONSTANT2 : descriptor2 }, somePrototype);`   
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ is `instanceof` the `Enumeration` constructor  
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ is **immutable**  
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ can be inherited ([JS](JS.GUIDE.MD#extendyourenumerationwithprototypeinheritance) | [COFFEE](COFFEE.GUIDE.MD#extendyourenumerationwithprototypeinheritance))  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ `Object.keys(MyEnum)` is `["SOME_CONST1","SOME_CONST2"]`      
-  ⓘ An **enum constant** `MyEnum.SOME_CONSTANT1`    
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ `Object.keys(MyEnum)` is `['CONSTANT1','CONSTANT2']`      
+  ⓘ An **enum constant** `MyEnum.CONSTANT1`    
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ is `instanceof` `MyEnum`   
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ is **immutable**   
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ can **inherit a prototype shared across `MyEnum` constants** ([JS](JS.GUIDE.MD#aprototypeforenumconstants) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumconstants))       
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ can have **its own specific properties** ([JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))          
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ **inherits from `somePrototype`** ([JS](JS.GUIDE.MD#aprototypeforenumconstants) | [COFFEE](COFFEE.GUIDE.MD#aprototypeforenumconstants))       
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ can have **its own specific properties** via `descriptor1` ([JS](JS.GUIDE.MD#useofstructureddescriptors) | [COFFEE](COFFEE.GUIDE.MD#useofstructureddescriptors))  
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ is shipped with methods `id()`, `key()`, `describe()`, `type()` and `toJSON()` , see the [API](#quickapioverview)           
   ✓  Allow easy refactoring, avoiding the `if else` mess  ([JS](JS.GUIDE.MD#refactoring) | [COFFEE](COFFEE.GUIDE.MD#refactoring))   
-  ✓  Lightweight **deserialization** with `MyEnum.from(identifier)` and **serialization** with `MyEnum.ENUM_CONST.id()`   
+  ✓  Lightweight **deserialization** with `MyEnum.from(identifier)` and **serialization** with `MyEnum.ENUM_CONST.toJSON()`   
      
 - *integration*  
   ✓  **Rock solid** jasmine specified tests.  
+  ✓  Semver.  
   ✓  Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
   ✓  Available for **npm**, **bower** and **Meteor**, see the [packages section](#packages)  
   ⓘ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
@@ -90,6 +92,7 @@ Each **enum constant** will have the following methods :
 - `id()`       : retrieve the identifier (`1000` for example)
 - `type()`     : retrieve the enum type,`MyEnum` Enumeration constructor's argument
 - `describe()` : return a string of the form 'key:id', useful for logging/debugging  
+- `toJSON()`   : called by `JSON.stringify`, alias for `id()`, see [mdn page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON%28%29_behavior).
 
  ...plus the properties provided at instantiation time (inherited from `prototype` and provided by descriptors)
 
@@ -102,6 +105,7 @@ Each **enum constant** will have the following methods :
 #### Enumeration object
 
 - `Enumeration.types()` : returns an array containing the `MyEnum` for each enum type. 
+
 
 #### More examples
 > [→ COFFEE.GUIDE.MD](COFFEE.GUIDE.MD#top) for coffescript devs   
@@ -145,6 +149,16 @@ plus it's heavily used my meteor.
 
 ### Changelog
 
+Note that it the changelogs, `MyEnum` is any instance of `Enumeration.`
+
+**v1.4.0**
+
+- Added explicit support for serialization with **enum constants** implementing the `toJSON` standard method
+- Added enhanced support for cross engine validation (client/server) with `MyEnum.assertSchema`
+- `MyEnum` is no longer all-frozen, only **enum constants** and built-in methods are. you can directly define new properties
+- Added `MyEnum.toJSON` utility method, with two optional arguments to evaluate fields from prototype and functions returning non-undefined values.
+- Added `MyEnum.pretty(evalFunctions=false)` optional argument to evaluate functions returning non-undefined values.
+- Added `MyEnum.print(evalFunctions=false)` utility method that prints only the **enum constants** and its type to the console. Equivalent to `console.log(MyEnum.toJSON(true,evalFunctions))` 
 
 **v1.3.7**
 
@@ -167,6 +181,7 @@ plus it's heavily used my meteor.
 
 - UML loader, AMD compliant  
 - replaced lodash with underscore
+- added `throwOnFailure` optional argument for `MyEnum.from()` fun   
 
 **v1.2.2**  
 
@@ -179,5 +194,31 @@ plus it's heavily used my meteor.
 **v1.0**  
 
 - First release  
+
+### Changelog
+
+
+**v1.3.6** 
+* Fixed bug with describe() method when descriptors are structured  
+
+**v1.3.4**  
+* Meteor support    
+* Added Enumeration.types() as an alias to Enumeration.list() to be semantically consistent  
+ 
+**v1.3.2**  
+* Enhanced semantic consistency  
+
+**v1.3.0**  
+* UML loader, AMD compliant  
+* replaced lodash with underscore
+
+**v1.2.2**  
+* Fixed MyEnum() function bug  
+
+**v1.2.0**  
+* Replaced underscore with lodash  
+  
+**v1.0**  
+* First release  
 
 !INCLUDE "common/go-toc.mdpp"

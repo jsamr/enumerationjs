@@ -1,0 +1,9 @@
+#### Considering serialization and cross-engine compatibility
+Enumerations are by-nature immutable. So they should be hard-coded. If you need to serialize a variable holding an enum value constant and send it through network, 
+you should use `myConstant=MyEnum.SOME_ENUM_CONST.id()` which is guarantied unique across MyEnum. 
+On the other side, whether it's client or server, you would use `MyEnum.from(myConstant)` to retrieve the appropriate instance.  
+
+Sharing a common library between a node server and browser client holding `MyEnum` is an option, but you could also have two distinct implementations of `MyEnum`
+with distinct prototypes since the behaviours of the bound methods might not be the same ([see the visitor refactoring example](#refactorvisitor)). 
+If you want to assert two implementations of `MyEnum` are compatible though having different [constants prototypes](#aprototypeforenumconstants), you can use for example `ServerEnum.assertSchema(SerializedClientEnum)` where `SerializedClientEnum` is equal to
+`JSON.stringify(ClientEnum)`. It will assert equality regarding schemas, i.e. ignoring functions and properties [inherited from prototype](#aprototypeforenumconstants). 

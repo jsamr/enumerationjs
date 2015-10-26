@@ -206,7 +206,7 @@ stateHandler={
     if state is States.OK then this.onSuccess()
     else this.onError(state)
 }
-```
+```<a name="refactorvisitor"></a>
 Move the logic, and pass the stateHandler instance to the enum constant handle function!
 ```coffeescript
 #New school enum

@@ -33,6 +33,8 @@
 !INCLUDE "common/refactoring-visitor-new.mdpp"
 !INCLUDE "js/refactoring-visitor-new.mdpp"
 
+!INCLUDE "common/considering_serialization.mdpp"
+
 <br><br>
 !INCLUDE "common/go-toc.mdpp"
 !INCLUDE "common/back-to-enum.mdpp"

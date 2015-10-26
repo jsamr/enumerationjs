@@ -1,2 +1,2 @@
-
+<a name="refactorvisitor"></a>
 Move the logic, and pass the stateHandler instance to the enum constant handle function!
