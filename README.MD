@@ -28,7 +28,7 @@
   ✓  Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
   ✓  Available for **npm**, **bower** and **Meteor**, see the [packages section](#packages)  
   ⓘ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
-  ⚠  You cannot rely on immutability for old browsers not supporting `Object.defineProperty` and `Object.freeze`, especially IE<9. This package will work though, but with enum constants won't be frozen. See [this section](#ecmascript)    
+  ⚠  The package will work with ecmascript3 standards (IE<=8) but immutability is provided through ecmascript5 standard, see [this section](#ecmascript)    
 
 **EXAMPLES**
 
