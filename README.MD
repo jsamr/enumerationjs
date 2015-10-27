@@ -39,10 +39,13 @@
 **DOWNLOAD**
 <a name="bundled"></a>
 > ❗ Shipped with **underscore**, ready-to-use  
-> → [COMMENTED ~ 61K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.min.js)
+> → [COMMENTED BUNDLE ~ 62K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.js) | [MINIFIED BUNDLE ~ 31K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.min.js)
 
 > ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`  
-> → [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
+> → [UNDERSCORE-READY COMMENTED ~ 9.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [UNDERSCORE-READY MINIFIED ~ 5.3K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
+
+> ⚠ Assuming you can provide **lodash**, either through AMD or global variable `_`. Read [this section](#forlodashusers) first  
+> → [LODASH-READY COMMENTED ~ 9.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv2/dist/Enumeration.js) | [LODASH-READY MINIFIED ~ 5.3K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv1/dist/Enumeration.min.js)  
 
 <a name="packages"></a>
 **PACKAGES**
@@ -173,9 +176,9 @@ plus it's heavily used by meteor.
 The latest release has mirror branches with just the lodash dependency loaded. Here are the travis build for each of these branches :  
 v^2.4 : ![buildV2](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv2) v^3.10 ![buildV3](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv3)  
 For either cases, you can download the appropriate versions here (assuming you can provide the **lodash** dependency of course):  
-> → [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
+> → [LODASH-READY COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv2/dist/Enumeration.js) | [LODASH-READY MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv1/dist/Enumeration.min.js)
 
-Il will `require(lodash)` or cope with a global `_` defined.
+Il will `require("lodash")` or cope with a global `_` defined.
 
 **Downloaded version**
 >
@@ -195,9 +198,11 @@ Il will `require(lodash)` or cope with a global `_` defined.
 NB : minor doc fixes are not listed above
 
 **v1.3.11**
+
 - Official lodash support 
 
 **v1.3.10**
+
 - Hot bugfix with `function create is not a constructor`
 
 **v1.3.8**
