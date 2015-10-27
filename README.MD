@@ -173,17 +173,18 @@ plus it's heavily used by meteor.
 
 #### 4.2\. For lodash users
 
+
+
+**Downloaded version**
 The latest release has mirror branches with just the lodash dependency loaded. Here are the travis build for each of these branches :  
 v^2.4 : ![buildV2](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv2) v^3.10 ![buildV3](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv3)  
 For either cases, you can download the appropriate versions here (assuming you can provide the **lodash** dependency of course):  
 > → [LODASH-READY COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv2/dist/Enumeration.js) | [LODASH-READY MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv1/dist/Enumeration.min.js)
 
-Il will `require("lodash")` or cope with a global `_` defined.
 
-**Downloaded version**
 >
 ⓘ By loading lodash in a non-AMD context, a global `_` variable will be defined and it will work seamlessly  
-ⓘ With **requirejs** or any other AMD loader allowing mapping, check [this section](#amd).   
+ⓘ By loading lodash in an AMD context, enumeratoinjs will `require("lodash")`  
 
 
 **Dependency managers version**
