@@ -16,11 +16,11 @@
     if (typeof define === 'function' && define.amd) {
       deps = [];
       if (!isUnderscoreDefined(root)) {
-        deps.push("underscore");
+        deps.push("lodash");
       }
       return define("enumerationjs", deps, factory);
     } else if (typeof module === 'object' && module.exports) {
-      return module.exports = factory(require('underscore'));
+      return module.exports = factory(require('lodash'));
     } else if (((ref = root.Package) != null ? (ref1 = ref.underscore) != null ? ref1._ : void 0 : void 0) != null) {
       return root.Enumeration = factory(root.Package.underscore._);
     } else if (root._) {
