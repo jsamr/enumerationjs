@@ -2,17 +2,6 @@ isUnderscoreDefined= (root) ->
   isFunction= (obj) -> typeof obj is 'function'
   isFunction(us=root?._) and isFunction(us.isObject) and isFunction(us.isFunction) and isFunction(us.keys) and isFunction(us.map) and isFunction(us.clone) and isFunction(us.extend)
 
-###
-* Function that creates an enum object value. Uniqueness guarantied by object reference.
-* This objects's unique own field is the Enumeration name. It's read only.
-* @param {string or number} key the enum name, recommanded uppercase
-* @param {string or object} descriptor a string that identifies this value, or an object with fields that will be copied on the returned value. In this case
-* a field '_id' must be provided
-* @param {object} valueProto a prototype the returned object will inherit from
-* @param {string} enumType a string identifying the Enumeration instance this enum constant is bound to
-* @param {object} enumerationProto : the prototype shared with Enumeration instance.prototype
-###
-
 # Universal module definition
 ((root, factory) ->
 #AMD Style
@@ -43,6 +32,26 @@ isUnderscoreDefined= (root) ->
     else _.omit(unfiltered,ignorePredicate)
 
   enumTypes=[]
+  defineNonEnumerableProperty=do ->
+    #check for IE <= V8 first, then check defineProperty
+    if ((window?.attachEvent && !window?.addEventListener) or not Object.defineProperty?) then (obj,name,prop)->obj[name]=prop
+    else (obj,name,prop)->Object.defineProperty(obj,name,{value:prop,configurable:false})
+  freezeObject= Object.freeze or _.identity
+  baseCreate = do ->
+    create=Object.create or (prototype)->
+      ctor= ->
+      ctor.prototype=prototype
+      new ctor()
+    (prototype) ->
+      if !_.isObject(prototype)
+        return {}
+      create(prototype)
+
+  createObject= (prototype, props) ->
+    result = baseCreate(prototype)
+    if props then  _.extend result, props
+    result
+
   ###*
   * Static function that creates an enum object value. Uniqueness guarantied by object reference.
   * This objects's unique own field is the Enumeration name. It's read only.
@@ -82,9 +91,9 @@ isUnderscoreDefined= (root) ->
       describe: -> "#{enumName}:#{identifier}#{if valueIsObject then "  {#{enumName+":"+prop for enumName,prop of _.extend({},descriptor,valueProto) when !(_.isFunction(prop))}}" else ""}"
     testReserved=(object)-> throw "Reserved field #{field} cannot be passed as enum property" for field of object when field in _.keys(_.extend({},methods,enumerationProto))
     testReserved valueProto
-    prototype=_.extend methods, valueProto
+    prototype=baseCreate(enumerationProto)
+    _.extend prototype, methods, valueProto
     properties={}
-    prototype.__proto__=enumerationProto
     defineReadOnlyProperty= (key0,value0)->
       properties[key0]=
         value:value0
@@ -94,9 +103,8 @@ isUnderscoreDefined= (root) ->
       if not descriptor._id? then throw "field '_id' must be defined when passing object as enum constant"
       if _.isObject(descriptor._id) then throw "_id descriptor field must be of type string or number"
       defineReadOnlyProperty key1,val1 for key1,val1 of descriptor when key1 isnt '_id'
-    thatConstant=Object.freeze(Object.create prototype, properties)
+    thatConstant=freezeObject(Object.create prototype, properties)
     thatConstant
-
 
   #Java like enum
   class Enumeration
@@ -127,25 +135,22 @@ isUnderscoreDefined= (root) ->
       else
         if (key for key in _.keys(enumValues) when key in ["pretty","from","toJSON","assertScheme","type"]).length>0
           throw "Cannot have enum constant as one amongst reserved enumeration property [pretty,from]"
-      #Non enumerable prototype property
-      Object.defineProperty(self,"prototype", value:{type:->enumType})
-      #Lambda to write enum constants
-      writeProperty = (descriptor,key) => Object.defineProperty(self,key,
-        value:constant(key,descriptor,proto,ids,self.prototype)
-        enumerable:true
-      )
-      writeProperty val,key for key,val of enumValues
+      self.prototype={type:->enumType}
       #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
       Object.defineProperty self, 'pretty', value:(evalConstantsMethods=false)-> JSON.stringify(self.toJSON(true,evalConstantsMethods),null,2)
       #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
       Object.defineProperty self, 'prettyPrint', value:(evalConstantsMethods=false)-> console.log(self.toJSON(true,evalConstantsMethods))
+      writeConstant = (descriptor,key) => self[key]=constant(key,descriptor,proto,ids,self.prototype)
+      writeConstant val,key for key,val of enumValues
+      #Define non-enumerable method that returns a concise, pretty string representing the Enumeration
+
       #Define non-enumerable method that returns the enum instance which matches identifier (descriptor if string, descriptor._id if object)
-      Object.defineProperty self, 'from', value:
+      defineNonEnumerableProperty self, 'from',
         (identifier,throwOnFailure=false) -> self[idToKeyMap[identifier]] or (throw "identifier #{identifier} does not match any" if throwOnFailure )
-      Object.defineProperty self, 'toJSON', value:(includeConstantsPrototype=false,evalConstantsMethods=false) ->
+      defineNonEnumerableProperty self, 'toJSON', (includeConstantsPrototype=false,evalConstantsMethods=false) ->
         _.extend({type:enumType},mapObject(_.pick(self,_.keys(enumValues)), (val)-> val.schema(includeConstantsPrototype,evalConstantsMethods)))
-      Object.defineProperty self, 'type', value:enumType
-      Object.defineProperty self, 'assertSchema', value: (schemaString,strict=true,providedType=null)->
+      defineNonEnumerableProperty self, 'type', enumType
+      defineNonEnumerableProperty self, 'assertSchema',(schemaString,strict=true,providedType=null)->
         'use strict'
         if not _.isString(schemaString) then throw new TypeError("first argument must be a string")
         remoteShema=JSON.parse(schemaString)

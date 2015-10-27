@@ -47,11 +47,12 @@ describe 'Enumeration values when descriptors are raw types :',  ->
   it 'should share prototype\'s properties', ->
     expect(prototype.someStupidFun).toBe(closeEventCodes[key].someStupidFun) for key of descriptors
   it 'should be instanceof their Enumeration instance object', ->
-    expect(enumvVal instanceof closeEventCodes).toBe(true) for key,enumvVal of closeEventCodes
+    expect(closeEventCodes[key] instanceof closeEventCodes).toBe(true) for key of descriptors
   it 'should have a describe method returning a string', ->
-    expect(_.isString(enumvVal.describe())).toBe(true) for key,enumvVal of closeEventCodes
+    expect(_.isString(closeEventCodes[key].describe())).toBe(true) for key of descriptors
   it 'schema should be assertable with itself', ->
     expect(closeEventCodes.assertSchema(JSON.stringify(closeEventCodes))).toBe(true)
+
 
 describe 'Enumeration values when descriptors are structured objects :',  ->
   closeEventCodes=null
@@ -90,8 +91,9 @@ describe 'Enumeration values when descriptors are structured objects :',  ->
   it 'should have a describe method returning a string', ->
     expect(_.isString(enumvVal.describe())).toBe(true) for key,enumvVal of closeEventCodes
   it 'should be serializable with stringify', ->
+    console.info("\n#{JSON.stringify(closeEventCodes)}\n")
+    console.info("#{JSON.stringify(_.extend(JSON.parse(JSON.stringify(descriptors)),{type:closeEventCodes.type}))}\n")
     expect(JSON.parse(JSON.stringify(closeEventCodes))).toEqual(_.extend(JSON.parse(JSON.stringify(descriptors)),{type:closeEventCodes.type}))
-
   it 'schema should be assertable with itself', ->
     expect(closeEventCodes.assertSchema(JSON.stringify(closeEventCodes))).toBe(true)
   it 'schema should be assertable with a similar enum having a different constant prototype', ->

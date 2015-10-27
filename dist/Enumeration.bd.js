@@ -12,18 +12,6 @@
     return isFunction(us = root != null ? root._ : void 0) && isFunction(us.isObject) && isFunction(us.isFunction) && isFunction(us.keys) && isFunction(us.map) && isFunction(us.clone) && isFunction(us.extend);
   };
 
-
-  /*
-  * Function that creates an enum object value. Uniqueness guarantied by object reference.
-  * This objects's unique own field is the Enumeration name. It's read only.
-  * @param {string or number} key the enum name, recommanded uppercase
-  * @param {string or object} descriptor a string that identifies this value, or an object with fields that will be copied on the returned value. In this case
-  * a field '_id' must be provided
-  * @param {object} valueProto a prototype the returned object will inherit from
-  * @param {string} enumType a string identifying the Enumeration instance this enum constant is bound to
-  * @param {object} enumerationProto : the prototype shared with Enumeration instance.prototype
-   */
-
   (function(root, factory) {
     var deps, ref, ref1;
     if (typeof define === 'function' && define.amd) {
@@ -42,7 +30,7 @@
       throw new ReferenceError("underscore global object '_' must be defined. Get the bundled version of enumerationjs here : https://github.com/sveinburne/enumerationjs/#bundled or install underscore : http://underscorejs.org/ ");
     }
   })(this, function(_) {
-    var Enumeration, constant, enumTypes, mapObject;
+    var Enumeration, baseCreate, constant, createObject, defineNonEnumerableProperty, enumTypes, freezeObject, mapObject;
     mapObject = function(object, transform, ignorePredicate) {
       var unfiltered;
       unfiltered = _.object(_.map(object, (function(value, key) {
@@ -55,6 +43,44 @@
       }
     };
     enumTypes = [];
+    defineNonEnumerableProperty = (function() {
+      if (((typeof window !== "undefined" && window !== null ? window.attachEvent : void 0) && !(typeof window !== "undefined" && window !== null ? window.addEventListener : void 0)) || (Object.defineProperty == null)) {
+        return function(obj, name, prop) {
+          return obj[name] = prop;
+        };
+      } else {
+        return function(obj, name, prop) {
+          return Object.defineProperty(obj, name, {
+            value: prop,
+            configurable: false
+          });
+        };
+      }
+    })();
+    freezeObject = Object.freeze || _.identity;
+    baseCreate = (function() {
+      var create;
+      create = Object.create || function(prototype) {
+        var ctor;
+        ctor = function() {};
+        ctor.prototype = prototype;
+        return new ctor();
+      };
+      return function(prototype) {
+        if (!_.isObject(prototype)) {
+          return {};
+        }
+        return create(prototype);
+      };
+    })();
+    createObject = function(prototype, props) {
+      var result;
+      result = baseCreate(prototype);
+      if (props) {
+        _.extend(result, props);
+      }
+      return result;
+    };
 
     /**
     * Static function that creates an enum object value. Uniqueness guarantied by object reference.
@@ -147,9 +173,9 @@
         return results;
       };
       testReserved(valueProto);
-      prototype = _.extend(methods, valueProto);
+      prototype = baseCreate(enumerationProto);
+      _.extend(prototype, methods, valueProto);
       properties = {};
-      prototype.__proto__ = enumerationProto;
       defineReadOnlyProperty = function(key0, value0) {
         return properties[key0] = {
           value: value0,
@@ -171,7 +197,7 @@
           }
         }
       }
-      thatConstant = Object.freeze(Object.create(prototype, properties));
+      thatConstant = freezeObject(Object.create(prototype, properties));
       return thatConstant;
     };
     Enumeration = (function() {
@@ -200,7 +226,7 @@
        */
 
       function Enumeration(enumType, enumValues, proto) {
-        var idToKeyMap, ids, key, self, val, writeProperty;
+        var idToKeyMap, ids, key, self, val, writeConstant;
         if (proto == null) {
           proto = {};
         }
@@ -235,25 +261,11 @@
             throw "Cannot have enum constant as one amongst reserved enumeration property [pretty,from]";
           }
         }
-        Object.defineProperty(self, "prototype", {
-          value: {
-            type: function() {
-              return enumType;
-            }
+        self.prototype = {
+          type: function() {
+            return enumType;
           }
-        });
-        writeProperty = (function(_this) {
-          return function(descriptor, key) {
-            return Object.defineProperty(self, key, {
-              value: constant(key, descriptor, proto, ids, self.prototype),
-              enumerable: true
-            });
-          };
-        })(this);
-        for (key in enumValues) {
-          val = enumValues[key];
-          writeProperty(val, key);
-        }
+        };
         Object.defineProperty(self, 'pretty', {
           value: function(evalConstantsMethods) {
             if (evalConstantsMethods == null) {
@@ -270,71 +282,72 @@
             return console.log(self.toJSON(true, evalConstantsMethods));
           }
         });
-        Object.defineProperty(self, 'from', {
-          value: function(identifier, throwOnFailure) {
-            if (throwOnFailure == null) {
-              throwOnFailure = false;
-            }
-            return self[idToKeyMap[identifier]] || ((function() {
-              if (throwOnFailure) {
-                throw "identifier " + identifier + " does not match any";
-              }
-            })());
+        writeConstant = (function(_this) {
+          return function(descriptor, key) {
+            return self[key] = constant(key, descriptor, proto, ids, self.prototype);
+          };
+        })(this);
+        for (key in enumValues) {
+          val = enumValues[key];
+          writeConstant(val, key);
+        }
+        defineNonEnumerableProperty(self, 'from', function(identifier, throwOnFailure) {
+          if (throwOnFailure == null) {
+            throwOnFailure = false;
           }
+          return self[idToKeyMap[identifier]] || ((function() {
+            if (throwOnFailure) {
+              throw "identifier " + identifier + " does not match any";
+            }
+          })());
         });
-        Object.defineProperty(self, 'toJSON', {
-          value: function(includeConstantsPrototype, evalConstantsMethods) {
-            if (includeConstantsPrototype == null) {
-              includeConstantsPrototype = false;
-            }
-            if (evalConstantsMethods == null) {
-              evalConstantsMethods = false;
-            }
-            return _.extend({
-              type: enumType
-            }, mapObject(_.pick(self, _.keys(enumValues)), function(val) {
-              return val.schema(includeConstantsPrototype, evalConstantsMethods);
-            }));
+        defineNonEnumerableProperty(self, 'toJSON', function(includeConstantsPrototype, evalConstantsMethods) {
+          if (includeConstantsPrototype == null) {
+            includeConstantsPrototype = false;
           }
-        });
-        Object.defineProperty(self, 'type', {
-          value: enumType
-        });
-        Object.defineProperty(self, 'assertSchema', {
-          value: function(schemaString, strict, providedType) {
-            var id, localSchema, remoteShema;
-            if (strict == null) {
-              strict = true;
-            }
-            if (providedType == null) {
-              providedType = null;
-            }
-            'use strict';
-            if (!_.isString(schemaString)) {
-              throw new TypeError("first argument must be a string");
-            }
-            remoteShema = JSON.parse(schemaString);
-            localSchema = self.toJSON();
-            if (providedType != null) {
-              remoteShema.type = providedType;
-            }
-            if (remoteShema.type !== localSchema.type) {
-              throw new Error("Assertion failed. Local schema type differs from remote schema type.");
-            }
-            if (strict) {
-              if (!_.isEqual(localSchema, remoteShema)) {
-                throw new Error("Assertion failed. Local schema differs from remote schema.");
-              }
-            } else {
-              id = function(val) {
-                return val._id;
-              };
-              if (!(_.isEqual(mapObject(remoteShema, id), mapObject(self.toJSON(), id)))) {
-                throw new Error("Assertion failed. Local schema differs from remote schema.");
-              }
-            }
-            return true;
+          if (evalConstantsMethods == null) {
+            evalConstantsMethods = false;
           }
+          return _.extend({
+            type: enumType
+          }, mapObject(_.pick(self, _.keys(enumValues)), function(val) {
+            return val.schema(includeConstantsPrototype, evalConstantsMethods);
+          }));
+        });
+        defineNonEnumerableProperty(self, 'type', enumType);
+        defineNonEnumerableProperty(self, 'assertSchema', function(schemaString, strict, providedType) {
+          var id, localSchema, remoteShema;
+          if (strict == null) {
+            strict = true;
+          }
+          if (providedType == null) {
+            providedType = null;
+          }
+          'use strict';
+          if (!_.isString(schemaString)) {
+            throw new TypeError("first argument must be a string");
+          }
+          remoteShema = JSON.parse(schemaString);
+          localSchema = self.toJSON();
+          if (providedType != null) {
+            remoteShema.type = providedType;
+          }
+          if (remoteShema.type !== localSchema.type) {
+            throw new Error("Assertion failed. Local schema type differs from remote schema type.");
+          }
+          if (strict) {
+            if (!_.isEqual(localSchema, remoteShema)) {
+              throw new Error("Assertion failed. Local schema differs from remote schema.");
+            }
+          } else {
+            id = function(val) {
+              return val._id;
+            };
+            if (!(_.isEqual(mapObject(remoteShema, id), mapObject(self.toJSON(), id)))) {
+              throw new Error("Assertion failed. Local schema differs from remote schema.");
+            }
+          }
+          return true;
         });
         enumTypes.push(enumType);
         return self;

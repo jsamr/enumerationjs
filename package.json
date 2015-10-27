@@ -1,7 +1,7 @@
 {
   "name": "enumerationjs ",
   "description": "Java-like super flexible enums ! Move the logic. ",
-  "version": "1.4.0",
+  "version": "1.3.10",
   "author": "Jules Randolph <jules.randolph@usherbrooke.ca>",
   "main": "dist/Enumeration.min.js",
   "scripts": {
@@ -25,7 +25,7 @@
     "underscore": "^1.2"
   },
   "dependencies": {
-    "underscore": "^1.2"
+    "underscore": "^1.4"
   },
   "engines": {
     "node": ">=0.10"
