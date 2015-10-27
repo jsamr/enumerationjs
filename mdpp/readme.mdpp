@@ -148,9 +148,10 @@ plus it's heavily used by meteor.
 
 ### Changelog
 
-Note that it the changelogs :
+Note that it the changelog :
 - `MyEnum` is any instance of `Enumeration.`
 - `MyEnum.SOME_CONST` is an **enum constant** of type `MyEnum`
+- minor doc fixes are not listed 
 
 **v1.4.0**
 
@@ -163,7 +164,6 @@ Note that it the changelogs :
 - Added `MyEnum.SOME_CONST.toString` to allow non-strict equality with `==` 
 - Added `MyEnum.SOME_CONST.toJSON` support for serialization with **enum constants** 
 
-NB : minor doc fixes are not listed above
 **v1.3.10**
 - Hot bugfix with `function create is not a constructor`
 
