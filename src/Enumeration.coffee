@@ -11,7 +11,7 @@ isUnderscoreDefined= (root) ->
     deps=[]
     #Allows compatibility with any underscore version
     #and lodash
-    if(not isUnderscoreDefined root) then deps.push "underscore"
+    if(not isUnderscoreDefined root) then deps.push "lodash"
     # AMD. Register enumerationjs module
     define "enumerationjs", deps, factory
   #CommonJS style
@@ -19,7 +19,7 @@ isUnderscoreDefined= (root) ->
     # Node. Does not work with strict CommonJS, but
     # only CommonJS-like environments that support module.exports,
     # like Node.
-    module.exports = factory(require('underscore'))
+    module.exports = factory(require('lodash'))
   #Meteor style
   else if root.Package?.underscore?._? then root.Enumeration = factory(root.Package.underscore._)
   #Globals
