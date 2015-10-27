@@ -27,7 +27,7 @@
   ✓  **Rock solid** jasmine specified tests.  
   ✓  Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
   ✓  Available for **npm**, **bower** and **Meteor**, see the [packages section](#packages)  
-  ⓘ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
+  ⓘ Depends on **underscore**, but you can use **lodash**, tested. See [this section](#dependencies) for more infos.      
   ⚠  The package will work with ecmascript3 standards (IE<=8) but immutability is provided through ecmascript5 standard, see [this section](#ecmascript)    
 
 **EXAMPLES**
@@ -170,6 +170,13 @@ plus it's heavily used by meteor.
 
 #### 4.2\. For lodash users
 
+The latest release has mirror branches with just the lodash dependency loaded. Here are the travis build for each of these branches :  
+v^2.4 : ![buildV2](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv2) v^3.10 ![buildV3](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv3)  
+For either cases, you can download the appropriate versions here (assuming you can provide the **lodash** dependency of course):  
+> → [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
+
+Il will `require(lodash)` or cope with a global `_` defined.
+
 **Downloaded version**
 >
 ⓘ By loading lodash in a non-AMD context, a global `_` variable will be defined and it will work seamlessly  
@@ -186,6 +193,10 @@ plus it's heavily used by meteor.
 ### 5\. Changelog
 
 NB : minor doc fixes are not listed above
+
+**v1.3.11**
+- Official lodash support 
+
 **v1.3.10**
 - Hot bugfix with `function create is not a constructor`
 
