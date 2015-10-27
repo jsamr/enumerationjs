@@ -137,7 +137,7 @@ plus it's heavily used by meteor.
 
 
 **Downloaded version**  
-The latest release has mirror branches with just the lodash required instead of underscore. Here are the travis build for each of these branches :  
+The latest release has mirror branches with lodash required instead of underscore. Here are the travis build for each of these branches :  
 **lodash v2 (last)** : ![buildV2](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv2)  
 **lodash v3 (last)** : ![buildV3](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv3)  
 For either cases, you can download the appropriate versions here (assuming you can provide the **lodash** dependency of course):  
