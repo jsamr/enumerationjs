@@ -29,7 +29,7 @@
   ✓  Semver.  
   ✓  Fully **CommonJS** and **AMD** compliant through a **Universal Module Definition** | since v1.3.0     
   ✓  Available for **npm**, **bower** and **Meteor**, see the [packages section](#packages)  
-  ⓘ Depends on **underscore**, but you can use **lodash** if you wish. See [this section](#dependencies) for more infos.      
+  ⓘ Depends on **underscore**, but you can use **lodash**, tested. See [this section](#dependencies) for more infos.      
   ⚠  The package will work with ecmascript3 standards (IE<=8) but immutability is provided through ecmascript5 standard, see [this section](#ecmascript)    
 
 **EXAMPLES**
@@ -41,10 +41,13 @@
 **DOWNLOAD**
 <a name="bundled"></a>
 > ❗ Shipped with **underscore**, ready-to-use  
-> → [COMMENTED ~ 61K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.js) | [MINIFIED ~ 30K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.min.js)
+> → [COMMENTED BUNDLE ~ 62K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.js) | [MINIFIED BUNDLE ~ 31K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.bd.min.js)
 
 > ⚠ Assuming you can provide **underscore**, either through AMD or global variable `_`  
-> → [COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
+> → [UNDERSCORE-READY COMMENTED ~ 9.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [UNDERSCORE-READY MINIFIED ~ 5.3K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
+
+> ⚠ Assuming you can provide **lodash**, either through AMD or global variable `_`. Read [this section](#forlodashusers) first  
+> → [LODASH-READY COMMENTED ~ 9.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv2/dist/Enumeration.js) | [LODASH-READY MINIFIED ~ 5.3K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv1/dist/Enumeration.min.js)  
 
 <a name="packages"></a>
 **PACKAGES**
@@ -174,10 +177,19 @@ plus it's heavily used by meteor.
 
 #### 4.2\. For lodash users
 
-**Downloaded version**
+
+
+**Downloaded version**  
+The latest release has mirror branches with lodash required instead of underscore. Here are the travis build for each of these branches :  
+**lodash v2 (last)** : ![buildV2](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv2)  
+**lodash v3 (last)** : ![buildV3](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv3)  
+For either cases, you can download the appropriate versions here (assuming you can provide the **lodash** dependency of course):  
+> → [LODASH-READY COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv1/dist/Enumeration.js) | [LODASH-READY MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv1/dist/Enumeration.min.js)
+
+
 >
 ⓘ By loading lodash in a non-AMD context, a global `_` variable will be defined and it will work seamlessly  
-ⓘ With **requirejs** or any other AMD loader allowing mapping, check [this section](#amd).   
+ⓘ By loading lodash in an AMD context, enumeratoinjs will `require("lodash")`  
 
 
 **Dependency managers version**
@@ -205,7 +217,12 @@ Note that it the changelog :
 - Added `MyEnum.SOME_CONST.toString` to allow non-strict equality with `==` 
 - Added `MyEnum.SOME_CONST.toJSON` support for serialization with **enum constants** 
 
+**v1.3.11**
+
+- Official lodash support 
+
 **v1.3.10**
+
 - Hot bugfix with `function create is not a constructor`
 
 **v1.3.8**
