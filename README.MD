@@ -4,7 +4,7 @@
 ![Travis build](https://travis-ci.org/sveinburne/enumerationjs.svg?branch=master)
  ![jasmine](https://img.shields.io/badge/50_specs-0_failures-brightgreen.svg)
  ![License](https://img.shields.io/npm/l/express.svg)
- [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumerationjs.svg)](https://github.com/sveinburne/enumerationjs)  
+ [![GitHub version](https://badge.fury.io/js/enumerationjs.svg)](https://github.com/sveinburne/enumerationjs)  
 *Straightforward though very flexible solution addressing the unimplemented `enum` keyword.*   
 
 **KEY POINTS**
