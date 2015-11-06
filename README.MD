@@ -4,7 +4,7 @@
 ![Travis build](https://travis-ci.org/sveinburne/enumerationjs.svg?branch=master)
  ![jasmine](https://img.shields.io/badge/57_specs-0_failures-brightgreen.svg)
  ![License](https://img.shields.io/npm/l/express.svg)
- [![GitHub version](https://badge.fury.io/gh/sveinburne%2Fenumerationjs.svg)](https://github.com/sveinburne/enumerationjs)  
+ [![GitHub version](https://badge.fury.io/js/enumerationjs.svg)](https://github.com/sveinburne/enumerationjs)  
 *Straightforward though very flexible solution addressing the unimplemented `enum` keyword.*   
 
 **KEY POINTS**
@@ -47,7 +47,7 @@
 > → [UNDERSCORE-READY COMMENTED ~ 9.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.js) | [UNDERSCORE-READY MINIFIED ~ 5.3K](https://raw.githubusercontent.com/sveinburne/enumeration.js/master/dist/Enumeration.min.js)
 
 > ⚠ Assuming you can provide **lodash**, either through AMD or global variable `_`. Read [this section](#forlodashusers) first  
-> → [LODASH-READY COMMENTED ~ 9.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv2/dist/Enumeration.js) | [LODASH-READY MINIFIED ~ 5.3K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv1/dist/Enumeration.min.js)  
+> → [LODASH-READY COMMENTED ~ 9.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv2/dist/Enumeration.js) | [LODASH-READY MINIFIED ~ 5.3K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv2/dist/Enumeration.min.js)  
 
 <a name="packages"></a>
 **PACKAGES**
@@ -184,7 +184,7 @@ The latest release has mirror branches with lodash required instead of underscor
 **lodash v2 (last)** : ![buildV2](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv2)  
 **lodash v3 (last)** : ![buildV3](https://api.travis-ci.org/sveinburne/enumerationjs.svg?branch=lodashv3)  
 For either cases, you can download the appropriate versions here (assuming you can provide the **lodash** dependency of course):  
-> → [LODASH-READY COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv1/dist/Enumeration.js) | [LODASH-READY MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv1/dist/Enumeration.min.js)
+> → [LODASH-READY COMMENTED ~ 8.1K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv2/dist/Enumeration.js) | [LODASH-READY MINIFIED ~ 4.4K](https://raw.githubusercontent.com/sveinburne/enumeration.js/lodashv2/dist/Enumeration.min.js)
 
 
 >
